@@ -1,0 +1,7 @@
+parameters:
+#    infinity_games_profil_utilisateur.example.class: InfinityGames\ProfilUtilisateurBundle\Example
+
+services:
+#    infinity_games_profil_utilisateur.example:
+#        class: %infinity_games_profil_utilisateur.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

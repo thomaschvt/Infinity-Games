@@ -19,6 +19,10 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new InfinityGames\ConnexionBundle\InfinityGamesConnexionBundle(),
+            new InfinityGames\AccueilBundle\InfinityGamesAccueilBundle(),
+            new InfinityGames\InscriptionBundle\InfinityGamesInscriptionBundle(),
+            new InfinityGames\ProfilUtilisateurBundle\InfinityGamesProfilUtilisateurBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,108 @@
+{#Inclusion du layout général de la page. Il est dans app/Ressources/views Il va nous permettre de récupérer sur chaque page un header 
+- footer etc. #}
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block contenu_page %}
+<!-- bloc gauche----------------------------------------------------------------- -->
+<div id='wrapper_bloc_gauche'>
+	<div id='avatar_profil'>
+		<img src="css/img/profil.png" title="" alt=""/>
+		<button id='modif_avatar'>Modifier</button>
+		<div id='wrapper_form_avatar'>
+			<form method="post" action='#' enctype="multipart/form-data">
+				<input type="file" name="img"/>
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000"/>
+			</form>
+		</div>
+	</div>
+	<div id="date_inscrip" class="info_gauche">
+		<span class="info_text">Inscription : {{ utilisateur.createdat|date("d M Y") }} </span>
+	</div>
+	<div id="credit" class="info_gauche">
+		<img id ='logo_credits' src='css/img/test_grade.png'/>
+		<span class="info_text"> {{ utilisateur.credits }} crédits</span>
+	</div>
+	<div id="grade" class="info_gauche">
+		<img id ='logo_credits' src='css/img/test_grade.png'/>
+		<span class="info_text"> Niveau</span>
+	</div>
+	<div id="hg_score" class="info_gauche">
+		<span class="info_text"> Highscore : </span><span> {{ utilisateur.highscore }} pts</span>
+	</div>
+	<div id="rang" class="info_gauche">
+		<span class="info_text"> 215 eme</span>
+	</div>
+</div>
+<!-- FIN bloc gauche----------------------------------------------------------------- -->
+<div id='wrapper_bloc_droite'>
+	<div id='wrapper_bloc_info_general'>
+		<h2>Informations générales : </h2>
+		<div class="">
+			<span class='intitule_info_gen'>Nom du compte : </span><span> {{ utilisateur.pseudo|title }} </span>
+		</div>
+		<div class='intitule_info_gen'>
+			<span>E-mail : </span><span> {{ utilisateur.email }} </span>
+		</div>
+		<div class='intitule_info_gen'>
+			<span>Site personnel : </span><a href="http://{{ utilisateur.site }}">{{ utilisateur.site }}</a>
+		</div>
+		<div id='' class='sep_orange_bloc_droite'></div>
+	</div>
+	<div id='wrapper_message_profil'>
+		<h2>Mes messages</h2>
+	</div>
+	<div id='wrapper_msg_tools'>
+		<div id='new_msg'>
+			<button id='btn_new_msg'>Nouveau</button>
+		</div>
+	</div>
+	<div id='wrapper_new_msg'>
+		<div id='wrapper_form_new'>
+			<form method="post" {{ form_enctype(form) }}>
+				{{ form_widget(form) }}
+				<input id="btn_send_inscription" type="submit" value="Envoyer"/>
+			</form>
+		</div>
+	</div>
+	<div id='wrapper_list_message'>
+		<div id='1' class='message_profil'>
+			<img id='img_msg_1' class='img_statut_msg' src='css/img/mail_close.png' alt='courrier non lu'/>
+			<div id='infos_msg'>
+				<span class='info_message'>Expéditeur</span>
+				<span class='info_message'>Object : </span><span class='intitule_obj_msg'> Message de test</span>
+				<span class='info_message'>21.10.2012 - 12h12</span>
+			</div>
+			<img id='img_del_msg' src='css/img/del_msg.png' alt='courrier non lu'/>
+			<div class='contenu_msg'>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					 Etiam eu purus turpis. Aliquam sodales dignissim sem ac faucibus. 
+					 Vivamus malesuada dignissim lectus, vehicula fermentum lacus consectetur quis.
+					  Donec convallis risus nec urna pulvinar sagittis. Suspendisse tellus quam, tristique at eleifend et,
+					   aliquam et erat. Cras mi leo, convallis sed tempor sed, consequat a dui. Duis libero neque, elementum vel rhoncus eget, 
+					   cursus non dui. Etiam nec purus nec lorem porta aliquam at in orci. Integer massa turpis, scelerisque sed accumsan nec, 
+					   consectetur quis risus. Aenean purus odio, laoreet id egestas ac, eleifend vel sem. Integer pharetra, felis sit amet 
+					   eleifend. 
+				</p>
+				<div id='form_btn_repondre_message'>
+					<form action='#' method='post'>
+						<input type="hidden" value='vaut expediteur'>
+						<input id='btn_repondre' type='submit' value='repondre'>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id='' class='sep_orange_bloc_droite'></div>
+	</div>
+	<div id='wrapper_quest_forum_profil'>
+		<h2>Mes questions sur le forum</h2>
+		<div id='wrapper_list_quest_forum_profil'>
+			<div class='quest_forum_profil'>
+			
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

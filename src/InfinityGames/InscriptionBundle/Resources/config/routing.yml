@@ -1,0 +1,4 @@
+infinity_games_inscription:
+    pattern:  inscription
+    defaults: { _controller: InfinityGamesInscriptionBundle:Default:index }
+

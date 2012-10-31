@@ -1,3 +1,19 @@
+infinity_games_profil_utilisateur:
+    resource: "@InfinityGamesProfilUtilisateurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+infinity_games_inscription:
+    resource: "@InfinityGamesInscriptionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+infinity_games_accueil:
+    resource: "@InfinityGamesAccueilBundle/Resources/config/routing.yml"
+    prefix:   /
+
+infinity_games_connexion:
+    resource: "@InfinityGamesConnexionBundle/Resources/config/routing.yml"
+    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

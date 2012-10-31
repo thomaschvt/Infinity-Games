@@ -1,0 +1,7 @@
+parameters:
+#    infinity_games_accueil.example.class: InfinityGames\AccueilBundle\Example
+
+services:
+#    infinity_games_accueil.example:
+#        class: %infinity_games_accueil.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
