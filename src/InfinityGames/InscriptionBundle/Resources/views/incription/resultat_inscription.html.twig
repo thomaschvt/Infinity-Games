@@ -1,0 +1,19 @@
+{#Inclusion du layout général de la page. Il est dans app/Ressources/views Il va nous permettre de récupérer sur chaque page un header 
+- footer etc. #}
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Inscription{% endblock %}
+
+{% block contenu_page %}
+	<div id="msg_result_inscription">
+	{% if resultat == "succes" %} 
+		<span class='mesg_resultat'>Félicitation {{ nom }} {{ prenom }}. Votre inscription à bien été prise en compte. Vous allez recevoir un e-mail à l'adresse suivante : {{ mail }}
+		Veuillez confirmer votre inscription en cliquant sur le lien joînt au mail.
+		
+		</span>	 
+	{% else %} 
+		L'adresse {{ mail }} est déja utilisée pour un autre compte. Veuillez vérifier votre adresse mail ou en utiliser une autre
+	{% endif %} 
+		
+	</div>
+{% endblock %}

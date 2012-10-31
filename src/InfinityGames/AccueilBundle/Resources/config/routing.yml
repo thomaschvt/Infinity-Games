@@ -1,0 +1,3 @@
+infinity_games_accueil_homepage:
+    pattern:  accueil/
+    defaults: { _controller: InfinityGamesAccueilBundle:Default:index }

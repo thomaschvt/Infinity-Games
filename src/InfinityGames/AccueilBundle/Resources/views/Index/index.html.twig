@@ -1,0 +1,105 @@
+{#Inclusion du layout général de la page. Il est dans app/Ressources/views Il va nous permettre de récupérer sur chaque page un header 
+- footer etc. #}
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block contenu_page %}
+<!-- bloc upperjeu -->
+<div id='promo_game'>
+	<div id='visuel_promo_jeu'>
+		<img alt="visuel promo jeu" src="css/img/visu_tmp.png">
+	</div>
+	<div id='content_txt_promo_jeu'>
+		<h2>Lorem ipsum dolor sit amet</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar, mi nec tincidunt consectetur, risus sapien placerat est, 
+			quis ultricies dolor ligula consequat felis. Quisque id ligula nisl, at blandit quam.
+			Suspendisse nibh dolor, consequat a adipiscing eu, accumsan nec eros. Proin aliquet, lectus vel porta feugiat, mi sapien tristique. </p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar, mi nec tincidunt consectetur, risus sapien placerat est. 
+		</p>
+		<div id='wrapper_btn_jeu_promo'>
+			<div class='btn_jeu_promo'>
+				<a href=''>Jouer</a>	
+			</div>
+			<div class='btn_jeu_promo'>
+				<a href=''>Créer</a>	
+			</div>	
+		</div>
+	</div>
+</div>
+<!-- Fermeture du wrapper_page pour add du bloc gris -->
+</div>
+<!-- Bloc gris -->
+<div id='content_page_gris' class='wrapper_gris'>
+	<div id='wrapper_content_page_gris' class='div_center'>
+		<div id='wrapper_jeu_top3'>
+			<div class='content_jeu_top3'>
+				<span id='nom_game' class='info_jeu_top3'>Nom du jeu</span>
+				<span id='auteur_game' class='info_jeu_top3'>Auteur du jeu</span>
+				<span id='type_game' class='info_jeu_top3'>Type du jeu</span>
+				<div id='content_img_note_game_top3' class=''>
+					<img class='img_note_game_top3' src="css/img/note_jeu_off.png" alt="note_jeu img">
+				</div>
+				<div class='btn_jeu_top3'>
+					<a href=''>Jouer</a>	
+				</div>
+			</div>
+			<div class='content_jeu_top3'>
+				<span id='nom_game' class='info_jeu_top3'>Nom du jeu</span>
+				<span id='auteur_game' class='info_jeu_top3'>Auteur du jeu</span>
+				<span id='type_game' class='info_jeu_top3'>Type du jeu</span>
+				<div id='content_img_note_game_top3' class=''>
+					<img class='img_note_game_top3' src="css/img/note_jeu_off.png" alt="note_jeu img">
+				</div>
+				<div class='btn_jeu_top3'>
+					<a href=''>Jouer</a>	
+				</div>
+			</div>
+			<div class='content_jeu_top3'>
+				<span id='nom_game' class='info_jeu_top3'>Nom du jeu</span>
+				<a href=""><span id='auteur_game' class='info_jeu_top3'>Auteur du jeu</span></a>
+				<span id='type_game' class='info_jeu_top3'>Type du jeu</span>
+				<div id='content_img_note_game_top3' class=''>
+					<img class='img_note_game_top3' src="css/img/note_jeu_off.png" alt="note_jeu img">
+				</div>
+				<div class='btn_jeu_top3'>
+					<a href=''>Jouer</a>	
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+<!-- reouverture wrapper_page -->
+<div id='wrapper_page' class='div_center'>
+	<div id='wrapper_content_tools'>
+		<div id='content_txt_tools'>
+			<h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget enim magna, in imperdiet metus.
+				Duis vel sapien risus. Suspendisse viverra, ligula et consequat adipiscing, justo nunc pellentesque ligula, 
+				eu elementum ante leo et mi. Etiam erat nibh, consectetur et fermentum a, pharetra viverra sem. Proin elit mauris, 
+				ullamcorper non bibendum non, venenatis vel dui. Quisque eu risus a elit fringilla laoreet. Nullam placerat porta libero 
+				sit amet posuere. Nunc eget ligula et nunc imperdiet fermentum sed id tortor. Praesent. 
+			</p>
+			<div id='content_btn_tools_download'>
+				<a href=''>
+					<div id='btn_download_tools'>
+						Télécharger
+					</div>
+				</a>
+			</div>
+		</div>
+		<div id='content_link_tools'>
+			<div class='btn_tools'>
+				<a href='#'>Voir la section développeur</a>
+			</div>
+			<div class='btn_tools'>
+				<a href='#'>Voir l'API Infinity Games</a>
+			</div>
+			<div class='btn_tools'>
+				<a href='#'>Voir la section développeur</a>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}
