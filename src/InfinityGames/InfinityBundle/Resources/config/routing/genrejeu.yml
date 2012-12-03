@@ -1,0 +1,30 @@
+genrejeu:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:GenreJeu:index" }
+
+genrejeu_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:GenreJeu:show" }
+
+genrejeu_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:GenreJeu:new" }
+
+genrejeu_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:GenreJeu:create" }
+    requirements: { _method: post }
+
+genrejeu_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:GenreJeu:edit" }
+
+genrejeu_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:GenreJeu:update" }
+    requirements: { _method: post }
+
+genrejeu_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:GenreJeu:delete" }
+    requirements: { _method: post }

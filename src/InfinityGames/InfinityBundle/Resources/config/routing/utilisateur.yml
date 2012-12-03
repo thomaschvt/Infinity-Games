@@ -1,0 +1,37 @@
+utilisateur:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:index" }
+
+utilisateur_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:show" }
+
+utilisateur_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:new" }
+
+utilisateur_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:create" }
+    requirements: { _method: post }
+
+utilisateur_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:edit" }
+
+utilisateur_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:update" }
+    requirements: { _method: post }
+
+utilisateur_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:delete" }
+    requirements: { _method: post }
+ 
+utilisateur_profil:
+    pattern:  /{id}/profil_utilisateur
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:affichageProfil" }
+utilisateur_direct_delete:
+    pattern:  /{id}/directdelete
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:deleteDirectUtilisateur" }

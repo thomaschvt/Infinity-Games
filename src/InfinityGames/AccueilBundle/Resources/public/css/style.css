@@ -54,7 +54,7 @@ h2{
 	
 }
 #btn_connexion{
-	background: url("img/btn_gris.png") repeat scroll 0 0 transparent;
+	background: url("img/btn_gris.png") repeat scroll 0 -26px transparent;
     color: #000000;
     float: left;
     height: 26px;
@@ -65,7 +65,7 @@ h2{
     width: 86px;
 }
 #btn_connexion:hover{
-  background-position: 0px -26px;
+  background-position: 0px 0px;
 }
 #btn_inscrip{
 	background: url("img/btn_orange.png") repeat scroll 0 0 transparent;	
@@ -570,4 +570,9 @@ background: url("img/btn_orange_hover.png") repeat scroll 0 0 transparent;
     padding-left: 15px;
     padding-top: 0;
     width: 101px;
+}
+/*Mentions légales*/
+
+/*Footer*/
+#footer_wrapper{
 }

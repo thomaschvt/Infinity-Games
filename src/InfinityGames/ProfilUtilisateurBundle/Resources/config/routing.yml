@@ -1,3 +1,0 @@
-infinity_games_profil_utilisateur_homepage:
-    pattern:  profil/{userId}
-    defaults: { _controller: InfinityGamesProfilUtilisateurBundle:Default:index }

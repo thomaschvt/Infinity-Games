@@ -1,0 +1,33 @@
+messageinterne:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:index" }
+
+messageinterne_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:show" }
+
+messageinterne_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:new" }
+
+messageinterne_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:create" }
+    requirements: { _method: post }
+
+messageinterne_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:edit" }
+
+messageinterne_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:update" }
+    requirements: { _method: post }
+
+messageinterne_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:delete" }
+    requirements: { _method: post }
+messageinterne_delete_all_for_user:
+    pattern:  /{id}/deleteall
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:deleteAllForUser" }

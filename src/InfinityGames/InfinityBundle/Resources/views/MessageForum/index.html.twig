@@ -1,0 +1,47 @@
+<h1>MessageForum list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Contenu</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('messageforum_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.titre }}</td>
+            <td>{{ entity.utilisateur }}</td>
+            <td>{{ entity.contenu }}</td>
+            <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
+            <td>{% if entity.date %}{{ entity.date|date('H:i:s') }}{% endif %}</td>
+            <td>{{ entity.statut }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('messageforum_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('messageforum_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('messageforum_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

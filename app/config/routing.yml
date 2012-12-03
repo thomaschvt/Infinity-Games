@@ -1,19 +1,29 @@
-infinity_games_profil_utilisateur:
-    resource: "@InfinityGamesProfilUtilisateurBundle/Resources/config/routing.yml"
+infinity_games_infinity:
+    resource: "@InfinityGamesInfinityBundle/Resources/config/routing.yml"
     prefix:   /
-
-infinity_games_inscription:
-    resource: "@InfinityGamesInscriptionBundle/Resources/config/routing.yml"
-    prefix:   /
-
+    
 infinity_games_accueil:
     resource: "@InfinityGamesAccueilBundle/Resources/config/routing.yml"
     prefix:   /
+    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
-infinity_games_connexion:
-    resource: "@InfinityGamesConnexionBundle/Resources/config/routing.yml"
-    prefix:   /
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
 
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
 # Internal routing configuration to handle ESI
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

@@ -1,0 +1,9 @@
+parameters:
+#    infinity_games_infinity.example.class: InfinityGames\InfinityBundle\Example
+
+services:
+   infinity_games_inscription.example:
+       class: InfinityGames\InfinityBundle\Form\Type\InscriptionForm
+       arguments: [%fos_user.model.user.class%]
+       tags:
+            - { name: form.type, alias: InscriptionForm }

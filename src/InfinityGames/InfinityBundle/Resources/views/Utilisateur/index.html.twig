@@ -1,0 +1,61 @@
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+<h1>Liste des utilisateurs</h1>
+<div class="span12">
+<table id="listing_admin">
+    <thead id=''>
+        <tr>
+            <th>Pseudo</th>
+            <th>Email</th>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Avatarurl</th>
+            <th>Dernière connexion</th>
+            <th>Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.username }}</td>
+           
+            <td>{{ entity.email }}</td> 
+            <td>{{ entity.prenom }}</td> 
+            <td>{{ entity.nom }}</td>                  
+            <td>{{ entity.avatarUrl }}</td>
+            <td>{% if entity.lastLogin %}{{ entity.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>       
+            <td>{{ entity.roles }}</td>         
+            <td>
+           		<div class="btn-group">
+           			<a href="{{ path('utilisateur_show', { 'id': entity.id }) }}">
+				    	<button class="btn">
+				    		Voir la fiche	
+				    	</button>
+				    </a>
+					    <button class="btn dropdown-toggle" data-toggle="dropdown">
+					    <span class="caret"></span>
+				    </button>
+				    <ul class="dropdown-menu">
+                    	 <li>
+                       		 <a href="{{ path('utilisateur_edit', { 'id': entity.id }) }}">Modifier la fiche</a>
+                    	 </li>
+                    	 <li>
+                       		 <a href="{{ path('utilisateur_direct_delete', { 'id': entity.id }) }}">Supprimer la fiche</a>
+                    	 </li>
+				    </ul>
+				</div>
+                <ul>
+                   
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    	 <a href="{{ path('utilisateur_new') }}">
+	    	<button class="btn"> 
+		            Ajouter un utilisateur
+	        </button>
+        </a>
+</div>
+{% endblock %}

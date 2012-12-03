@@ -1,0 +1,64 @@
+{% extends "::layout.html.twig" %}
+	{% block contenu_page %}
+		<div class="fluid-row">
+			<h1>Forum Infinity Games</h1>
+		</div>
+		<div class="fluid-row">
+			<p class="bloc_txt">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam augue eros, auctor eu auctor sit amet, bibendum in purus.
+				Phasellus urna turpis, tempor at dictum vel, ultrices quis libero. Ut neque risus, ornare nec ornare eu, porta sed purus.
+				Vivamus ipsum metus, feugiat cursus vestibulum et, tempus ut nisl. Praesent non lacus a dolor pellentesque tincidunt 
+				congue at quam. Aenean iaculis semper sodales. Aenean ac diam non diam convallis tempor. Etiam facilisis odio nec nulla
+				fermentum lacinia.
+			</p>
+		</div>
+		<!-- Formulaire de creation de topic -->
+		<form action="{{ path('messageforum_create') }}" method="post" {{ form_enctype(form) }}>
+				   			{{ form_widget(form) }}
+				   			{{ form_rest(form) }}
+				   			<p>
+				        		<button class="btn" type="submit">Envoyer</button>
+				   			</p>
+		</form>
+		
+		<div class="row-fluid">
+			{% for categorie in categorieEntities %}
+				<div class="row-fluid bloc_categorie_forum">
+					<div class="row-fluid header_bloc_categorie">
+						<div class="titre_categorie_forum">
+						{{ categorie.intitule| upper}}
+					</div>
+					<div class="row-fluid">
+						<p class="bloc_txt italic">
+							{{ categorie.descriptif }}
+						</p>
+					</div>
+					</div>
+					{% for topic in topicEntities %}
+						{% if categorie.id == topic.forum.id %}
+						
+							<div class="span12 line_topic_forum">
+								<div class="span1"></div>
+								<div class="row-fluid span11">
+									<div class="titre_topic_forum span8">
+										<a href="{{ path('messageforum_read_topic', { 'id': topic.id }) }}">{{ topic.titre }}</a>
+									</div>
+									<div class="row-fluid span2">
+										<p class="bloc_txt">
+											<a href="{{ path('utilisateur_profil', { 'id': topic.utilisateur.id }) }}">{{ topic.utilisateur }}</a>
+										</p>
+									</div>
+									<div class="row-fluid span2">
+										<p class="bloc_txt">
+											{{ topic.date|date("d.m.Y - g:i") }}
+										</p>
+									</div>
+								</div>
+							</div>
+						
+						{% endif %}
+				{% endfor %}
+				</div>
+			{% endfor %}			
+		</div>
+	{% endblock %}

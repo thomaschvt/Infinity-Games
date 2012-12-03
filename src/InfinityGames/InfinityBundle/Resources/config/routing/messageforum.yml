@@ -1,0 +1,39 @@
+messageforum:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:index" }
+
+messageforum_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:show" }
+
+messageforum_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:new" }
+
+messageforum_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:create" }
+    requirements: { _method: post }
+
+messageforum_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:edit" }
+
+messageforum_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:update" }
+    requirements: { _method: post }
+
+messageforum_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:delete" }
+    requirements: { _method: post }
+
+messageforum_read_topic:
+    pattern:  /{id}/read
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:readTopic" }
+    
+messageforum_reponse:
+    pattern:  /{id}/reponse
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:repTopic" }
+    requirements: { _method: post }

@@ -1,0 +1,36 @@
+forumcategorie:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:index" }
+
+forumcategorie_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:show" }
+
+forumcategorie_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:new" }
+
+forumcategorie_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:create" }
+    requirements: { _method: post }
+
+forumcategorie_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:edit" }
+
+forumcategorie_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:update" }
+    requirements: { _method: post }
+
+forumcategorie_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:delete" }
+    requirements: { _method: post }
+forumcategorie_direct_delete:
+    pattern:  /{id}/directdelete
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:deleteDirect" }
+forum_public:
+    pattern:  /forum
+    defaults: { _controller: "InfinityGamesInfinityBundle:ForumCategorie:indexForumPublic" }
