@@ -1,0 +1,47 @@
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+<h1>ForumCategorie list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Intitule</th>
+            <th>Descriptif</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('forumcategorie_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.intitule }}</td>
+            <td>{{ entity.descriptif }}</td>
+            <td>
+           		<div class="btn-group">
+           			<a href="{{ path('forumcategorie_show', { 'id': entity.id }) }}">
+				    	<button class="btn">
+				    		Voir la fiche	
+				    	</button>
+				    </a>
+					    <button class="btn dropdown-toggle" data-toggle="dropdown">
+					    <span class="caret"></span>
+				    </button>
+				    <ul class="dropdown-menu">
+                    	 <li>
+                       		 <a href="{{ path('forumcategorie_edit', { 'id': entity.id }) }}">Modifier la fiche</a>
+                    	 </li>
+                    	 <li>
+                       		 <a href="{{ path('forumcategorie_direct_delete', { 'id': entity.id }) }}">Supprimer la fiche</a>
+                    	 </li>
+				    </ul>
+				</div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{{ path('forumcategorie_new') }}">
+	<button class="btn">Créer une catégorie</button>
+</a>
+{% endblock %}

@@ -1,4 +1,0 @@
-infinity_games_connexion_homepage:
-    pattern:  connexion/hello/{name}
-    defaults: { _controller: InfinityGamesConnexionBundle:Default:index }
-    

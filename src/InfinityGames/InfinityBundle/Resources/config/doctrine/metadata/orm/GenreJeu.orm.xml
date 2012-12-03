@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="GenreJeu" table="genre_jeu">
+    <id name="idGenreJeu" type="integer" column="id_genre_jeu">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="intitule" type="string" column="intitule" length="45" nullable="true"/>
+    <field name="descriptif" type="string" column="descriptif" length="45" nullable="true"/>
+    <field name="visuPicto" type="string" column="visu_picto" length="100" nullable="true"/>
+  </entity>
+</doctrine-mapping>

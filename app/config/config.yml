@@ -26,7 +26,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ ] #[InfinityGamesInfinityBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -57,3 +57,13 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+    
+# FOS User Configuration
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: InfinityGames\InfinityBundle\Entity\Utilisateur
+    registration:
+        form:
+            type: InscriptionForm
+

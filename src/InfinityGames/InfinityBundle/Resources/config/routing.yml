@@ -1,0 +1,28 @@
+infinity_games_infinity_homepage:
+    pattern:  /accueil
+    defaults: { _controller: InfinityGamesInfinityBundle:Default:index }
+InfinityGamesInfinityBundle_jeu:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/jeu.yml"
+        prefix:   /jeu
+InfinityGamesInfinityBundle_forumcategorie:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/forumcategorie.yml"
+        prefix:   /forumcategorie
+InfinityGamesInfinityBundle_genrejeu:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/genrejeu.yml"
+        prefix:   /genrejeu
+InfinityGamesInfinityBundle_messageinterne:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/messageinterne.yml"
+        prefix:   /messageinterne
+InfinityGamesInfinityBundle_niveaucreation:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/niveaucreation.yml"
+        prefix:   /niveaucreation
+InfinityGamesInfinityBundle_niveauexperience:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/niveauexperience.yml"
+        prefix:   /niveauexperience
+InfinityGamesInfinityBundle_utilisateur:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/utilisateur.yml"
+        prefix:   /utilisateur
+InfinityGamesInfinityBundle_messageforum:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/messageforum.yml"
+        prefix:   /messageforum
+

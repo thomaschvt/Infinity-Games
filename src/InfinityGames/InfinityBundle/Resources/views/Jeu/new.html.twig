@@ -1,0 +1,19 @@
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+<h1>Jeu creation</h1>
+
+<form action="{{ path('jeu_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('jeu') }}">
+            Retour à la liste
+        </a>
+    </li>
+</ul>
+{% endblock %}

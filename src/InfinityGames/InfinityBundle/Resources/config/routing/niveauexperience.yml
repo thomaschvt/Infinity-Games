@@ -1,0 +1,30 @@
+niveauexperience:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauExperience:index" }
+
+niveauexperience_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauExperience:show" }
+
+niveauexperience_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauExperience:new" }
+
+niveauexperience_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauExperience:create" }
+    requirements: { _method: post }
+
+niveauexperience_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauExperience:edit" }
+
+niveauexperience_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauExperience:update" }
+    requirements: { _method: post }
+
+niveauexperience_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauExperience:delete" }
+    requirements: { _method: post }

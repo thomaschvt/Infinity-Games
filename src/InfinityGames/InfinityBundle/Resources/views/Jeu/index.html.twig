@@ -1,0 +1,50 @@
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+<h1>Jeu list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Note</th>
+            <th>Createdat</th>
+            <th>Updateda</th>
+            <th>Visuelimg</th>
+            <th>Destindex</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('jeu_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.nom }}</td>
+            <td>{{ entity.note }}</td>
+            <td>{% if entity.createdat %}{{ entity.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.updateda %}{{ entity.updateda|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.visuelImg }}</td>
+            <td>{{ entity.destIndex }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('jeu_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('jeu_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('jeu_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "::layout.html.twig" %}
+	{% block contenu_page %}
+	
+	<div class='row' id='wrapper_rpesentation_accueil'>
+        		<div class='span7'>
+        			<img alt="logo Infinity Games" title="logo Infinity Games" src="{{ asset('css/img/visu_tmp.png') }}">
+        		</div>
+        		<div class='span5'>
+        			<h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+        			<p class='bloc_txt'>
+						Vivamus nec volutpat ante. Proin ac urna egestas nisi viverra consectetur varius id diam. 
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis consectetur tincidunt.  
+						In odio lorem, suscipit vel faucibus in, lobortis sed velit. Vestibulum sit amet justo vitae urna ornare pretium. 
+						Curabitur nec arcu urna, ut iaculis libero. Nulla eu aliquam odio. Aliquam convallis pulvinar purus vel accumsan. 
+						Vivamus nec volutpat ante. Proin ac urna egestas nisi viverra consectetur varius id iam.
+						</br></br>
+						Curabitur nec arcu urna, ut iaculis libero. Nulla eu aliquam odio. Aliquam convallis pulvinar purus vel accumsan. 
+						Vivamus nec volutpat ante. Proin ac urna egestas nisi viverra consectetur varius id iam.   
+        			</p>
+        		</div>
+        		<div class="row">
+        			<div class='span1'></div>
+        			<div class="span1">
+        				<a class='btn btn_large txt_center btn_gris_small'>Jouer</a>
+        			</div>
+        			<div class='span1'></div>
+        			<div class="span1">
+        				<a class='btn btn_large txt_center btn_gris_small'>Créer</a>
+        			</div>
+        			<div class='span1'></div>
+        		</div>
+        	</div>
+            <div id="listing_jeu_accueil">
+            	          
+		        	{% for jeu in entities %}	
+						<div class="row ligne_jeu_accueil ombre">
+			                <div class="span2 bloc_infos_jeu_accueil">
+			                	{{ jeu.nom }}
+			                </div>
+			                <div class="span2 bloc_infos_jeu_accueil">
+			                	{{ jeu.utilisateurutilisateur }}
+			                </div>
+			                <div class="span2 bloc_infos_jeu_accueil">
+			                	{{ jeu.genreJeuGenreJeu }}
+			                </div>
+			                <div class="span3 bloc_infos_jeu_accueil">
+			                	{{ jeu.note }}
+			                </div>
+			                <div class="span3">
+			                	<a class='btn btn-large btn_listing_accueil'>
+			                		Jouer
+			                	</a>
+			                </div>
+			            </div>
+					{% endfor %}
+            </div>
+            <div class="row ombre" id="wrapper_infos_factory">
+            	<div class="span8">
+            		<h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h1>
+            		<p class="align-justify">
+            			Vivamus nec volutpat ante. Proin ac urna egestas nisi viverra consectetur varius id diam. 
+            			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis consectetur tincidunt.  
+            			In odio lorem, suscipit vel faucibus in, lobortis sed velit. Vestibulum sit amet justo vitae urna ornare pretium. 
+            			Curabitur nec arcu urna, ut iaculis libero. Nulla eu aliquam odio. Aliquam convallis pulvinar purus vel accumsan. 
+            			Vivamus nec volutpat ante. Proin ac urna egestas nisi viverra consectetur varius id iam. 
+            		</p>
+            			<a href="#">
+            				<button class="btn_orange">Télecharger</button>
+            			</a>
+            	</div>
+            	<div class="span4">
+            		<div class="row link_dev_tools">
+            			<a href="">Voir la section développeur</a>
+            		</div>
+            		<div class="row link_dev_tools">
+            			<a href="">Voir l' API Infinity Factory</a>
+            		</div>
+            		<div class="row link_dev_tools">
+            			<a href="{{ path("forum_public") }}">Voir le forum</a>
+            		</div>
+            	</div>
+            </div>
+	{% endblock %}

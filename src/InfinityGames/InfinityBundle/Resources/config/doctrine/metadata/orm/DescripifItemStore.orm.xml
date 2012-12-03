@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="DescripifItemStore" table="descripif_item_store">
+    <id name="idItemStore" type="integer" column="id_item_store">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="intitule" type="string" column="intitule" length="45" nullable="true"/>
+    <field name="statut" type="string" column="statut" length="45" nullable="true"/>
+    <field name="descriptif" type="text" column="descriptif" nullable="true"/>
+    <field name="prix" type="float" column="prix" nullable="true"/>
+    <field name="dureeTemps" type="integer" column="duree_temps" nullable="true"/>
+    <many-to-many field="idUtilisateur" target-entity="Utilisateur" inversed-by="idItemStore">
+      <join-table name="descripif_item_store_utilisateur">
+        <join-columns>
+          <join-column name="id_item_store" referenced-column-name="id_item_store"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="id_utilisateur" referenced-column-name="id_utilisateur"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

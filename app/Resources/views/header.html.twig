@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        {% stylesheets
+    		'@InfinityGamesInfinityBundle/Resources/public/css/*'
+    		filter='cssrewrite'
+    		 
+		%}
+			<link rel="stylesheet" href="{{ asset_url }}" />
+		{% endstylesheets %}
+		{% javascripts
+			'@InfinityGamesInfinityBundle/Resources/public/js/vendor/jquery-1.8.2.js'
+			'@InfinityGamesInfinityBundle/Resources/public/js/vendor/bootstrap.min.js'
+			'@InfinityGamesInfinityBundle/Resources/public/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js'
+			'@InfinityGamesInfinityBundle/Resources/public/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js'
+			'@InfinityGamesInfinityBundle/Resources/public/js/jquery.dataTables.min.js'
+    		'@InfinityGamesInfinityBundle/Resources/public/js/main.js'
+    		
+    		
+		%}
+			<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+        <title>{% block title %}Infinity Games{% endblock %}</title>
+    </head>
+    <body>
+    	<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Infinity Game</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="{{ path('infinity_games_infinity_homepage') }}">Accueil</a></li>
+							<li class="active"><a href="#">Jeux</a></li>
+							<li class="active"><a href="#">Factory</a></li>
+							<li class="active"><a href="{{ path('forum_public') }}">Forum</a></li>
+						    <li>
+							   <div class="btn-group">
+									<button class="btn" data-toggle="collapse" data-target="#form_new_msg">Mon espace perso</button>
+									<button class="btn dropdown-toggle" data-toggle="dropdown">
+										<span class="caret "></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li class="active"><a href="#">Mon profil</a></li>
+										<li class="active"><a href="{{ path('infinity_games_infinity_homepage') }}">Connexion</a></li>
+										<li class="active"><a href="{{ path('utilisateur_new') }}">Inscription</a></li>
+									</ul>
+								</div>		
+						    </li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>

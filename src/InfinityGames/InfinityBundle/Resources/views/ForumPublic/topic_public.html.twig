@@ -1,0 +1,44 @@
+{% extends "::layout.html.twig" %}
+	{% block contenu_page %}
+		<div class="row-fluid msg_origin_topic">
+			<div class="row-fluid">{{ topicEntity.titre }}</div>
+			<div class="span12">
+				<div class="span4 bloc_utilisateur_topic">
+					<div class="row">
+						{{ auteurTopic.username }}
+					</div>
+				</div>
+				<div class="8">
+					<div class="row contenu_message_topic">
+						{{ topicEntity.contenu }}
+					</div>
+				</div>			
+			</div>
+		</div>
+		<!-- liste des reponses -->
+		<div class="row-fluid">
+			{% for rep in repEntities %}
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="span4 bloc_utilisateur_topic">
+							<div class="row">
+								{{ rep.utilisateur }}
+							</div>
+						</div>
+						<div class="span8">
+							<div class="row contenu_message_topic">
+								{{ rep.contenu }}
+							</div>
+						</div>			
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<form action="{{ path('messageforum_reponse', { 'id': topicEntity.id }) }}" method="post" {{ form_enctype(formRep) }}>
+				   			{{ form_widget(formRep) }}
+				   			{{ form_rest(formRep) }}
+				   			<p>
+				        		<button class="btn" type="submit">Envoyer</button>
+				   			</p>
+		</form>
+	{% endblock %}

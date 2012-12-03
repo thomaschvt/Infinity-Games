@@ -1,0 +1,30 @@
+niveaucreation:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauCreation:index" }
+
+niveaucreation_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauCreation:show" }
+
+niveaucreation_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauCreation:new" }
+
+niveaucreation_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauCreation:create" }
+    requirements: { _method: post }
+
+niveaucreation_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauCreation:edit" }
+
+niveaucreation_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauCreation:update" }
+    requirements: { _method: post }
+
+niveaucreation_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:NiveauCreation:delete" }
+    requirements: { _method: post }
