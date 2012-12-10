@@ -1,4 +1,7 @@
 $(document).ready(function(){
 	
-	$('.record_list').dataTable();	
+	$('#listing_admin').dataTable();
+	$('#classement_general').dataTable({
+		
+	});	
 });

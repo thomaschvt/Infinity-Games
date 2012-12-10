@@ -40,12 +40,15 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand" href="#">Infinity Game</a>
-                    <div class="nav-collapse collapse">
+                   
+                   
+                    <div class="nav-collapse collapse pull-right">
                         <ul class="nav">
                             <li class="active"><a href="{{ path('infinity_games_infinity_homepage') }}">Accueil</a></li>
 							<li class="active"><a href="#">Jeux</a></li>
 							<li class="active"><a href="#">Factory</a></li>
 							<li class="active"><a href="{{ path('forum_public') }}">Forum</a></li>
+							<li class="active"><a href="{{ path('forum_public') }}">Contact</a></li>
 						    <li>
 							   <div class="btn-group">
 									<button class="btn" data-toggle="collapse" data-target="#form_new_msg">Mon espace perso</button>
@@ -53,9 +56,21 @@
 										<span class="caret "></span>
 									</button>
 									<ul class="dropdown-menu">
-										<li class="active"><a href="#">Mon profil</a></li>
-										<li class="active"><a href="{{ path('infinity_games_infinity_homepage') }}">Connexion</a></li>
-										<li class="active"><a href="{{ path('utilisateur_new') }}">Inscription</a></li>
+										{% if app.user.username is defined %}
+											<li class="active">
+												 <a href="{{ path('utilisateur_profil') }}">Mon compte</a>	
+											</li>
+											<li class="active"><a href="{{ path('infinity_games_infinity_homepage') }}">Déconnexion</a></li>	 
+										{% else %}
+											<li class="active"><a href="{{ path('utilisateur_new') }}">Inscription</a></li>
+											<li class="active"><a href="{{ path('infinity_games_infinity_homepage') }}">Connexion</a></li>
+										{% endif %}		   
+												
+											
+										
+										
+										
+										
 									</ul>
 								</div>		
 						    </li>

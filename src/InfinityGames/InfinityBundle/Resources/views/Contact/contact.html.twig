@@ -1,0 +1,10 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenu_page %}
+	<form action="{{ path('infinity_games_infinity_contact') }}" method="post" {{ form_enctype(formMail) }}>
+   		{{ form_widget(formMail)}}
+   		<p>
+    		<button class="btn" type="submit">Envoyer</button>
+   		</p>
+	</form>		
+{% endblock %}
