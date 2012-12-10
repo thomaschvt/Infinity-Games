@@ -25,4 +25,9 @@ InfinityGamesInfinityBundle_utilisateur:
 InfinityGamesInfinityBundle_messageforum:
         resource: "@InfinityGamesInfinityBundle/Resources/config/routing/messageforum.yml"
         prefix:   /messageforum
-
+infinity_games_infinity_contact:
+    pattern:  /contact
+    defaults: { _controller: InfinityGamesInfinityBundle:Mailer:index }
+infinity_games_infinity_classement_general:
+    pattern:  /classement
+    defaults: { _controller: InfinityGamesInfinityBundle:Classement:index }

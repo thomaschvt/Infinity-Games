@@ -57,19 +57,21 @@ class UtilisateurController extends Controller
      * Trouve l'utilisateur et renvoi les parametres de compte perso vers la page profil public
      *
      */
-    public function affichageProfilAction($id){
+    public function affichageProfilAction(){
     	//$utilisateurEntity = new Utilisateur();
     	$em = $this->getDoctrine()->getManager();
     	
     	//recupération des infos et des messages interne et forum
     	
     	//recupere les infos de compte
-    	$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($id);
+    	$utilisateurCourant = $this->get('security.context')->getToken()->getUser();
+    	$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($utilisateurCourant);
+    	//$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($id);
     	
     	//recupère les msg ou utilisateur est destinataire
-    	$msgEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageInterne')->findBydestinataire($id);
+    	$msgEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageInterne')->findBydestinataire($utilisateurEntity);
     	//recupère les msg de forum ou l'utilisateur est propriétaire
-    	$msgForumEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->findByutilisateur($id);
+    	$msgForumEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->findByutilisateur($utilisateurEntity);
     	//recupère le niveau exprérience de l'utilisateur en rapport avec l'experience actuelle
     	
     	$expActuelle  = $utilisateurEntity->getExperience();
