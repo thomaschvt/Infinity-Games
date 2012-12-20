@@ -19,7 +19,7 @@ class Jeu
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idJeu;
 
     /**
      * @var string
@@ -34,14 +34,7 @@ class Jeu
      * @ORM\Column(name="note", type="string", length=45, nullable=true)
      */
     private $note;
-	
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="statut", type="string", length=10, nullable=true)
-     */
-    private $statut;
-    
+
     /**
      * @var \DateTime
      *
@@ -71,14 +64,18 @@ class Jeu
     private $destIndex;
 
     /**
-     * @var \Utilisateur
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="utilisateur_id_utilisateur", referencedColumnName="id_utilisateur")
-     * })
+     * @ORM\Column(name="statut", type="string", length=10, nullable=true)
      */
-    private $utilisateurUtilisateur;
+    private $statut;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descriptif", type="text", nullable=true)
+     */
+    private $descriptif;
 
     /**
      * @var \GenreJeu
@@ -89,6 +86,16 @@ class Jeu
      * })
      */
     private $genreJeuGenreJeu;
+
+    /**
+     * @var \Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="utilisateur_id_utilisateur", referencedColumnName="id_utilisateur")
+     * })
+     */
+    private $utilisateurUtilisateur;
 
 
 
@@ -241,26 +248,49 @@ class Jeu
     }
 
     /**
-     * Set utilisateurUtilisateur
+     * Set statut
      *
-     * @param \InfinityGames\InfinityBundle\Entity\Utilisateur $utilisateurUtilisateur
+     * @param string $statut
      * @return Jeu
      */
-    public function setUtilisateurUtilisateur(\InfinityGames\InfinityBundle\Entity\Utilisateur $utilisateurUtilisateur = null)
+    public function setStatut($statut)
     {
-        $this->utilisateurUtilisateur = $utilisateurUtilisateur;
+        $this->statut = $statut;
     
         return $this;
     }
 
     /**
-     * Get utilisateurUtilisateur
+     * Get statut
      *
-     * @return \InfinityGames\InfinityBundle\Entity\Utilisateur 
+     * @return string 
      */
-    public function getUtilisateurUtilisateur()
+    public function getStatut()
     {
-        return $this->utilisateurUtilisateur;
+        return $this->statut;
+    }
+
+    /**
+     * Set descriptif
+     *
+     * @param string $descriptif
+     * @return Jeu
+     */
+    public function setDescriptif($descriptif)
+    {
+        $this->descriptif = $descriptif;
+    
+        return $this;
+    }
+
+    /**
+     * Get descriptif
+     *
+     * @return string 
+     */
+    public function getDescriptif()
+    {
+        return $this->descriptif;
     }
 
     /**
@@ -287,39 +317,25 @@ class Jeu
     }
 
     /**
-     * Get id
+     * Set utilisateurUtilisateur
      *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    public function __toString() {
-    	return $this->nom;
-    }
-
-    /**
-     * Set statut
-     *
-     * @param string $statut
+     * @param \InfinityGames\InfinityBundle\Entity\Utilisateur $utilisateurUtilisateur
      * @return Jeu
      */
-    public function setStatut($statut)
+    public function setUtilisateurUtilisateur(\InfinityGames\InfinityBundle\Entity\Utilisateur $utilisateurUtilisateur = null)
     {
-        $this->statut = $statut;
+        $this->utilisateurUtilisateur = $utilisateurUtilisateur;
     
         return $this;
     }
 
     /**
-     * Get statut
+     * Get utilisateurUtilisateur
      *
-     * @return string 
+     * @return \InfinityGames\InfinityBundle\Entity\Utilisateur 
      */
-    public function getStatut()
+    public function getUtilisateurUtilisateur()
     {
-        return $this->statut;
+        return $this->utilisateurUtilisateur;
     }
 }

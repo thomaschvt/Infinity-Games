@@ -9613,9 +9613,12 @@ for(var k=1;k<e.length;k++){h=e.charAt(k);if(-1=="0123456789.".indexOf(h))return
 L(jQuery)})(window,document);
 
 $(document).ready(function(){
-	
+	alert('re');
 	$('#listing_admin').dataTable();
 	$('#classement_general').dataTable({
 		
-	});	
+	});
+	
+	//var height_width = $(window).height();
+	
 });

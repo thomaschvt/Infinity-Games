@@ -28,6 +28,19 @@ class JeuController extends Controller
             'entities' => $entities,
         ));
     }
+   /**
+    * Créée la liste des jeux. Récupère aussi le top3 de la plate-forme
+    * 
+    */
+    public function catalogueAction(){
+    	//tous
+    	$em = $this->getDoctrine()->getManager();
+    	$jeux = $em->getRepository('InfinityGamesInfinityBundle:Jeu')->findAll();
+    	
+    	return $this->render('InfinityGamesInfinityBundle:Jeu:catalogue_jeux.html.twig', array(
+    			'jeux' => $jeux,
+    	));
+    }
 
     /**
      * Finds and displays a Jeu entity.

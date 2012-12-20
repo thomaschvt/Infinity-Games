@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MessageForum" table="message_forum">
+    <id name="idTopicForum" type="integer" column="id_topic_forum">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titre" type="string" column="titre" length="45" nullable="true"/>
+    <field name="contenu" type="text" column="contenu" nullable="true"/>
+    <field name="date" type="datetime" column="date" nullable="true"/>
+    <field name="statut" type="string" column="statut" length="45" nullable="true"/>
+    <many-to-one field="utilisateur" target-entity="Utilisateur">
+      <join-columns>
+        <join-column name="utilisateur_id" referenced-column-name="id_utilisateur"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idParent" target-entity="MessageForum">
+      <join-columns>
+        <join-column name="id_parent" referenced-column-name="id_topic_forum"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="forum" target-entity="ForumCategorie">
+      <join-columns>
+        <join-column name="forum_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

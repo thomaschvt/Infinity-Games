@@ -28,3 +28,6 @@ jeu_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "InfinityGamesInfinityBundle:Jeu:delete" }
     requirements: { _method: post }
+jeu_catalogue:
+    pattern:  /jeux
+    defaults: { _controller: "InfinityGamesInfinityBundle:Jeu:catalogue" }

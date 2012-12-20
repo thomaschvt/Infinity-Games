@@ -92,6 +92,7 @@ class ForumCategorie
     {
         return $this->descriptif;
     }
+    
     public function __toString() {
     	return $this->intitule;
     }

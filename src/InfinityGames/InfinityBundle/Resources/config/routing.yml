@@ -31,3 +31,28 @@ infinity_games_infinity_contact:
 infinity_games_infinity_classement_general:
     pattern:  /classement
     defaults: { _controller: InfinityGamesInfinityBundle:Classement:index }
+InfinityGamesInfinityBundle_descripifitemstore:
+    resource: "@InfinityGamesInfinityBundle/Resources/config/routing/descripifitemstore.yml"
+    prefix:   /descripifitemstore
+InfinityGamesInfinityBundle_commande:
+    resource: "@InfinityGamesInfinityBundle/Resources/config/routing/commande.yml"
+    prefix:   /commande
+infinity_games_infinity_panier_affichage:
+    pattern:  /panier
+    defaults: { _controller: InfinityGamesInfinityBundle:Panier:index }
+infinity_games_infinity_ajout_produit:
+    pattern:  /panier/add/{id}
+    defaults: { _controller: InfinityGamesInfinityBundle:Panier:addProduit }
+infinity_games_infinity_supprimer_panier:
+    pattern:  /panier/clean
+    defaults: { _controller: InfinityGamesInfinityBundle:Panier:viderPanier }
+infinity_games_infinity_supprimer_produit:
+    pattern:  /panier/suppr/{id}
+    defaults: { _controller: InfinityGamesInfinityBundle:Panier:supprProduit }
+infinity_games_infinity_validation_commande:
+    pattern:  /panier/validation
+    defaults: { _controller: InfinityGamesInfinityBundle:Panier:validationPanier }
+infinity_games_infinity_modifie_add:
+    pattern:  /panier/increment/{id}
+    defaults: { controller: InfinityGamesInfinityBundle:Panier:incrementQtt }
+

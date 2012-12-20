@@ -30,7 +30,7 @@ utilisateur_delete:
     requirements: { _method: post }
  
 utilisateur_profil:
-    pattern:  /profil_utilisateur
+    pattern:  /profil_utilisateur/{id}
     defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:affichageProfil" }
 utilisateur_direct_delete:
     pattern:  /{id}/directdelete

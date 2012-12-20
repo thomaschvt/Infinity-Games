@@ -19,7 +19,7 @@ class NiveauExperience
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idNiveauExperience;
 
     /**
      * @var integer
@@ -27,13 +27,6 @@ class NiveauExperience
      * @ORM\Column(name="limite_haute", type="integer", nullable=true)
      */
     private $limiteHaute;
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="limite_basse", type="integer", nullable=true)
-     */
-    private $limiteBasse;
 
     /**
      * @var string
@@ -55,6 +48,15 @@ class NiveauExperience
      * @ORM\Column(name="statut", type="string", length=10, nullable=true)
      */
     private $statut;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="limite_basse", type="integer", nullable=true)
+     */
+    private $limiteBasse;
+
+
 
     /**
      * Get idNiveauExperience
@@ -133,16 +135,6 @@ class NiveauExperience
     public function getVisuNiveau()
     {
         return $this->visuNiveau;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

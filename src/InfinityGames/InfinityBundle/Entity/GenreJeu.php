@@ -19,7 +19,7 @@ class GenreJeu
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idGenreJeu;
 
     /**
      * @var string
@@ -121,16 +121,6 @@ class GenreJeu
     public function getVisuPicto()
     {
         return $this->visuPicto;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
     public function __toString() {
     	return $this->intitule;

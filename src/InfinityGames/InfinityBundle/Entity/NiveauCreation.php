@@ -19,7 +19,7 @@ class NiveauCreation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idNiveauCreation;
 
     /**
      * @var integer
@@ -121,15 +121,5 @@ class NiveauCreation
     public function getVisuNiveau()
     {
         return $this->visuNiveau;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

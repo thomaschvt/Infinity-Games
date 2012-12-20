@@ -50,16 +50,6 @@ class MessageForum
     private $statut;
 
     /**
-     * @var \Utilisateur
-     *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id_utilisateur")
-     * })
-     */
-    private $utilisateur;
-
-    /**
      * @var \ForumCategorie
      *
      * @ORM\ManyToOne(targetEntity="ForumCategorie")
@@ -78,6 +68,16 @@ class MessageForum
      * })
      */
     private $idParent;
+
+    /**
+     * @var \Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id_utilisateur")
+     * })
+     */
+    private $utilisateur;
 
 
 
@@ -184,29 +184,6 @@ class MessageForum
     }
 
     /**
-     * Set utilisateur
-     *
-     * @param \InfinityGames\InfinityBundle\Entity\Utilisateur $utilisateur
-     * @return MessageForum
-     */
-    public function setUtilisateur(\InfinityGames\InfinityBundle\Entity\Utilisateur $utilisateur = null)
-    {
-        $this->utilisateur = $utilisateur;
-    
-        return $this;
-    }
-
-    /**
-     * Get utilisateur
-     *
-     * @return \InfinityGames\InfinityBundle\Entity\Utilisateur 
-     */
-    public function getUtilisateur()
-    {
-        return $this->utilisateur;
-    }
-
-    /**
      * Set forum
      *
      * @param \InfinityGames\InfinityBundle\Entity\ForumCategorie $forum
@@ -241,7 +218,7 @@ class MessageForum
     
         return $this;
     }
-	
+
     /**
      * Get idParent
      *
@@ -250,5 +227,28 @@ class MessageForum
     public function getIdParent()
     {
         return $this->idParent;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \InfinityGames\InfinityBundle\Entity\Utilisateur $utilisateur
+     * @return MessageForum
+     */
+    public function setUtilisateur(\InfinityGames\InfinityBundle\Entity\Utilisateur $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+    
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \InfinityGames\InfinityBundle\Entity\Utilisateur 
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }

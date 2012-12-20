@@ -1,0 +1,30 @@
+commande:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:Commande:index" }
+
+commande_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:Commande:show" }
+
+commande_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:Commande:new" }
+
+commande_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:Commande:create" }
+    requirements: { _method: post }
+
+commande_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:Commande:edit" }
+
+commande_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:Commande:update" }
+    requirements: { _method: post }
+
+commande_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:Commande:delete" }
+    requirements: { _method: post }

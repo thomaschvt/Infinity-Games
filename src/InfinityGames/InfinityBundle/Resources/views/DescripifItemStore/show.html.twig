@@ -1,0 +1,49 @@
+<h1>DescripifItemStore</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Intitule</th>
+            <td>{{ entity.intitule }}</td>
+        </tr>
+        <tr>
+            <th>Statut</th>
+            <td>{{ entity.statut }}</td>
+        </tr>
+        <tr>
+            <th>Descriptif</th>
+            <td>{{ entity.descriptif }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ entity.prix }}</td>
+        </tr>
+        <tr>
+            <th>Dureetemps</th>
+            <td>{{ entity.dureeTemps }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('descripifitemstore') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('descripifitemstore_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('descripifitemstore_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

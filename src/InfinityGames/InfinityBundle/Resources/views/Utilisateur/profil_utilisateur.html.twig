@@ -101,11 +101,11 @@
 				    		<div class="row-fluid">
 				    		<div class="row-fluid line_mail_profil ombre msg_unread">
 				    			<div class="span7">{{ msgForum.titre }}</div>
-				    			<div class="span3">{{ msgForum.date|date("d.m.Y g:i") }}</div>
-				    			<div class="span2">
-				    				<a href="" title="Voir le forum infinity games">
-				    					<i class="icon-arrow-right"></i>
-				    					Voir
+				    			<div class="span4">{{ msgForum.date|date("d.m.Y g:i") }}</div>
+				    			<div class="span1">
+				    				<a href="{{ path('messageforum_read_topic', { 'id': msgForum.id }) }}" title="Voir le forum infinity games">
+				    					<i class="icon-circle-arrow-right"></i>
+				    					
 				    				</a>
 				    			</div>
 				    		</div> 

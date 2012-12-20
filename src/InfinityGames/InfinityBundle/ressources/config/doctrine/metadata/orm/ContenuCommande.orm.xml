@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ContenuCommande" table="Contenu_commande">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="qteItem" type="integer" column="qte_item" nullable="false"/>
+    <field name="pxUnitaire" type="float" column="px_unitaire" nullable="false"/>
+    <many-to-one field="idItem" target-entity="DescripifItemStore">
+      <join-columns>
+        <join-column name="id_item" referenced-column-name="id_item_store"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCommande" target-entity="Commande">
+      <join-columns>
+        <join-column name="id_commande" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,7 +1,8 @@
 {% extends "::layout.html.twig" %}
 
 {% block contenu_page %}
-	<table id="classement_general" class="display dataTable" width="100%" cellspacing="0" cellpadding="0" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
+	<div class="span12">
+		<table id="classement_general" class="display dataTable" width="100%" cellspacing="0" cellpadding="0" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
 		<thead>
 			<tr role="row">
 			<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Joueur</th>
@@ -12,10 +13,14 @@
 		<tbody role="alert" aria-live="polite" aria-relevant="all">
 		{% for utilisateur in utilisateursArray %}
 		 	<tr class="gradeA odd">
-				<td class="sorting_1">{{ utilisateur.username }}</td>
+				<td class="sorting_1">
+					<a href="{{ path('utilisateur_profil',{ 'id':utilisateur.id }) }}" title="voir le profil Infinity Games">{{ utilisateur.username }}</a>
+				</td>
 				<td class="sorting_1">{{ utilisateur.highscore }}</td>
 			</tr>	
 		{% endfor %} 	
 		</tbody>
 	</table>
+	</div>
+	
 {% endblock %}
