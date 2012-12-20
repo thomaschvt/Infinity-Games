@@ -19,7 +19,7 @@ class DescripifItemStore
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idItemStore;
+    private $id;
 
     /**
      * @var string
@@ -85,9 +85,9 @@ class DescripifItemStore
      *
      * @return integer 
      */
-    public function getIdItemStore()
+    public function getId()
     {
-        return $this->idItemStore;
+        return $this->id;
     }
 
     /**

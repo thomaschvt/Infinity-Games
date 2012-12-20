@@ -26,7 +26,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ] #[InfinityGamesInfinityBundle]
+    bundles:        [MopaBootstrapBundle,InfinityGamesInfinityBundle] #[InfinityGamesInfinityBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -66,4 +66,10 @@ fos_user:
     registration:
         form:
             type: InscriptionForm
-
+            
+# Bootstrap Configuration
+mopa_bootstrap:
+    form:
+        show_legend: false # default is true
+        show_child_legend: false # default is true
+        error_type: block # or inline which is default

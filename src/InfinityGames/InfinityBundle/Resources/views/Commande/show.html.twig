@@ -1,0 +1,49 @@
+<h1>Commande</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Ref_commande</th>
+            <td>{{ entity.refcommande }}</td>
+        </tr>
+        <tr>
+            <th>Date_commande</th>
+            <td>{{ entity.datecommande|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Px_total</th>
+            <td>{{ entity.pxtotal }}</td>
+        </tr>
+        <tr>
+            <th>Date_transaction</th>
+            <td>{{ entity.datetransaction|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Retour_paypal</th>
+            <td>{{ entity.retourpaypal }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('commande') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('commande_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('commande_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

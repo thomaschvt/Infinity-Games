@@ -76,9 +76,9 @@ class MessageInterne
      *
      * @return integer 
      */
-    public function getIdMessage()
+    public function getId()
     {
-        return $this->idMessage;
+        return $this->id;
     }
 
     /**
@@ -217,15 +217,5 @@ class MessageInterne
     public function getExpediteur()
     {
         return $this->expediteur;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

@@ -1,0 +1,33 @@
+descripifitemstore:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:index" }
+
+descripifitemstore_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:show" }
+
+descripifitemstore_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:new" }
+
+descripifitemstore_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:create" }
+    requirements: { _method: post }
+
+descripifitemstore_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:edit" }
+
+descripifitemstore_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:update" }
+    requirements: { _method: post }
+
+descripifitemstore_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:delete" }
+    requirements: { _method: post }
+descripifitemstore_catalogue:
+    pattern:  /catalogue
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:catalogue" }

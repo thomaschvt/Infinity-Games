@@ -12,9 +12,7 @@ class JeuType extends AbstractType
     {
         $builder
             ->add('nom', 'text', array('label'=>'Nom du jeu'))
-            //->add('note')
-            //->add('createdat')
-            //->add('updateda')
+            ->add('descriptif', 'textarea', array('label'=>'descriptif du jeu'))
             ->add('visuelImg','file', array('label'=>'Visuel du jeu'))
             ->add('destIndex', 'text', array('label'=>'Url de la page du jeu'))
             ->add('utilisateurUtilisateur','entity', array('class'=>'InfinityGamesInfinityBundle:Utilisateur','label'=>'Auteur du jeu','required'=>'true'))

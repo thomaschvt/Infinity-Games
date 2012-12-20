@@ -1,0 +1,19 @@
+{% extends "::layout.html.twig" %}
+	{% block contenu_page %}
+		
+		
+		<div class="row">
+			<h1>Liste des jeux : </h1>
+			{% for jeu in jeux %}
+				<div class="row">
+					<div class="span3 line_jeu_catalogue">{{ jeu.nom }}</div>
+					<div class="span2 line_jeu_catalogue">{{ jeu.note }}</div>
+					<div class="span3 line_jeu_catalogue">{{ jeu.utilisateurutilisateur }}</div>
+					<div class="span2 line_jeu_catalogue">{{ jeu.genreJeuGenreJeu }}</div>
+					<div class="span2 line_jeu_catalogue ">
+						<div class="btn pull-right">Jouer</div>
+					</div>
+				</div>
+			{% endfor %}	
+		</div>
+	{% endblock %}

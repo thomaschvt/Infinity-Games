@@ -1,0 +1,45 @@
+<h1>Commande list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ref_commande</th>
+            <th>Date_commande</th>
+            <th>Px_total</th>
+            <th>Date_transaction</th>
+            <th>Retour_paypal</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('commande_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.refcommande }}</td>
+            <td>{% if entity.datecommande %}{{ entity.datecommande|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.pxtotal }}</td>
+            <td>{% if entity.datetransaction %}{{ entity.datetransaction|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.retourpaypal }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('commande_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('commande_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('commande_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

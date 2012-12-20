@@ -22,18 +22,15 @@ class MailerController extends Controller
     		$formMail->bind($request);
     		
 	    	if ($formMail->isValid()) {
-	    		
+	    		$name = "toto";
 	    		$message = \Swift_Message::newInstance()
 	    		->setSubject('Hello Email')
 	    		->setFrom('send@example.com')
-	    		->setTo('recipient@example.com')
+	    		->setTo('thomaschvt@gmail.com')
 	    		->setBody(
-	    				$this->renderView(
-	    						'HelloBundle:Hello:email.txt.twig',
-	    						array('name' => $name)
-	    				)
-	    		)
-	    		;
+	    				$name
+	    		);
+	    		
 	    		$this->get('mailer')->send($message);
 	    		 
 	    		

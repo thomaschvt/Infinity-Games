@@ -1,0 +1,26 @@
+{% extends "::layout.html.twig" %}
+	{% block contenu_page %}
+	<!-- Affichage du panier si rempli -->
+		{% if panier is defined %}
+			<div class="row">
+				{% for obj in panier %}
+					<div class="row">
+						<div class="span2">{{ obj.nom }}</div>
+						<div class="span2">{{ obj.qtt }}</div>
+						<div class="span2">{{ obj.prixHT }}</div>
+						<div class="btn"><a href="{{ path('infinity_games_infinity_supprimer_produit',{ 'id': obj.id}) }}">Supprimer</a></div>
+					</div>
+				{% endfor %}
+				<div class="row">
+					<div class="span3">Prix HT : {{ totalHT }}</div>
+					<div class="span3"> Prix TTC : {{ totalTTC }}</div>
+				</div>
+				<a class"btn" href="{{ path('infinity_games_infinity_supprimer_panier') }}">Supprimer le panier</a>
+				<a class"btn" href="{{ path('infinity_games_infinity_validation_commande') }}">Valider la commande</a>
+			</div>
+		{% else %}
+	<!--Affiche message si le panier n'existe pas-->
+		<div class"">Votre panier est vide</div>
+		{% endif %}
+	
+	{% endblock %}

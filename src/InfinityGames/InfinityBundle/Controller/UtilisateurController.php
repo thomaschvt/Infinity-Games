@@ -57,7 +57,7 @@ class UtilisateurController extends Controller
      * Trouve l'utilisateur et renvoi les parametres de compte perso vers la page profil public
      *
      */
-    public function affichageProfilAction(){
+    public function affichageProfilAction($id){
     	//$utilisateurEntity = new Utilisateur();
     	$em = $this->getDoctrine()->getManager();
     	
@@ -65,7 +65,7 @@ class UtilisateurController extends Controller
     	
     	//recupere les infos de compte
     	$utilisateurCourant = $this->get('security.context')->getToken()->getUser();
-    	$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($utilisateurCourant);
+    	$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($id);
     	//$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($id);
     	
     	//recupère les msg ou utilisateur est destinataire

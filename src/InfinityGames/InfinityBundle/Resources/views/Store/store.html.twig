@@ -1,0 +1,16 @@
+{% extends "::layout.html.twig" %}
+{% block contenu_page %}
+	<div class="">
+		{% for obj in listObj %}
+			<div class="row">
+				<div class="span4">{{ obj.intitule  }}</div>
+				<div class="span4">{{ obj.prix  }}</div>
+				<div class="span4">
+					<div class="btn">
+						<a href="{{ path('infinity_games_infinity_ajout_produit',{ 'id': obj.id }) }}">Ajouter au panier</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
