@@ -55,7 +55,17 @@ class DescripifItemStore
      * @ORM\Column(name="duree_temps", type="integer", nullable=true)
      */
     private $dureeTemps;
-
+	
+    /**
+     * @var \TypeItemStore
+     *
+     * @ORM\ManyToOne(targetEntity="TypeItemStore")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_item", referencedColumnName="id")
+     * })
+     */
+    private $typeItem;
+    
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -112,7 +122,30 @@ class DescripifItemStore
     {
         return $this->intitule;
     }
-
+	
+    /**
+     * Set intitule
+     *
+     * @param string $intitule
+     * @return DescripifItemStore
+     */
+    public function setTypeItem($typeItem)
+    {
+    	$this->typeItem = $typeItem;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get intitule
+     *
+     * @return string
+     */
+    public function getTypeItem()
+    {
+    	return $this->typeItem;
+    }
+    
     /**
      * Set statut
      *

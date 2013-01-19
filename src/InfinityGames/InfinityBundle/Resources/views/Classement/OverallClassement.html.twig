@@ -1,19 +1,47 @@
-{% extends "::layout.html.twig" %}
-
+{% extends "::layout_bandeau.html.twig" %}
+{% block contenu_bandeau_top %}
+	<div id="bloc_upper_classement" class=" span12">
+		<div id="bloc_upper_left_classement" class="span6">
+			<h1>Who's the best ?</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non felis eget felis egestas dapibus quis at velit. Nunc euismod dolor quis magna cursus vel sodales 
+				lorem tristique. Mauris imperdiet ultrices libero luctus pretium. Curabitur eu lacus non orci bibendum bibendum. Fusce elit est, condimentum quis vulputate non, 
+				tincidunt vitae. 
+			</p>
+		</div>
+		<div id="bloc_upper_right_classement" class="span5 pull-right">
+			<h1>Pas classé ?</h1>
+			<p>
+				Vous n'êtes pas dans le classement ? Pas encore inscrit ? Inscrivez vous pour pouvoir profiter de toutes les fonctionnalités de Infinity Factory
+				et ainsi vous mesurez au joueurs du monde entier!
+				<div class="pull-right">
+					<a href="#" class="btn btn-inverse">Inscription</a>
+					<a href="#" class="btn">Connection</a>
+				</div>
+			</p>
+		</div>
+	</div>
+{% endblock %}
 {% block contenu_page %}
-	<div class="span12">
+	<div id="wrapper_table_classement_general" class="row span12">
 		<table id="classement_general" class="display dataTable" width="100%" cellspacing="0" cellpadding="0" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
 		<thead>
 			<tr role="row">
-			<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Joueur</th>
-			<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Highscore</th>
+			<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rank">Rank</th>
+			<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Joueur</th>
+			<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Score du joueur">Highscore</th>
 			</tr>
 		</thead>
 		<tfoot>
 		<tbody role="alert" aria-live="polite" aria-relevant="all">
 		{% for utilisateur in utilisateursArray %}
 		 	<tr class="gradeA odd">
-				<td class="sorting_1">
+		 		{% if loop.index == 1 %}
+		 			<td><i class="icon-star"></i> {{ loop.index }}</td>
+		 		{% else %}
+		 			<td>{{ loop.index }}</td>
+		 		{% endif %}
+				<td class="">
 					<a href="{{ path('utilisateur_profil',{ 'id':utilisateur.id }) }}" title="voir le profil Infinity Games">{{ utilisateur.username }}</a>
 				</td>
 				<td class="sorting_1">{{ utilisateur.highscore }}</td>

@@ -25,10 +25,12 @@ class ForumCategorieController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('InfinityGamesInfinityBundle:ForumCategorie')->findAll();
+        $entitiesMsg = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->findAll();
 
         return $this->render('InfinityGamesInfinityBundle:ForumCategorie:index.html.twig', array(
             'entities' => $entities,
-        ));
+        	'msgForum' =>$entitiesMsg,
+         ));
     }
     
     /**
@@ -50,7 +52,7 @@ class ForumCategorieController extends Controller
 	   	return $this->render('InfinityGamesInfinityBundle:ForumPublic:forum.html.twig', array(
 	   			'categorieEntities' => $categorieEntities,
 	   			'topicEntities' => $topicEntities,
-	   			'form' => $formTopic->createView(),
+	   			'form_topic' => $formTopic->createView(),
 	   	));
    }
 

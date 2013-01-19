@@ -1,16 +1,20 @@
-<h1>DescripifItemStore creation</h1>
-
-<form action="{{ path('descripifitemstore_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
-</form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('descripifitemstore') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+		
+		<div class="span1"></div>
+		<div class="span11">
+		<h2>Ajout d'un item au store</h2>
+		<form action="{{ path('descripifitemstore_create') }}" method="post" {{ form_enctype(form) }}>
+		    {{ form_widget(form) }}
+		    <p>
+		        <button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i> Créer</button>
+		    </p>
+		</form>
+		<br/>
+		<a href="{{ path('descripifitemstore') }}">
+		            <button class="btn btn-inverse">
+		            	<i class="icon-list icon-white"></i> Retour à la liste
+		            </button>
+		        </a>
+		</div>
+	{% endblock %}

@@ -1,0 +1,14 @@
+{% include "::header.html.twig" %}
+	<div id="wrapper_top_bandeau_accueil"  class="ombre">
+		<div id ="bloc_bandeau" class="container ">
+			{% block contenu_bandeau_top %}
+			        	
+			{% endblock %}
+		</div>	
+	</div>  
+	<div id ="wrapper_page" class="container">
+		{% block contenu_page %}
+		        	
+		{% endblock %}
+	</div>
+{% include "::footer.html.twig" %}

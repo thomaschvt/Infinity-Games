@@ -1,0 +1,53 @@
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+<div class="row">
+	<div class="span1"></div>
+	<div class="span11">
+		<h2>Informations sur le type d'item :  {{ entity.intitule }}</h2>
+		<div class="row">
+			<span class="span2">Intitule : </span>
+			<span class="span9">{{ entity.intitule }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Description : </span>
+			<span class="span9">{{ entity.descriptif }}</span>
+		</div>		
+	</div>
+	<div class="row span11">
+		<div class=" row span3"
+			<a href="{{ path('descripifitemstore') }}">
+           	 	<button class="btn btn-inverse">
+           	 		<i class="icon-list icon-white"></i> Retour à la liste
+           	 	</button>
+        	</a>
+			<a href="{{ path('typeitemstore_edit', { 'id': entity.id }) }}">
+           	 	<button class="btn btn-info	">
+           	 		<i class=" icon-pencil icon-white"></i> Editer le genre
+           	 	</button>
+        	</a>
+        </div>
+        <div class="span2">
+        	<form action="{{ path('descripifitemstore_delete', { 'id': entity.id }) }}" method="post">
+	            {{ form_widget(delete_form) }}
+	            <button class="btn btn-danger">
+	           	 		<i class=" icon-remove icon-white"></i> Supprimer
+	           	 </button>
+        	</form>
+        </div>
+	<div id="bloc_add_type_item_show" class="row span11">
+		<a class="btn " data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+			Ajouter une sous-categorie
+		</a>
+		<div id="collapseOne" class="collapse">
+			<div class="">
+				<form action="{{ path('typeitemstore_add_famille', { 'id': entity.id }) }}" method="post">
+		            {{ form_widget(add_form) }}
+		            <button class="btn btn-success">
+		           	 		<i class=" icon-ok icon-white"></i> Valider
+		           	 </button>
+        		</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

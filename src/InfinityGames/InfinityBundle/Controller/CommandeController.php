@@ -168,7 +168,29 @@ class CommandeController extends Controller
 
         return $this->redirect($this->generateUrl('commande'));
     }
-
+	
+    /**
+     * Function qui change le statut de la commande en fonction du param envoyé. Accepte l'id de la commande + le nouveau statut
+     * @param string $statut
+     * @param integer $id
+     */
+    
+    public function changeStatutAction($id,$statut){
+    	//recupère la commande concernée
+    	$entity  = new Commande();
+    	$em = $this->getDoctrine()->getManager();
+    	$entity = $em->getRepository('InfinityGamesInfinityBundle:Commande')->find($id);
+    	
+    	//modifie le statut
+    	$entity->setStatut($statut);
+    	
+    	//insere les modifs en bdd
+    	$em->persist($entity);
+    	$em->flush();
+    	
+    	return $this->redirect($this->generateUrl('descripifitemstore'));
+    }
+    
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))

@@ -1,15 +1,24 @@
 {% extends "::layout.html.twig" %}
 {% block contenu_page %}
-	<div class="">
-		{% for obj in listObj %}
-			<div class="row">
-				<div class="span4">{{ obj.intitule  }}</div>
-				<div class="span4">{{ obj.prix  }}</div>
-				<div class="span4">
-					<div class="btn">
-						<a href="{{ path('infinity_games_infinity_ajout_produit',{ 'id': obj.id }) }}">Ajouter au panier</a>
+	<!-- affichage des diff type d'item -->
+	<div class="row">
+		{% for type in typeItem %}
+			<div class="row span12">
+				<span class="titre_categorie_store">{{ type.intitule }}</span>
+				{% for ssType in sousType %}
+					{% if ssType.idParent == type %}
+					<div class="row span12">
+						<span class="titre_sous_categorie_store">{{ ssType.intitule }}</span>
+						{% for obj in listObj %}
+							{% if obj.typeItem == ssType %}
+								<div class="row">
+									{{ obj.intitule }}
+								</div>
+							{% endif %}
+						{% endfor %}
 					</div>
-				</div>
+					{% endif %}
+				{% endfor %}
 			</div>
 		{% endfor %}
 	</div>

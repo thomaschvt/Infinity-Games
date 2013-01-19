@@ -55,7 +55,14 @@ class Commande
      * @ORM\Column(name="retour_paypal", type="string", length=10, nullable=true)
      */
     private $retourPaypal;
-
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=11, nullable=true)
+     */
+    private $statut;
+    
     /**
      * @var \Utilisateur
      *
@@ -145,6 +152,29 @@ class Commande
     public function getPxTotal()
     {
         return $this->pxTotal;
+    }
+    
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     * @return Commande
+     */
+    public function setStatut($statut)
+    {
+    	$this->statut = $statut;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get pxTotal
+     *
+     * @return integer
+     */
+    public function getStatut()
+    {
+    	return $this->statut;
     }
 
     /**

@@ -1,0 +1,93 @@
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+<h1>Gestion des Articles Factory</h1>
+<div class="span12">
+	<a href="{{ path('categoriefactory_new') }}">
+    	<button class="btn btn-success"> 
+	            Ajouter une categorie
+        </button>
+    </a>
+    <a href="{{ path('articlesfactory_new') }}">
+    	<button class="btn btn-success"> 
+	            Ajouter un article
+        </button>
+    </a>
+<div id="list_user">
+	<h2>Liste des items : </h2>
+	<table id="listing_admin" class="display dataTable listing_admin" width="90%" cellspacing="50" cellpadding="50" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
+		<thead>
+			<tr role="row">
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Intitule</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Editer</th>
+			</tr>
+		</thead>
+		<tfoot>
+		<tbody role="alert" aria-live="polite" aria-relevant="all">
+		{% for categorie in entitiesCategories %}
+		 	<tr class="gradeA odd">
+				<td class="sorting_1">{{ categorie.intitule }}</td>
+				<td class="sorting_1">
+					<a href="{{ path("categoriefactory_edit",{'id':categorie.id}) }}" title="Editer la fiche de l'item">
+						<button class="btn btn-info">
+							<i class=" icon-edit"></i>
+						</button>
+					</a>
+				</td>
+			</tr>	
+		{% endfor %} 	
+		</tbody>
+	</table>
+</div>
+
+<!--Liste des articles-->
+<div id="list_user">
+	<h2>Liste des items : </h2>
+	<table id="listing_admin" class="display dataTable listing_admin" width="90%" cellspacing="50" cellpadding="50" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
+		<thead>
+			<tr role="row">
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Intitule</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Statut</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Actions</th>
+			</tr>
+		</thead>
+		<tfoot>
+		<tbody role="alert" aria-live="polite" aria-relevant="all">
+		{% for article in entitiesArticles %}
+		 	<tr class="gradeA odd" style="background: ">
+				<td class="sorting_1">{{ article.titre }}</td>
+				{% if article.statut == "actif" %}
+					<td class="sorting_1" style="color:#5BB75B">{{ article.statut }}</td>
+				{% else %}
+					<td class="sorting_1" style="color:#DA4F49">{{ article.statut }}</td>
+				{% endif %}
+				<td class="sorting_1">
+					<a href="{{ path("categoriefactory_show",{'id':article.id}) }}" title="Voir la fiche de l'article">
+						<button class="btn">
+							<i class=" icon-eye-open"></i>
+						</button>
+					</a>
+					<a href="{{ path("categoriefactory_edit",{'id':article.id}) }}" title="Editer la fiche de l'article">
+						<button class="btn btn-info">
+							<i class=" icon-edit"></i>
+						</button>
+					</a>
+					{% if article.statut == "actif" %}
+						<a href="{{ path("articlesfactory_change_statut",{'id':article.id, 'statut':"inactif"}) }}" title="désactiver l'article">
+							<button class="btn btn-danger">
+								<i class=" icon-ban-circle"></i>
+							</button>
+						</a>
+					{% else %}
+						<a href="{{ path("articlesfactory_change_statut",{'id':article.id, 'statut':"actif"}) }}" title="activer l'article">
+							<button class="btn btn-success">
+								<i class=" icon-ok-circle"></i>
+							</button>
+						</a>
+					{% endif %}
+				</td>
+			</tr>	
+		{% endfor %} 	
+		</tbody>
+	</table>
+</div>
+{% endblock %}

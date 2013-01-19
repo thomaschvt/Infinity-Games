@@ -27,6 +27,13 @@ class MessageInterne
      * @ORM\Column(name="titre_message", type="string", length=45, nullable=true)
      */
     private $titreMessage;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=45, nullable=true)
+     */
+    private $statut;
 
     /**
      * @var string
@@ -102,6 +109,29 @@ class MessageInterne
     public function getTitreMessage()
     {
         return $this->titreMessage;
+    }
+    
+	/**
+     * Set statut
+     *
+     * @param string $statut
+     * @return $statut
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
     }
 
     /**

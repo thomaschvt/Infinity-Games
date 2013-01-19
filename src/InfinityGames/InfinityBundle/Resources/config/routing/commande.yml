@@ -19,6 +19,10 @@ commande_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "InfinityGamesInfinityBundle:Commande:edit" }
 
+commande_change_statut:
+    pattern:  /{id}/{statut}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:Commande:changeStatut" }
+
 commande_update:
     pattern:  /{id}/update
     defaults: { _controller: "InfinityGamesInfinityBundle:Commande:update" }

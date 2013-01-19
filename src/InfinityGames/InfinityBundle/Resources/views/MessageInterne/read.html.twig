@@ -1,0 +1,59 @@
+{% extends "::layout.html.twig" %}
+
+	{% block contenu_page %}
+		<!-- Titre topic -->
+		<div class="row ">
+			<div class="span12" id="titre_topic_forum">{{ entity.titreMessage }}</div>
+		</div>
+		<!-- fin titre  -->
+		<!-- message originel  -->
+		<div class="row header_msg_topic">
+			<div class="span2"><a href="{{ path('utilisateur_profil',{'id':app.user.id}) }}">{{ entity.expediteur }}</a></div>
+			<div class="span9 header_topic_heure_message">{{ entity.date|date('d.m.Y - G:i') }}</div>
+		</div>
+		<div class="row">
+			<div class="span2 visuel_avatar_auteur_topic">
+				<img alt="avatar auteur message" title="avatar auteur message Infinity Games" src="{{ asset('image/default_avatar.jpg') }}">
+				<span>{{ entity.expediteur.roles }}</span>
+			</div>
+			<div class="align-justify contenu_message_topic span9">
+				{{ entity.contenuMessage }}
+			</div>
+		</div>
+		
+		<!-- Btn de navigation -->
+		<div id="btn_nav_topic" class="row">
+			<div class="pull-right">
+				<a href="{{ path('utilisateur_profil',{'id':app.user.id}) }}">
+	   				<button class="btn btn-inverse" type="submit">
+	   						<i class="icon-list icon-white"></i> Retour au prodil
+	   				</button>
+	   			</a>
+	   			
+	        	<a href="{{ path("messageforum_change_statut_topic",{'id':entity.id,'statut':2}) }}">
+	   				<button class="btn btn-success" type="submit">
+	   						<i class="icon-share-alt icon-white"></i> Répondre
+	   				</button>
+	   			</a>
+	   			
+   			</div>
+		</div>
+		<!-- formulaire reponse -->
+		<div class="row">
+			<div class="span12">
+				<div class="span2"></div>
+				<div class="span8">
+					<form id="rep_form_topic" action="{{ path('messageforum_reponse', { 'id': entity.id }) }}" method="post" {{ form_enctype(repForm) }}>
+			   			{{ form_widget(repForm) }}
+			   			{{ form_rest(repForm) }}
+			   			<p>
+			        		<button class="btn" type="submit">Envoyer</button>
+			   			</p>
+					</form>
+				</div>
+				<div class="span2"></div>
+			</div>
+		</div>
+	
+		
+	{% endblock %}

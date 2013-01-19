@@ -19,12 +19,15 @@ class ClassementController extends Controller
     */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $utilisateurs = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->findAll();
-
+        $repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:Utilisateur');
+    	$query = $repository->createQueryBuilder('u')
+    	->orderBy('u.highScore', 'DESC')
+    	->getQuery();
+    	$utilisateurs = $query->getResult();
+           
         return $this->render('InfinityGamesInfinityBundle:Classement:OverallClassement.html.twig', array(
             'utilisateursArray' => $utilisateurs,
+        	
         ));
     }
 

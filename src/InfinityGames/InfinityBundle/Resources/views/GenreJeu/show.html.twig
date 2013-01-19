@@ -1,44 +1,43 @@
 {% extends "::administration/admin_layout.html.twig" %}
 	{% block content_page %}
-<h1>GenreJeu</h1>
-
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Intitule</th>
-            <td>{{ entity.intitule }}</td>
-        </tr>
-        <tr>
-            <th>Descriptif</th>
-            <td>{{ entity.descriptif }}</td>
-        </tr>
-        <tr>
-            <th>Visupicto</th>
-            <td>{{ entity.visuPicto }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('genrejeu') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('genrejeu_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('genrejeu_delete', { 'id': entity.id }) }}" method="post">
+<div class="row">
+	<div class="span1"></div>
+	<div class="span11">
+		<h2>Informations sur le genre :  {{ entity.intitule }}</h2>
+		<div class="row">
+			<span class="span2">Intitule : </span>
+			<span class="span9">{{ entity.intitule }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Descriptif : </span>
+			<span class="span9">{{ entity.descriptif }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Picto : </span>
+			<span class="span9">{{ entity.visuPicto }}</span>
+		</div>
+	</div>
+	<div class="row span11">
+		<div class="span3"
+			<a href="{{ path('jeu') }}">
+           	 	<button class="btn btn-inverse">
+           	 		<i class="icon-list icon-white"></i> Retour à la liste
+           	 	</button>
+        	</a>
+			<a href="{{ path('genrejeu_edit', { 'id': entity.idGenreJeu }) }}">
+           	 	<button class="btn btn-info	">
+           	 		<i class=" icon-pencil icon-white"></i> Editer le genre
+           	 	</button>
+        	</a>
+        </div>
+        <div class="span2">
+        	<form action="{{ path('genrejeu_delete', { 'id': entity.idGenreJeu }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger">
+           	 		<i class=" icon-remove icon-white"></i> Supprimer
+           	 </button>
         </form>
-    </li>
-</ul>
+        </div>
+	</div>
+</div>
 {% endblock %}

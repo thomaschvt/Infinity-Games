@@ -18,6 +18,14 @@ messageinterne_create:
 messageinterne_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:edit" }
+    
+messageinterne_read:
+    pattern:  /{id}/read
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:read" }
+
+messageinterne_delete_one:
+    pattern:  /{id}/deletemsg
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageInterne:deleteOne" }
 
 messageinterne_update:
     pattern:  /{id}/update

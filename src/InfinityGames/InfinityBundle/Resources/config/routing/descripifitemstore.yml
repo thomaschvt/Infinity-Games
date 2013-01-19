@@ -19,6 +19,10 @@ descripifitemstore_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:edit" }
 
+descripifitemstore_change_statut:
+    pattern:  /{id}/{statut}/change
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:changeStatut" }
+
 descripifitemstore_update:
     pattern:  /{id}/update
     defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:update" }
@@ -31,3 +35,6 @@ descripifitemstore_delete:
 descripifitemstore_catalogue:
     pattern:  /catalogue
     defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:catalogue" }
+descripifitemstore_catalogue_tri:
+    pattern:  /{categorie}/{type}/tri_catalogue
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:triItem" }

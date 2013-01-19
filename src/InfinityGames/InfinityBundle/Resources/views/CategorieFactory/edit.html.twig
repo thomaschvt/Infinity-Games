@@ -1,0 +1,20 @@
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+		
+		<div class="span1"></div>
+		<div class="span11">
+		<h2>Modification de la categorie</h2>
+		<form action="{{ path('categoriefactory_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+		    {{ form_widget(edit_form) }}
+		    <p>
+				<button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i> Valider</button>
+		    </p>
+		</form>
+		<br/>
+		<a href="{{ path('categoriefactory') }}">
+		            <button class="btn btn-inverse">
+		            	<i class="icon-list icon-white"></i> Retour à la liste
+		            </button>
+		        </a>
+		</div>
+{% endblock %}

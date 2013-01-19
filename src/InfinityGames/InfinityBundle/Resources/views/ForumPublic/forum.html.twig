@@ -8,6 +8,27 @@
 				Mauris lacinia nunc at sem aliquet sagittis ac a lectus. Donec ullamcorper enim nec magna mollis sit amet adipiscing purus laoreet. Ut dictum nulla at tellus elementum nec 
 				fermentum diam consequat. 
 			</p>
+			{% if app.user.username is defined %}
+			<div class="row">
+				<a id="btn_new_msg_forum" href="#" class="btn btn-warning span2"><i class="icon-flag icon-white"></i> Nouveau</a>
+			</div>
+			{% else %}
+			<div class="row span6">
+				<span>Vous devez être <a href="#">enregistré </a> pour créer un topic. </span><a href="">Connexion ?</a>
+			</div>
+			{% endif %}
+		</div>
+		<div id="form_crea_topic" class="row">
+			<div class="span2"></div>
+			<div class="span8">
+				<form action="{{ path('messageforum_create') }}" method="post" {{ form_enctype(form_topic) }}>
+					{{ form_widget(form_topic) }}
+			   		<p>
+			        	<button class="btn " type="submit">Créer</button>
+			   		</p>
+				</form>
+			</div>
+			<div class="span2"></div>
 		</div>
 		{% for categorie in categorieEntities %}
 			<div class="row bloc_categorie_forum">
@@ -18,20 +39,14 @@
 				{% for topic in topicEntities %}
 					{% if topic.forum == categorie.intitule %}
 						<div class="row ligne_topic_forum">
-							<div class="span6">{{ topic.titre }}</div>
+							<div class="span8"><a href="{{ path('messageforum_read_topic',{'id':topic.id}) }}"> <i class="icon-flag"></i> {{ topic.titre }}</a></div>
 							<div class="row span2">
-								{{ topic.utilisateur }}
+								<a href="{{ path('utilisateur_profil',{'id':topic.utilisateur.id}) }}"><i class="icon-user"></i> {{ topic.utilisateur }}</a>
 							</div>
 							<div class="row span2">
-								{{ topic.date|date('d.m.Y') }}
-							</div>
-							<div class="row span2">
-								<a href="{{ path('messageforum_read_topic',{'id':topic.id}) }}">
-									<button class="btn"><i class=" icon-eye-open"></i></button>
-								</a>
+								{{ topic.date|date('d.m.Y - G:i') }}
 							</div>
 						</div>
-					
 					{% endif %}
 				{% endfor %}
 			</div>		

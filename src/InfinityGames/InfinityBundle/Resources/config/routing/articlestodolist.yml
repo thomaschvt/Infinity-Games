@@ -1,0 +1,30 @@
+articlestodolist:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesTodoList:index" }
+
+articlestodolist_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesTodoList:show" }
+
+articlestodolist_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesTodoList:new" }
+
+articlestodolist_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesTodoList:create" }
+    requirements: { _method: post }
+
+articlestodolist_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesTodoList:edit" }
+
+articlestodolist_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesTodoList:update" }
+    requirements: { _method: post }
+
+articlestodolist_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesTodoList:delete" }
+    requirements: { _method: post }

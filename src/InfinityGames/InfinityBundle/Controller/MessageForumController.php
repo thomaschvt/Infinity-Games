@@ -86,6 +86,8 @@ class MessageForumController extends Controller
             $utilisateurCourant = $this->get('security.context')->getToken()->getUser();
             $utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($utilisateurCourant);
             $entity->setUtilisateur($utilisateurEntity);
+            $entity->setnbrVues(0);
+            $entity->setnbrRep(0);
             $em->persist($entity);
             $em->flush();
 
@@ -191,12 +193,23 @@ class MessageForumController extends Controller
     	$form = $this->createForm(new ReponseTopicForumType(), $repTopic);
     	
     	$topicEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->find($id);
+    	
     	$repTopicEntities = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->findByidParent($id);
+    	$this->incremNbrVue($id);
+    	
+    	
     	
     	if (!$topicEntity) {
     		throw $this->createNotFoundException('Ce topic n\'existe pas ou plus.');
     	}
+    	//on recupère l'auteur du message
     	$auteurEntity = $topicEntity->getUtilisateur();
+    	//si l'auteur est l'utilisateur qui li le message, le message est considéré comme lu
+    	$utilisateurCourant = $this->get('security.context')->getToken()->getUser();
+    	if($auteurEntity == $utilisateurCourant){
+    		$this->luParAuteur($id,"lu");
+    	}
+    	
     	
     	
     	return $this->render('InfinityGamesInfinityBundle:ForumPublic:topic_public.html.twig', array(
@@ -228,6 +241,8 @@ class MessageForumController extends Controller
     		$entity->setForum($msgParent->getForum());
     		$entity->setUtilisateur($utilisateurEntity);
     		$entity->setIdParent($msgParent);
+    		$this->incremNbrRep($id);
+    		$this->luParAuteur($id,"non-lu");
     		$em->persist($entity);
     		$em->flush();
     	
@@ -240,6 +255,34 @@ class MessageForumController extends Controller
     	));
     	
     }
+    /**
+     * @param  integer $id, $statut:integer
+     * function permettant de changer le statut d'un topic sur le forum en résolu ou clos.
+     * Si le topic est clos par un admin, les réponses ne seront plus possibles, voir le topic sera innacessible 
+     * 
+     */
+    
+    public function changeStatutAction($id, $statut){
+    	$closedTopic  = new MessageForum();
+    	$em = $this->getDoctrine()->getManager();
+		//défini le nouveau statut du topic
+    	if($statut == 1){
+    		$newStatut = "En cours";
+    	}elseif($statut == 2){
+    		$newStatut = "Résolu";
+    	}elseif($statut == 3){
+    		$newStatut = "Fermé";
+    	}
+    	
+    	//recupère le topic concerné et le modifie
+    	$closedTopic = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->find($id);
+    	$closedTopic->setStatut($newStatut);
+    	//pousse les maj en bdd
+    	$em->persist($closedTopic);
+    	$em->flush();
+    	//renvoi sur l'index de gestion forum
+    	return $this->redirect($this->generateUrl('forumcategorie'));
+    }
     
     private function createDeleteForm($id)
     {
@@ -247,5 +290,46 @@ class MessageForumController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    private function incremNbrVue($id){
+    	//on trouve le message qui est concerné
+    	$em = $this->getDoctrine()->getManager();
+    	$msg = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->find($id);
+    	
+    	//on recupère le nbre de vue du message et on l'incrémente de 1
+    	$nbrDeVue = $msg->getnbrVues();
+    	$nbrDeVue +=1;
+    	
+    	//on renvoi en base de données le nouveau nbre de vue
+    	$msg->setnbrVues($nbrDeVue);
+    	$em->persist($msg);
+    	$em->flush();
+    }
+    
+    private function incremNbrRep($id){
+    	//on trouve le message qui est concerné
+    	$em = $this->getDoctrine()->getManager();
+    	$msg = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->find($id);
+    	 
+    	//on recupère le nbre de vue du message et on l'incrémente de 1
+    	$nbrDeRep = $msg->getnbrRep();
+    	$nbrDeRep +=1;
+    	 
+    	//on renvoi en base de données le nouveau nbre de vue
+    	$msg->setnbrRep($nbrDeRep);
+    	$em->persist($msg);
+    	$em->flush();
+    }
+    
+    private function luParAuteur($id, $lu){
+    	$em = $this->getDoctrine()->getManager();
+    	$msg = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->find($id);
+    	 	
+    	
+    	//on renvoi en base de données le nouveau nbre de vue
+    	$msg->setLuParAuteur($lu);
+    	$em->persist($msg);
+    	$em->flush();
     }
 }

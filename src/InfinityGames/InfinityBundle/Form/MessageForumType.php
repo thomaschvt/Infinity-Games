@@ -11,12 +11,12 @@ class MessageForumType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('contenu')
+            ->add('titre','text', array('label'=>'Titre du topic : '))
+            ->add('contenu','textarea', array('label'=>'Contenu du topic : '))
             //->add('date')
             //->add('statut')
             //->add('utilisateur')
-            ->add('forum')
+        	->add('forum', 'entity', array('class'=>'InfinityGamesInfinityBundle:ForumCategorie','label'=>'Categorie du forum :','required'=>'true'))
             //->add('idParent')
         ;
     }

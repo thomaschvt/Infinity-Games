@@ -14,9 +14,10 @@ class DescripifItemStoreType extends AbstractType
             ->add('intitule')
             ->add('statut')
             ->add('descriptif')
-            ->add('prix')
+            ->add('prix','text', array('label'=>'Prix de l\'objet en €'))
             ->add('dureeTemps')
-            ->add('idUtilisateur')
+            ->add('typeItem', 'entity', array('class'=>'InfinityGamesInfinityBundle:TypeItemStore','label'=>'Type :','required'=>'true'))
+            //->add('idUtilisateur')
         ;
     }
 

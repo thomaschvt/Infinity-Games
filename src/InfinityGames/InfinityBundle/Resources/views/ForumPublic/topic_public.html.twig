@@ -1,44 +1,96 @@
 {% extends "::layout.html.twig" %}
+
 	{% block contenu_page %}
-		<div class="row-fluid msg_origin_topic">
-			<div class="row-fluid">{{ topicEntity.titre }}</div>
-			<div class="span12">
-				<div class="span4 bloc_utilisateur_topic">
-					<div class="row">
-						{{ auteurTopic.username }}
-					</div>
-				</div>
-				<div class="8">
-					<div class="row contenu_message_topic">
-						{{ topicEntity.contenu }}
-					</div>
-				</div>			
+		<!-- Titre topic -->
+		<div class="row ">
+			<div class="span12" id="titre_topic_forum">{{ topicEntity.titre }}</div>
+		</div>
+		<div class="row">
+			{% if topicEntity.statut == "En cours" %}
+			<div class="alert">
+			   <span>Ce topic est en cours depuis le {{ topicEntity.date|date('d.m.Y') }}</span>
+		    </div>
+		    {% elseif topicEntity.statut == "Résolu" %}
+		    	<div class="alert alert-success">
+			   		<span>Ce topic est résolu</span>
+		    	</div>
+		    {% elseif topicEntity.statut == "Fermé" %}
+		    	<div class="alert alert-error">
+			   		<span>Ce topic a été fermé par les administrateurs, impossible de poster une réponse. Merci de consulter la <a href="">charte d'utilisation</a> pour en connaitre les raisons.</span>
+		    	</div>
+		    {% endif %}	
+		</div>
+		<!-- fin titre topic -->
+		<!-- message originel topic -->
+		<div class="row header_msg_topic">
+			<div class="span2"><a href="">{{ topicEntity.utilisateur }}</a></div>
+			<div class="span9 header_topic_heure_message">{{ topicEntity.date|date('d.m.Y - G:i') }}</div>
+		</div>
+		<div class="row">
+			<div class="span2 visuel_avatar_auteur_topic">
+				<img alt="avatar auteur message" title="avatar auteur message Infinity Games" src="{{ asset('image/default_avatar.jpg') }}">
+				<span>{{ topicEntity.utilisateur.roles }}</span>
+			</div>
+			<div class="align-justify contenu_message_topic span9">
+				{{ topicEntity.contenu }}
 			</div>
 		</div>
-		<!-- liste des reponses -->
-		<div class="row-fluid">
-			{% for rep in repEntities %}
-				<div class="row-fluid">
-					<div class="span12">
-						<div class="span4 bloc_utilisateur_topic">
-							<div class="row">
-								{{ rep.utilisateur }}
-							</div>
-						</div>
-						<div class="span8">
-							<div class="row contenu_message_topic">
-								{{ rep.contenu }}
-							</div>
-						</div>			
-					</div>
+		<!-- reponse au topic -->
+		{% for rep in repEntities %}
+			<div class="row header_msg_topic">
+				<div class="span2"><a href="">{{ rep.utilisateur }}</a></div>
+				<div class="span9 header_topic_heure_message">{{ rep.date|date('d.m.Y - G:i') }}</div>
+			</div>
+			<div class="row">
+				<div class="span2 visuel_avatar_auteur_topic">
+					<img alt="avatar auteur message" title="avatar auteur message Infinity Games" src="{{ asset('image/default_avatar.jpg') }}">
+					<span>{{ rep.utilisateur.roles }}</span>
 				</div>
-			{% endfor %}
+				<div class="align-justify contenu_message_topic span9">
+					{{ rep.contenu }}
+				</div>
+			</div>
+		{% endfor %}
+		<!-- Btn de navigation -->
+		<div id="btn_nav_topic" class="row">
+			<div class="pull-right">
+				<a href="{{ path('forum_public') }}">
+	   				<button class="btn btn-inverse" type="submit">
+	   						<i class="icon-list icon-white"></i> Retour à l'index
+	   				</button>
+	   			</a>
+	   			{% if topicEntity.utilisateur.id == app.user.id %}
+	        	<a href="{{ path("messageforum_change_statut_topic",{'id':topicEntity.id,'statut':2}) }}">
+	   				<button class="btn btn-success" type="submit">
+	   						<i class="icon-ok icon-white"></i> Résolu
+	   				</button>
+	   			</a>
+	   			{% endif %}
+   			</div>
 		</div>
-		<form action="{{ path('messageforum_reponse', { 'id': topicEntity.id }) }}" method="post" {{ form_enctype(formRep) }}>
-				   			{{ form_widget(formRep) }}
-				   			{{ form_rest(formRep) }}
-				   			<p>
-				        		<button class="btn" type="submit">Envoyer</button>
-				   			</p>
-		</form>
+		<!-- formulaire reponse au topic -->
+		{% if topicEntity.statut !="Fermé" %}
+			{% if app.user.username is defined %}
+			<div class="row">
+				<div class="span2"></div>
+				<div class="span8" id="wrapper_form_topic">
+					<form id="rep_form_topic" action="{{ path('messageforum_reponse', { 'id': topicEntity.id }) }}" method="post" {{ form_enctype(formRep) }}>
+			   			{{ form_widget(formRep) }}
+			   			{{ form_rest(formRep) }}
+			   			<p>
+			        		<button class="btn" type="submit">Envoyer</button>
+			   			</p>
+					</form>
+				</div>	
+			</div>
+			{% else %}
+			<div class="row">
+				<div class="alert">
+			  		 <span>Vous devez être <a href="">enregistré</a> pour pouvoir poster une réponse.</span>
+		    	</div>
+			</div>
+			{% endif %}
+		{% endif %}
+	
+		
 	{% endblock %}

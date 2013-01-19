@@ -1,47 +1,101 @@
 {% extends "::administration/admin_layout.html.twig" %}
 	{% block content_page %}
-<h1>ForumCategorie list</h1>
-
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Intitule</th>
-            <th>Descriptif</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('forumcategorie_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.intitule }}</td>
-            <td>{{ entity.descriptif }}</td>
-            <td>
-           		<div class="btn-group">
-           			<a href="{{ path('forumcategorie_show', { 'id': entity.id }) }}">
-				    	<button class="btn">
-				    		Voir la fiche	
-				    	</button>
-				    </a>
-					    <button class="btn dropdown-toggle" data-toggle="dropdown">
-					    <span class="caret"></span>
-				    </button>
-				    <ul class="dropdown-menu">
-                    	 <li>
-                       		 <a href="{{ path('forumcategorie_edit', { 'id': entity.id }) }}">Modifier la fiche</a>
-                    	 </li>
-                    	 <li>
-                       		 <a href="{{ path('forumcategorie_direct_delete', { 'id': entity.id }) }}">Supprimer la fiche</a>
-                    	 </li>
-				    </ul>
-				</div>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{{ path('forumcategorie_new') }}">
-	<button class="btn">Créer une catégorie</button>
-</a>
+<h1>Gestion des jeux</h1>
+<div class="span12 bloc_wrapper_jeu_admin">
+	 <a href="{{ path('forumcategorie_new') }}">
+	     	<button class="btn btn-success">Ajouter une categorie</button>
+	     </a>
+	<div id="list_user">
+		<h2>Liste des categories du forum : </h2>
+		<table id="listing_admin" class="display dataTable listing_admin" width="95%" cellspacing="50" cellpadding="50" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
+			<thead>
+				<tr role="row">
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Nom</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Genre du jeu">Descriptif</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending"></th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending"></th>
+				</tr>
+			</thead>
+			<tfoot>
+			<tbody role="alert" aria-live="polite" aria-relevant="all">
+			{% for categorie in entities %}
+			 		<td class="sorting_1">{{ categorie.intitule }}</td>
+			 		<td class="sorting_1">{{ categorie.descriptif }}</td>
+					<td class="sorting_1">
+						<a href="{{ path("forumcategorie_show",{'id':categorie.id}) }}" title="Voir la fiche du genre">
+							<button class="btn">
+								<i class=" icon-eye-open"></i>
+							</button>
+						</a>
+					</td>
+					<td class="sorting_1">
+						<a href="{{ path("forumcategorie_edit",{'id':categorie.id}) }}" title="Editer la fiche du genre">
+							<button class="btn btn-info">
+								<i class=" icon-edit"></i>
+							</button>
+						</a>
+					</td>
+				</tr>	
+			{% endfor %} 	
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<!-- msg Forum -->
+<div class="span12 bloc_wrapper_jeu_admin">
+	<div id="list_user">
+		<h2>Liste des topics du forum : </h2>
+		<table id="listing_admin" class="display dataTable listing_admin" width="95%" cellspacing="50" cellpadding="50" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
+			<thead>
+				<tr role="row">
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Titre</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Auteur</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Date</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Statut</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending"></th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending"></th>
+				</tr>
+			</thead>
+			<tfoot>
+			<tbody role="alert" aria-live="polite" aria-relevant="all">
+			{% for msg in msgForum %}
+				{% if msg.titre != "" %}
+			 		<td class="sorting_1">{{ msg.titre }}</td>
+			 		<td class="sorting_1">{{ msg.utilisateur }}</td>
+			 		<td class="sorting_1">{{ msg.date|date('d-m-Y') }}</td>
+			 		{% if msg.statut =="En cours" %}
+			 			<td class="sorting_1" style="color:#49AFCD">{{ msg.statut }}</td>
+			 		{% elseif msg.statut == "Résolu" %}
+			 			<td class="sorting_1" style="color:#5BB75B">{{ msg.statut }}</td>
+			 		{% elseif msg.statut == "Fermé" %}
+			 			<td class="sorting_1" style="color:#DA4F49">{{ msg.statut }}</td>
+			 		{% endif %}
+			 		<td class="sorting_1">
+						<a href="{{ path("messageforum_read_topic",{'id':msg.id}) }}" title="Voir le sujet">
+							<button class="btn">
+								<i class=" icon-eye-open"></i>
+							</button>
+						</a>
+					</td>
+					<td class="sorting_1">
+						<div class="btn-group">
+						    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+							    Action
+							    <span class="caret"></span>
+						    </a>
+						    <ul class="dropdown-menu">
+						    	<li><a href="{{ path("messageforum_change_statut_topic",{'id':msg.id,'statut':1}) }}" title="">En cours</a></li>
+						    	<li><a href="{{ path("messageforum_change_statut_topic",{'id':msg.id,'statut':2}) }}" title="">Résolu</a></li>
+						    	<li><a href="{{ path("messageforum_change_statut_topic",{'id':msg.id,'statut':3}) }}" title="">Fermé</a></li>
+						    </ul>
+					    </div>
+					</td>
+				</tr>
+				{% endif %}	
+			{% endfor %} 	
+			</tbody>
+		</table>
+	</div>
+</div>
 {% endblock %}

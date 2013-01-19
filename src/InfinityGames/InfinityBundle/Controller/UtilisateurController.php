@@ -2,6 +2,8 @@
 
 namespace InfinityGames\InfinityBundle\Controller;
 
+use Symfony\Component\Validator\Constraints\Length;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -25,11 +27,14 @@ class UtilisateurController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+		//liste des utilisateurs
         $entities = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->findAll();
-
+		
+        
+        
         return $this->render('InfinityGamesInfinityBundle:Utilisateur:index.html.twig', array(
             'entities' => $entities,
+        	
         ));
     }
 
@@ -48,7 +53,7 @@ class UtilisateurController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
+	
         return $this->render('InfinityGamesInfinityBundle:Utilisateur:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
@@ -69,11 +74,27 @@ class UtilisateurController extends Controller
     	//$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($id);
     	
     	//recupère les msg ou utilisateur est destinataire
-    	$msgEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageInterne')->findBydestinataire($utilisateurEntity);
-    	//recupère les msg de forum ou l'utilisateur est propriétaire
-    	$msgForumEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->findByutilisateur($utilisateurEntity);
-    	//recupère le niveau exprérience de l'utilisateur en rapport avec l'experience actuelle
+    	//$msgEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageInterne')->findBydestinataire($utilisateurEntity);
     	
+    	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:MessageInterne');
+    	$query = $repository->createQueryBuilder('m')
+	    	->setParameter('dest', $utilisateurEntity)
+	    	->where('m.destinataire = :dest')
+	    	->orderBy('m.date', 'DESC')
+	    	->getQuery();
+    	$msgEntity = $query->getResult();
+    	
+    	//recupère les msg de forum ou l'utilisateur est propriétaire
+    	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:MessageForum');
+    	$query = $repository->createQueryBuilder('m')
+    	->setParameter('auteur', $utilisateurEntity)
+    	->where('m.utilisateur = :auteur')
+    	->orderBy('m.luParAuteur', 'DESC')
+    	->orderBy('m.date', 'DESC')
+    	->getQuery();
+    	$msgForumEntity = $query->getResult();
+    	
+    	//recupère le niveau exprérience de l'utilisateur en rapport avec l'experience actuelle
     	$expActuelle  = $utilisateurEntity->getExperience();
     	   	
     	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:NiveauExperience');
@@ -136,7 +157,9 @@ class UtilisateurController extends Controller
             $em = $this->getDoctrine()->getManager();
             $entity->setExperience(1);
             $entity->setNbrCreation(0);
+            $entity->setCreatedAt(new \DateTime());
             $entity->setCredits(0);
+            $entity->setHighScore(0);
             $entity->setEnabled(1);
             $em->persist($entity);
             $em->flush();

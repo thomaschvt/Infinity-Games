@@ -19,7 +19,7 @@ class Jeu
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idJeu;
+    private $id;
 
     /**
      * @var string
@@ -104,9 +104,9 @@ class Jeu
      *
      * @return integer 
      */
-    public function getIdJeu()
+    public function getId()
     {
-        return $this->idJeu;
+        return $this->id;
     }
 
     /**

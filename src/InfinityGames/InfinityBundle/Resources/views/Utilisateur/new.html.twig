@@ -1,17 +1,23 @@
 {% extends "::layout.html.twig" %}
 	{% block contenu_page %}
-<div class="span12">
-	<div class="span3"></div>
-	<div class="span6 bg_form ombre">
-		<h1>Utilisateur creation</h1>
-		
-		<form action="{{ path('utilisateur_create') }}" method="post" {{ form_enctype(form) }}>
-		    {{ form_widget(form) }}
-		    <p>
-		        <button class="btn" type="submit">S'inscire</button>
-		    </p>
-		</form>
-	</div>
-	<div class="span3"></div>
-</div>
+		<h1>Inscription.</h1>
+		<div class="row span12">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam sit amet dui malesuada congue. 
+				Nullam imperdiet elit vel diam dictum laoreet. Nulla pretium quam vitae ante euismod aliquam. Proin pharetra nisi ut 
+				turpis. 
+			</p>
+		</div>
+		<div class="span12">
+			<div class="span5 bg_form ombre">
+				<h1>Utilisateur creation</h1>
+				<form action="{{ path('utilisateur_create') }}" method="post" {{ form_enctype(form) }}>
+				    {{ form_widget(form) }}
+				    <p>
+				        <button class="btn" type="submit">S'inscire</button>
+				    </p>
+				</form>
+			</div>
+			<div class="span6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam sit amet dui malesuada congue. Nullam imperdiet elit vel diam dictum laoreet. Nulla pretium quam vitae ante euismod aliquam. Proin pharetra nisi ut turpis. </div>
+		</div>
 	{% endblock %}
