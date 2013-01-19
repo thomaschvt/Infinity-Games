@@ -1,0 +1,29 @@
+<div class="span11" >
+				 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+				 <script type="text/javascript">
+				      google.load('visualization', '1', {packages: ['imagelinechart']});
+				  </script>
+				  <script type="text/javascript">
+				  //var tabsData = 
+				  
+				
+				      function drawVisualization() {
+				        // Create and populate the data table.
+				        var data = google.visualization.arrayToDataTable([
+				          ['Date', 'Nombre utilisateurs'],
+					        {% for data in entities %}
+							  ['{{ data.date|date('d.m.y') }}',{{ data.nbrUtilisateurs }}],
+						  	{% endfor %}
+				        ]);
+				        // Create and draw the visualization.
+				        new google.visualization.ImageLineChart(document.getElementById('visualization')).
+				            draw(data, null);
+				      }
+				      
+				
+				      google.setOnLoadCallback(drawVisualization);
+				    </script>
+				  </head>
+				  	<h2>Evolution du nombre d'utilisateurs</h2>
+				    <div id="visualization" style="width: 920px;height: 300px;"></div>
+			</div>

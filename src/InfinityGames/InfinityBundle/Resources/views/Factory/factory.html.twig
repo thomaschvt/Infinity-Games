@@ -1,0 +1,58 @@
+{% extends "::layout_bandeau.html.twig" %}
+{% block contenu_bandeau_top %}
+		<div class='row' id='wrapper_intro_factory'>
+			<h1>Documentation Infinity Factory</h1>	
+			<p>
+	    		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec ipsum metus. Fusce nec dui orci, 
+	    		ut hendrerit erat. Fusce id enim ut sapien fermentum rutrum. In mattis eros et lacus porta egestas. Aliquam erat 
+	    		volutpat. Nulla ac porta metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis.	    		.
+	    		</p>
+	    </div>
+	    {% endblock %}
+{% block contenu_page %}
+	<div id="wrapper_doc_factory" class="container-fluid">
+		<div class="row-fluid">
+			
+			<!-- bloc gauche -->
+			<div class="span3 ombre" id="wrapper_link_nav_factory">
+				{% for categorie in entitiesCategories %}
+					<div class="wrapper_nav_factory" id="" data-toggle="collapse" data-parent="#accordion2" href="#{{ loop.index }}">
+						<span>
+							<a href="#">{{ categorie.intitule }}</a>
+						</span>
+						<a href="#" class="pull-right"><i class="icon-plus-sign icon-white"></i></a>
+					</div>
+					<div class="collapse" id="{{ loop.index }}">
+						{% for article in entitiesArticles %}
+							{% if article.idCategorie == categorie %}
+								{% if article.statut == "actif" %}
+									<div class="wrapper_nav_factory_article">
+										<a class="link_nav_factory" href="#content_{{ article.id }}">{{ article.titre }}</a>
+									</div>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endfor %}				    		
+			</div>
+			
+			<!-- bloc droite -->
+			<div class="span9" id="">
+				{% for categorie in entitiesCategories %}
+					<div id="{{ loop.index }}">
+						{% for article in entitiesArticles %}
+							{% if article.idCategorie == categorie %}
+								{% if article.statut == "actif" %}	
+									<div id="content_{{ article.id }}" class="wrapper_article_factory">	
+										<h2 class="titre_article_factory">{{ article.titre }}</h2>
+										<p>{{ article.contenu }}</p>
+									</div>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endfor %}							 
+			</div>
+		</div>
+	</div>			
+{% endblock %}

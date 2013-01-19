@@ -1,0 +1,47 @@
+<h1>ArticlesTodoList list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Contenu</th>
+            <th>Categorie</th>
+            <th>Statut</th>
+            <th>Date</th>
+            <th>Utilisateur</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('articlestodolist_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.titre }}</td>
+            <td>{{ entity.contenu }}</td>
+            <td>{{ entity.categorie }}</td>
+            <td>{{ entity.statut }}</td>
+            <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.utilisateur }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('articlestodolist_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('articlestodolist_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('articlestodolist_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

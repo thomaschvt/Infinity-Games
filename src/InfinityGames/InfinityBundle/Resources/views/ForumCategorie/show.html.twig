@@ -1,40 +1,39 @@
 {% extends "::administration/admin_layout.html.twig" %}
 	{% block content_page %}
-<h1>ForumCategorie</h1>
-
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Intitule</th>
-            <td>{{ entity.intitule }}</td>
-        </tr>
-        <tr>
-            <th>Descriptif</th>
-            <td>{{ entity.descriptif }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('forumcategorie') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('forumcategorie_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('forumcategorie_delete', { 'id': entity.id }) }}" method="post">
+<div class="row">
+	<div class="span1"></div>
+	<div class="span11">
+		<h2>Informations sur la categorie : {{ entity.intitule }}</h2>
+		<div class="row">
+			<span class="span2">Nom de la categorie : </span>
+			<span class="span9">{{ entity.intitule }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Description : </span>
+			<span class="span9">{{ entity.descriptif }}</span>
+		</div>
+	</div>
+	<div class="row span11">
+		<div class="span4"
+			<a href="{{ path('forumcategorie') }}">
+           	 	<button class="btn btn-inverse">
+           	 		<i class="icon-list icon-white"></i> Retour à la liste
+           	 	</button>
+        	</a>
+			<a href="{{ path('forumcategorie_edit', { 'id': entity.id }) }}">
+           	 	<button class="btn btn-info">
+           	 		<i class=" icon-pencil icon-white"></i> Editer la categorie
+           	 	</button>
+        	</a>
+        </div>
+        <div class="span2">
+        	<form action="{{ path('forumcategorie_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger">
+           	 		<i class=" icon-remove icon-white"></i> Supprimer
+           	 </button>
         </form>
-    </li>
-</ul>
+        </div>
+	</div>
+</div>
 {% endblock %}

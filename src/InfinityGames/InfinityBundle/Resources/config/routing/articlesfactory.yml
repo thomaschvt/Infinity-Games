@@ -1,0 +1,34 @@
+articlesfactory:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesFactory:index" }
+
+articlesfactory_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesFactory:show" }
+
+articlesfactory_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesFactory:new" }
+
+articlesfactory_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesFactory:create" }
+    requirements: { _method: post }
+
+articlesfactory_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesFactory:edit" }
+    
+articlesfactory_change_statut:
+    pattern:  /{id}/{statut}/change
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesFactory:changeStatut" }
+
+articlesfactory_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesFactory:update" }
+    requirements: { _method: post }
+
+articlesfactory_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:ArticlesFactory:delete" }
+    requirements: { _method: post }

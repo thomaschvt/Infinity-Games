@@ -27,6 +27,13 @@ class MessageForum
      * @ORM\Column(name="titre", type="string", length=45, nullable=true)
      */
     private $titre;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lu_par_auteur", type="string", length=45, nullable=true)
+     */
+    private $luParAuteur;
 
     /**
      * @var string
@@ -48,6 +55,20 @@ class MessageForum
      * @ORM\Column(name="statut", type="string", length=45, nullable=true)
      */
     private $statut;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr_vues", type="integer", nullable=true)
+     */
+    private $nbrVues;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr_rep", type="integer", nullable=true)
+     */
+    private $nbrRep;
 
     /**
      * @var \ForumCategorie
@@ -92,6 +113,52 @@ class MessageForum
     }
 
     /**
+     * Set nbreVues
+     *
+     * @param integer $nbrVues
+     * @return MessageForum
+     */
+    public function setnbrVues($nbrVues)
+    {
+        $this->nbrVues = $nbrVues;
+    
+        return $this;
+    }
+    
+    /**
+     * Get nbreRep
+     *
+     * @return integer
+     */
+    public function getnbrVues()
+    {
+    	return $this->nbrVues;
+    }
+    
+    /**
+     * Set nbreRep
+     *
+     * @param integer $nbrVues
+     * @return MessageForum
+     */
+    public function setnbrRep($nbrRep)
+    {
+    	$this->nbrRep = $nbrRep;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get nbreVues
+     *
+     * @return integer
+     */
+    public function getnbrRep()
+    {
+    	return $this->nbrRep;
+    }
+    
+    /**
      * Set titre
      *
      * @param string $titre
@@ -99,9 +166,9 @@ class MessageForum
      */
     public function setTitre($titre)
     {
-        $this->titre = $titre;
+    	$this->titre = $titre;
     
-        return $this;
+    	return $this;
     }
 
     /**
@@ -113,7 +180,30 @@ class MessageForum
     {
         return $this->titre;
     }
-
+	
+    /**
+     * Set luParAuteur
+     *
+     * @param string $titre
+     * @return MessageForum
+     */
+    public function setLuParAuteur($lu)
+    {
+    	$this->luParAuteur = $lu;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get luParAuteur
+     *
+     * @return string
+     */
+    public function getLuParAuteur()
+    {
+    	return $this->luParAuteur;
+    }
+    
     /**
      * Set contenu
      *

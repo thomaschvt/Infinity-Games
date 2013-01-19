@@ -1,103 +1,55 @@
-<h1>Utilisateur</h1>
-
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Username</th>
-            <td>{{ entity.username }}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>{{ entity.email }}</td>
-        </tr>
-        <tr>
-            <th>Enabled</th>
-            <td>{{ entity.enabled }}</td>
-        </tr>
-        <tr>
-            <th>Salt</th>
-            <td>{{ entity.salt }}</td>
-        </tr>
-        <tr>
-            <th>Lastlogin</th>
-            <td>{{ entity.lastLogin|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Locked</th>
-            <td>{{ entity.locked }}</td>
-        </tr>
-        <tr>
-            <th>Expired</th>
-            <td>{{ entity.expired }}</td>
-        </tr>       
-        <tr>
-            <th>Roles</th>
-            <td>{{ entity.roles }}</td>
-        </tr>
-       
-        
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Prenom</th>
-            <td>{{ entity.prenom }}</td>
-        </tr>
-        <tr>
-            <th>Nom</th>
-            <td>{{ entity.nom }}</td>
-        </tr>
-        <tr>
-            <th>Avatarurl</th>
-            <td>{{ entity.avatarUrl }}</td>
-        </tr>
-        <tr>
-            <th>Highscore</th>
-            <td>{{ entity.highScore }}</td>
-        </tr>
-        <tr>
-            <th>Experience</th>
-            <td>{{ entity.experience }}</td>
-        </tr>
-        <tr>
-            <th>Nbrcreation</th>
-            <td>{{ entity.nbrCreation }}</td>
-        </tr>
-        <tr>
-            <th>Mdp</th>
-            <td>{{ entity.mdp }}</td>
-        </tr>
-        <tr>
-            <th>Credits</th>
-            <td>{{ entity.credits }}</td>
-        </tr>
-        <tr>
-            <th>Statutdeveloppeur</th>
-            <td>{{ entity.statutDeveloppeur }}</td>
-        </tr>
-        <tr>
-            <th>Bonusblasonid</th>
-            <td>{{ entity.bonusBlasonId }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('utilisateur') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('utilisateur_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('utilisateur_delete', { 'id': entity.id }) }}" method="post">
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+<div class="row">
+	<div class="span1"></div>
+	<div class="span11">
+		<h2>Informations {{ entity.username }}</h2>
+		<div class="row">
+			<span class="span2">Pseudonyme : </span>
+			<span class="span9">{{ entity.username }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Nom : </span>
+			<span class="span9">{{ entity.nom }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Prenom : </span>
+			<span class="span9">{{ entity.prenom }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Email : </span>
+			<span class="span9">{{ entity.email }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Membre depuis : </span>
+			<span class="span9">{{ entity.createdAt|date ('d-m-Y - g:i') }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Dernière connexion : </span>
+			<span class="span9">{{ entity.lastLogin|date ('d-m-Y - g:i') }}</span>
+		</div>
+	</div>
+	<div class="row span11">
+		<div class="span3"
+			<a href="{{ path('utilisateur') }}">
+           	 	<button class="btn btn-inverse">
+           	 		<i class="icon-list icon-white"></i> Retour à la liste
+           	 	</button>
+        	</a>
+			<a href="{{ path('utilisateur_edit', { 'id': entity.id }) }}">
+           	 	<button class="btn btn-info	">
+           	 		<i class=" icon-pencil icon-white"></i> Editer le profil
+           	 	</button>
+        	</a>
+        </div>
+        <div class="span2">
+        	<form action="{{ path('utilisateur_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger">
+           	 		<i class=" icon-remove icon-white"></i> Supprimer
+           	 </button>
         </form>
-    </li>
-</ul>
+        </div>
+	</div>
+</div>
+{% endblock %}

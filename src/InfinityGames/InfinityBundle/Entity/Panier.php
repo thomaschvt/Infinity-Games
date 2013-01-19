@@ -34,7 +34,7 @@ class Panier{
 	*/
 	
 	/**
-	 * Enter description here ...
+	 * recupère les produits ...
 	 */
 	public function getProduits() {
 		return $this->produits;
@@ -48,7 +48,7 @@ class Panier{
 	}
 	
 	/**
-	 * Enter description here ...
+	 * 
 	 * @return unknown
 	 */
 	public function getPrixTTC() {
@@ -175,9 +175,12 @@ class Panier{
 	
 			$this->nbProduits -= $qtt;
 			$this->prixHT -= ($qtt * $prixHT);
-		} else {
-			// TODO: traitement d'erreur
-		}
+		} 
+	}
+	
+	public function vider(){
+		
+		
 	}
 	
 	/**

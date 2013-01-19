@@ -1,56 +1,53 @@
 {% extends "::administration/admin_layout.html.twig" %}
 	{% block content_page %}
-<h1>Jeu</h1>
-
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Nom</th>
-            <td>{{ entity.nom }}</td>
-        </tr>
-        <tr>
-            <th>Note</th>
-            <td>{{ entity.note }}</td>
-        </tr>
-        <tr>
-            <th>Createdat</th>
-            <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Updateda</th>
-            <td>{{ entity.updateda|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Visuelimg</th>
-            <td>{{ entity.visuelImg }}</td>
-        </tr>
-        <tr>
-            <th>Destindex</th>
-            <td>{{ entity.destIndex }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('jeu') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('jeu_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('jeu_delete', { 'id': entity.id }) }}" method="post">
+<div class="row">
+	<div class="span1"></div>
+	<div class="span11">
+		<h2>Informations {{ entity.nom }}</h2>
+		<div class="row">
+			<span class="span2">Nom du jeu : </span>
+			<span class="span9">{{ entity.nom }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Style de jeu : </span>
+			<span class="span9">{{ entity.genreJeuGenreJeu }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Note : </span>
+			<span class="span9">{{ entity.note }} / 5</span>
+		</div>
+		<div class="row">
+			<span class="span2">Mise en ligne le : </span>
+			<span class="span9">{{ entity.createdAt|date ('d-m-Y') }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Page de jeu : </span>
+			<span class="span9">
+				<a href="">{{ entity.destIndex }}</a>
+			</span>
+		</div>
+	</div>
+	<div class="row span11">
+		<div class="span3"
+			<a href="{{ path('utilisateur') }}">
+           	 	<button class="btn btn-inverse">
+           	 		<i class="icon-list icon-white"></i> Retour à la liste
+           	 	</button>
+        	</a>
+			<a href="{{ path('utilisateur_edit', { 'id': entity.id }) }}">
+           	 	<button class="btn btn-inverse">
+           	 		<i class=" icon-pencil icon-white"></i> Editer le profil
+           	 	</button>
+        	</a>
+        </div>
+        <div class="span2">
+        	<form action="{{ path('utilisateur_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger">
+           	 		<i class=" icon-remove icon-white"></i> Supprimer
+           	 </button>
         </form>
-    </li>
-</ul>
+        </div>
+	</div>
+</div>
 {% endblock %}

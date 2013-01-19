@@ -1,0 +1,30 @@
+statsutilisateur:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:StatsUtilisateur:index" }
+
+statsutilisateur_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:StatsUtilisateur:show" }
+
+statsutilisateur_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:StatsUtilisateur:new" }
+
+statsutilisateur_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:StatsUtilisateur:create" }
+    requirements: { _method: post }
+
+statsutilisateur_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:StatsUtilisateur:edit" }
+
+statsutilisateur_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:StatsUtilisateur:update" }
+    requirements: { _method: post }
+
+statsutilisateur_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:StatsUtilisateur:delete" }
+    requirements: { _method: post }

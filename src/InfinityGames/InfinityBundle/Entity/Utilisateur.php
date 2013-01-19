@@ -21,7 +21,13 @@ class Utilisateur extends BaseUser
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
    protected $id;
-
+   
+   /**
+    * @var \DateTime
+    *
+    * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+    */
+   private $createdAt;
     /**
      * @var string
      *
@@ -133,13 +139,36 @@ class Utilisateur extends BaseUser
     }
 
     /**
-     * Get prenom
+     * Get createdAt
      *
      * @return string 
      */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+    
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     * @return Utilisateur
+     */
+    public function setCreatedAt($date)
+    {
+    	$this->createdAt = $date;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
     public function getPrenom()
     {
-        return $this->prenom;
+    	return $this->prenom;
     }
 
     /**

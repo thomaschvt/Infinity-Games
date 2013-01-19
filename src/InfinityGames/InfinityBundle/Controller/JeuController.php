@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use InfinityGames\InfinityBundle\Entity\Jeu;
+use InfinityGames\InfinityBundle\Entity\GenreJeu;
 use InfinityGames\InfinityBundle\Form\JeuType;
 
 /**
@@ -23,9 +24,11 @@ class JeuController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('InfinityGamesInfinityBundle:Jeu')->findAll();
+        $entitiesGenre = $em->getRepository('InfinityGamesInfinityBundle:GenreJeu')->findAll();
 
         return $this->render('InfinityGamesInfinityBundle:Jeu:index.html.twig', array(
             'entities' => $entities,
+        	'genreJeu' =>$entitiesGenre,
         ));
     }
    /**
@@ -89,6 +92,12 @@ class JeuController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
+        	//upload d'img
+        	$dir = "../Resources/public/image";
+        	$someNewFilename = "nouveauNom";
+        	$visuelImg = $form['visuelImg']->getData()->move($dir, $someNewFilename);
+        	var_dump($visuelImg);
+        	//
             $em = $this->getDoctrine()->getManager();
             $entity->setCreatedat(new \DateTime());
             $em->persist($entity);

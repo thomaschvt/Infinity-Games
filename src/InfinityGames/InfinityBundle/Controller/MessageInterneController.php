@@ -87,6 +87,7 @@ class MessageInterneController extends Controller
             $utilisateurCourant = $this->get('security.context')->getToken()->getUser();
             $utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($utilisateurCourant);                        
             $entity->setExpediteur($utilisateurEntity);
+            $entity->setStatut("non-lu");
             $em->flush();
 			
             $this->get('session')->getFlashBag()->add('notice', 'Votre message a bien été envoyé.');
@@ -190,6 +191,39 @@ class MessageInterneController extends Controller
     	 return $this->redirect($this->generateUrl('utilisateur_profil', array('id' => $id)));
     	 
     }
+    
+    public function readAction($id){
+    	//on recupère le msg interne concerné
+    	$em = $this->getDoctrine()->getManager();
+    	$entity = $em->getRepository('InfinityGamesInfinityBundle:MessageInterne')->find($id);
+    	//on met a jour le statut
+    	$entity->setStatut("lu");
+    	//on crée le form de suppression et de reponse
+    	$deleteForm = $this->createDeleteForm($id);
+    	$form   = $this->createForm(new MessageInterneType(), $entity);
+    	
+    	//on met a jour en bdd
+    	$em->persist($entity);
+    	$em->flush();
+    	
+    	return $this->render('InfinityGamesInfinityBundle:MessageInterne:read.html.twig', array(
+    			'entity'      => $entity,
+    			'delete_form' => $deleteForm->createView(),
+    			'repForm' =>$form->createView(),
+    	));
+    }
+    
+    public function deleteOneAction($id){
+    	$em = $this->getDoctrine()->getManager();
+    	$entity = $em->getRepository('InfinityGamesInfinityBundle:MessageInterne')->find($id);
+    	$userEntity = $entity->getExpediteur()->getId();
+    	
+    	$em->remove($entity);
+    	$em->flush();
+    	
+    	return $this->redirect($this->generateUrl('utilisateur_profil', array('id' => $userEntity)));
+    }
+    
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))

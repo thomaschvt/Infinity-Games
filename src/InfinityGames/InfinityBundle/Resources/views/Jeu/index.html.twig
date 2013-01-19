@@ -1,50 +1,93 @@
 {% extends "::administration/admin_layout.html.twig" %}
 	{% block content_page %}
-<h1>Jeu list</h1>
-
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Note</th>
-            <th>Createdat</th>
-            <th>Updateda</th>
-            <th>Visuelimg</th>
-            <th>Destindex</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('jeu_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.nom }}</td>
-            <td>{{ entity.note }}</td>
-            <td>{% if entity.createdat %}{{ entity.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{% if entity.updateda %}{{ entity.updateda|date('Y-m-d H:i:s') }}{% endif %}</td>
-            <td>{{ entity.visuelImg }}</td>
-            <td>{{ entity.destIndex }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('jeu_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('jeu_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-<ul>
-    <li>
-        <a href="{{ path('jeu_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+<h1>Gestion des jeux</h1>
+<div class="span12 bloc_wrapper_jeu_admin">
+	 <a href="{{ path('jeu_new') }}" class="btn_add_admin_table">
+	     	<button class="btn btn-success">Ajouter un jeu</button>
+	     </a>
+	<a href="{{ path('genrejeu_new') }}" class="btn_add_admin_table">
+	     	<button class="btn btn-success">Ajouter un genre</button>
+	     </a>
+	<div id="list_user">
+		<h2>Liste des jeux : </h2>
+		<table id="listing_admin" class="display dataTable listing_admin" width="95%" cellspacing="50" cellpadding="50" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
+			<thead>
+				<tr role="row">
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Nom</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Genre du jeu">Genre</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Genre du jeu">En ligne le :</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Note</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending"></th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending"></th>
+				</tr>
+			</thead>
+			<tfoot>
+			<tbody role="alert" aria-live="polite" aria-relevant="all">
+			{% for game in entities %}
+			 		<td class="sorting_1">{{ game.nom }}</td>
+			 		<td class="sorting_1">{{ game.genreJeuGenreJeu }}</td>
+			 		<td class="sorting_1">{{ game.createdAt|date("d-m-Y") }}</td>
+					<td class="sorting_1">{{ game.note }} / 5</td>
+					<td class="sorting_1">
+						<a href="{{ path("jeu_show",{'id':game.id}) }}" title="Voir la fiche du jeu">
+							<button class="btn">
+								<i class=" icon-eye-open"></i>
+							</button>
+						</a>
+					</td>
+					<td class="sorting_1">
+						<a href="{{ path("jeu_edit",{'id':game.id}) }}" title="Editer la fiche du jeu">
+							<button class="btn btn-info">
+								<i class=" icon-edit"></i>
+							</button>
+						</a>
+					</td>
+				</tr>	
+			{% endfor %} 	
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+<hr/>
+<!--genre jeux-->
+<div class="span12 bloc_wrapper_jeu_admin">
+	<div id="list_user">
+		<h2>Liste des style de jeu : </h2>
+		<table id="listing_admin" class="display dataTable listing_admin" width="95%" cellspacing="50" cellpadding="50" border="0" aria-describedby="classement des joueurs" style="width: 100%;">
+			<thead>
+				<tr role="row">
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Nom</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Genre du jeu">Descriptif</th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending"></th>
+				<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending"></th>
+				</tr>
+			</thead>
+			<tfoot>
+			<tbody role="alert" aria-live="polite" aria-relevant="all">
+			{% for genre in genreJeu %}
+			 		<td class="sorting_1">{{ genre.intitule }}</td>
+			 		<td class="sorting_1">{{ genre.descriptif }}</td>
+					<td class="sorting_1">
+						<a href="{{ path("genrejeu_show",{'id':genre.idGenreJeu}) }}" title="Voir la fiche du genre">
+							<button class="btn">
+								<i class=" icon-eye-open"></i>
+							</button>
+						</a>
+					</td>
+					<td class="sorting_1">
+						<a href="{{ path("genrejeu_edit",{'id':genre.idGenreJeu}) }}" title="Editer la fiche du genre">
+							<button class="btn btn-info">
+								<i class=" icon-edit"></i>
+							</button>
+						</a>
+					</td>
+				</tr>	
+			{% endfor %} 	
+			</tbody>
+		</table>
+		 
+	</div>
+	
+</div>
 {% endblock %}

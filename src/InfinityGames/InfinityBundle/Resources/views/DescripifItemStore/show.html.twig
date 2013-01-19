@@ -1,49 +1,55 @@
-<h1>DescripifItemStore</h1>
-
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Intitule</th>
-            <td>{{ entity.intitule }}</td>
-        </tr>
-        <tr>
-            <th>Statut</th>
-            <td>{{ entity.statut }}</td>
-        </tr>
-        <tr>
-            <th>Descriptif</th>
-            <td>{{ entity.descriptif }}</td>
-        </tr>
-        <tr>
-            <th>Prix</th>
-            <td>{{ entity.prix }}</td>
-        </tr>
-        <tr>
-            <th>Dureetemps</th>
-            <td>{{ entity.dureeTemps }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('descripifitemstore') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('descripifitemstore_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('descripifitemstore_delete', { 'id': entity.id }) }}" method="post">
+{% extends "::administration/admin_layout.html.twig" %}
+	{% block content_page %}
+<div class="row">
+	<div class="span1"></div>
+	<div class="span11">
+		<h2>Informations sur l' item :  {{ entity.intitule }}</h2>
+		<div class="row">
+			<span class="span2">Intitule : </span>
+			<span class="span9">{{ entity.intitule }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Statut : </span>
+			<span class="span9">{{ entity.statut }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Type : </span>
+			<span class="span9">{{ entity.TypeItem }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">descriptif : </span>
+			<span class="span9">{{ entity.descriptif }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Prix : </span>
+			<span class="span9">{{ entity.prix }}</span>
+		</div>
+		<div class="row">
+			<span class="span2">Durée : </span>
+			<span class="span9">{{ entity.dureeTemps }}</span>
+		</div>
+	</div>
+	<div class="row span11">
+		<div class="span3"
+			<a href="{{ path("descripifitemstore") }}">
+           	 	<button class="btn btn-inverse">
+           	 		<i class="icon-list icon-white"></i> Retour à la liste
+           	 	</button>
+        	</a>
+			<a href="{{ path('descripifitemstore_edit', { 'id': entity.id }) }}">
+           	 	<button class="btn btn-info	">
+           	 		<i class=" icon-pencil icon-white"></i> Editer le genre
+           	 	</button>
+        	</a>
+        </div>
+        <div class="span2">
+        	<form action="{{ path('descripifitemstore_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger">
+           	 		<i class=" icon-remove icon-white"></i> Supprimer
+           	 </button>
         </form>
-    </li>
-</ul>
+        </div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+typeitemstore:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:TypeItemStore:index" }
+
+typeitemstore_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:TypeItemStore:show" }
+
+typeitemstore_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:TypeItemStore:new" }
+
+typeitemstore_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:TypeItemStore:create" }
+    requirements: { _method: post }
+
+typeitemstore_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:TypeItemStore:edit" }
+
+typeitemstore_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:TypeItemStore:update" }
+    requirements: { _method: post }
+
+typeitemstore_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:TypeItemStore:delete" }
+    requirements: { _method: post }
+typeitemstore_add_famille:
+    pattern:  /{id}/add
+    defaults: { _controller: "InfinityGamesInfinityBundle:TypeItemStore:addSousFamille" }
+    requirements: { _method: post }

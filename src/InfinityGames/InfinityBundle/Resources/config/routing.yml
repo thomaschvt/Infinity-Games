@@ -19,6 +19,9 @@ InfinityGamesInfinityBundle_niveaucreation:
 InfinityGamesInfinityBundle_niveauexperience:
         resource: "@InfinityGamesInfinityBundle/Resources/config/routing/niveauexperience.yml"
         prefix:   /niveauexperience
+InfinityGamesInfinityBundle_typeitemstore:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/typeitemstore.yml"
+        prefix:   /typeitemstore
 InfinityGamesInfinityBundle_utilisateur:
         resource: "@InfinityGamesInfinityBundle/Resources/config/routing/utilisateur.yml"
         prefix:   /utilisateur
@@ -55,4 +58,21 @@ infinity_games_infinity_validation_commande:
 infinity_games_infinity_modifie_add:
     pattern:  /panier/increment/{id}
     defaults: { controller: InfinityGamesInfinityBundle:Panier:incrementQtt }
-
+InfinityGamesInfinityBundle_statsutilisateur:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/statsutilisateur.yml"
+        prefix:   /statsutilisateur
+InfinityGamesInfinityBundle_categoriefactory:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/categoriefactory.yml"
+        prefix:   /categoriefactory
+InfinityGamesInfinityBundle_articlesfactory:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/articlesfactory.yml"
+        prefix:   /articlesfactory
+infinity_games_infinity_factory:
+    pattern:  /factory
+    defaults: { _controller: InfinityGamesInfinityBundle:CategorieFactory:affichageIndex }
+infinity_games_test_maintenance:
+    pattern:  /maintenance
+    defaults: { _controller: InfinityGamesInfinityBundle:Administration:countUtilisateurs }
+InfinityGamesInfinityBundle_articlestodolist:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/articlestodolist.yml"
+        prefix:   /articlestodolist

@@ -32,6 +32,10 @@ messageforum_delete:
 messageforum_read_topic:
     pattern:  /{id}/read
     defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:readTopic" }
+
+messageforum_change_statut_topic:
+    pattern:  /{id}/{statut}/change
+    defaults: { _controller: "InfinityGamesInfinityBundle:MessageForum:changeStatut" }
     
 messageforum_reponse:
     pattern:  /{id}/reponse

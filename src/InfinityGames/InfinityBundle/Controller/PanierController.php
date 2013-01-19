@@ -26,7 +26,6 @@ class PanierController extends Controller
     	$listProduit = $panierCourant->getProduits();
     	$totalHT = $panierCourant->getPrixHT();
     	$totalTTC = $panierCourant->getPrixTTC();
-    	
     	//envoi des infos d'affichage du panier
     	return $this->render('InfinityGamesInfinityBundle:Panier:panier.html.twig', array(
     			'panier'=>$listProduit,
@@ -88,6 +87,7 @@ class PanierController extends Controller
     	$panierCourant->ajouterQtt($produitaModifier->getId(), $produitaModifier->getIntitule(), $produitaModifier->getDescriptif(), $produitaModifier->getPrix());
     	return $this->redirect($this->generateUrl('infinity_games_infinity_panier_affichage')); 	 	
     }
+    
 	public function createForm($type, $data = null, array $options = array()) {
 		// TODO: Auto-generated method stub
 
@@ -100,6 +100,13 @@ class PanierController extends Controller
      *
      */
     public function viderPanierAction(){
+    	//recupération du panier
+    	$session = $this->getRequest()->getSession();
+    	$panierCourant = $session->get('panier');
+    	//supprime un produit
+    	$panierRefresh = $panierCourant->vider();
+    	//renvoi vers l'affichage panier
+    	return $this->redirect($this->generateUrl('infinity_games_infinity_panier_affichage'));
     	
     }
     

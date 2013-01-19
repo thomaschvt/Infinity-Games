@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
         	new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-        	//new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+ 
         		
            
             new InfinityGames\AccueilBundle\InfinityGamesAccueilBundle(),

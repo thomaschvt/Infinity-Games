@@ -1,14 +1,33 @@
 {% extends "::layout.html.twig" %}
-
 {% block contenu_page %}
-	<div class="span3"></div>
-	<div class="span6">
+
+	<div class="span6" id="wrapper_contact_form">
+		<h1>Formulaire</h1>
 		<form action="{{ path('infinity_games_infinity_contact') }}" method="post" {{ form_enctype(formMail) }}>
-	   		{{ form_widget(formMail)}}
+	   		{{ form_widget(formMail,{'attr':{'class':'label_form_contact'}})}}
 	   		<p>
-	    		<button class="btn" type="submit">Envoyer</button>
+	    		<button class="btn btn-warning" type="submit">Envoyer</button>
 	   		</p>
 		</form>
 	</div>
-	<div class="span3"></div>		
+	<div class="span6" id="wrapper_contact_information">
+		<h1>Informations de contact</h1>
+		<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec dolor ligula, id dictum sem. Suspendisse potenti. Nam vitae mauris nec nunc tincidunt tincidunt. Donec facilisis, urna quis porta condimentum, erat odio egestas lectus, quis iaculis ligula nisl vulputate dui. In ac est id nisl iaculis rutrum. Donec risus dui, vehicula sodales sollicitudin quis, posuere sit amet dui. In ligula ante, rhoncus vitae malesuada non, blandit ut risus.
+</br></br>
+Praesent porta auctor tempor. Vivamus congue suscipit felis vitae laoreet. Cras iaculis vehicula dapibus. Vivamus diam ipsum, suscipit sit amet fringilla sit amet, facilisis vel lectus. Proin dapibus pellentesque dolor, ut euismod. 
+		</p>
+		</br>
+		<ul>
+			<li>Infinity Factory Company</li>
+			<li>Rue de la Faïencerie</li>
+			<li>33000 Bordeaux France</li>
+		</ul>
+		</br>
+		<ul>
+			<li>tel : +33 123 456 789</li>
+			<li>email : <a href="mailto:contact@if.com">contact@if.com</a></li>
+		</ul>
+	</div>		
+		
 {% endblock %}

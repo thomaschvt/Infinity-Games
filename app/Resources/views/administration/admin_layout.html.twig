@@ -1,11 +1,39 @@
 {% include "::administration/header_admin.html.twig" %}
 <div id="wrap">
-	<div class="container">
-
-		{% block content_page %}
-        
-        {% endblock %}
-     </div>
-     <div id="push"></div>
+		<div id="container_admin_dark" class="container-fluid">
+		    <div class="row-fluid">
+			    <div class="span2">
+			    	    <ul class="nav nav-pills nav-stacked">
+			    	    	<li>
+					   			<a href="#">Résumé</a>
+					   		</li>
+					   		<li>
+					   			<a href="{{ path("utilisateur") }}">Utilisateurs</a>
+					   		</li>
+					   		<li>
+					   			<a href="{{ path("jeu") }}">Jeux</a>
+					   		</li>
+					   		<li>
+					   			<a href="{{ path("forumcategorie") }}">Forum</a>
+					   		</li>
+					   		<li>
+					   			<a href="{{ path("categoriefactory") }}">Factory</a>
+					   		</li>
+					   		<li>
+					   			<a href="{{ path("descripifitemstore") }}">Store</a>
+					   		</li>
+					   		<li>
+					   			<a href="#">Todo List</a>
+					   		</li>
+					    </ul>
+			    </div>
+			 
+			    <div id="container_info_admin_light" class="span10 pull_right">
+			    	{% block content_page %}
+        				
+       				{% endblock %}
+			    </div>
+		    </div>
+	    </div> 
 </div>
 {% include "::administration/footer_admin.html.twig" %}

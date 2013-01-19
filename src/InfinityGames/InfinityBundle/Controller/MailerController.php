@@ -58,10 +58,10 @@ class MailerController extends Controller
     private function createMailForm()
     {
     	return $this->createFormBuilder()
-    	->add('nom', 'text', array('label'=>'Votre nom'))
-        ->add('prenom', 'text', array('label'=>'Votre prénom'))
-        ->add('email', 'text', array('label'=>'Votre email'))
-        ->add('objet', 'text', array('label'=>'Objet'))
+    	->add('nom', 'text', array('label'=>'Votre nom','attr'=> array('class'=>'inp_mail_form')))
+        ->add('prenom', 'text', array('label'=>'Votre prénom','attr'=> array('class'=>'inp_mail_form')))
+        ->add('email', 'text', array('label'=>'Votre email','attr'=> array('class'=>'inp_mail_form')))
+        ->add('objet', 'text', array('label'=>'Objet','attr'=> array('class'=>'inp_mail_form')))
         ->add('contenu','textarea',array('label'=>'Votre message'))
     	->getForm()
     	

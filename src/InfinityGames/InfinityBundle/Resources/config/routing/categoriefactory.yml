@@ -1,0 +1,30 @@
+categoriefactory:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:CategorieFactory:index" }
+
+categoriefactory_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:CategorieFactory:show" }
+
+categoriefactory_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:CategorieFactory:new" }
+
+categoriefactory_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:CategorieFactory:create" }
+    requirements: { _method: post }
+
+categoriefactory_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:CategorieFactory:edit" }
+
+categoriefactory_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:CategorieFactory:update" }
+    requirements: { _method: post }
+
+categoriefactory_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:CategorieFactory:delete" }
+    requirements: { _method: post }
