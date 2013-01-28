@@ -15,7 +15,7 @@ class JeuType extends AbstractType
             ->add('descriptif', 'textarea', array('label'=>'descriptif du jeu'))
             ->add('visuelImg','file', array('label'=>'Visuel du jeu'))
             ->add('destIndex', 'text', array('label'=>'Url de la page du jeu'))
-            ->add('utilisateurUtilisateur','entity', array('class'=>'InfinityGamesInfinityBundle:Utilisateur','label'=>'Auteur du jeu','required'=>'true'))
+           // ->add('utilisateurUtilisateur','entity', array('class'=>'InfinityGamesInfinityBundle:Utilisateur','label'=>'Auteur du jeu','required'=>'true'))
             ->add('genreJeuGenreJeu','entity', array('class'=>'InfinityGamesInfinityBundle:GenreJeu','label'=>'Type du jeu','required'=>'true'))
         ;
     }

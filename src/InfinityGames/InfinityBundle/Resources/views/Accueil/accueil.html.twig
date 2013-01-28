@@ -58,37 +58,59 @@
 	    </div>
 	    <div id="wrapper_lower_accueil" class="row"> 
 	    <!-- Games -->
-	    	<div id="wrapper_last_game_accueil" class="span8 ombre">
+	    	{% if dernierJeu is defined %}
+	    	<div id="wrapper_last_game_accueil" class="span12 ombre">
 	    		<h1 class="title_lower_accueil">Dernier jeu</h1>
 	    		<div id="visu_last_game_accueil" class="span5">
-	    			<img src="{{ asset('image/visu_tmp.png') }}">
+	    			<img src="{{ asset(dernierJeu.visuelImg) }}">
 	    		</div>
 	    		<div id="desc_last_game_accueil" class="span3">
 		    		<p>
-			    		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec ipsum metus. Fusce nec dui orci, 
-			    		ut hendrerit erat. Fusce id enim ut sapien fermentum rutrum. In mattis eros et lacus porta egestas. 
+{# 		    				{{ dump(dernierJeu) }}#}
+		    				{{ dernierJeu.descriptif}}
 		    		</p>
-		    		<a href="" class="btn btn-warning">Jouer</a>
-		    		<a href="" class="btn ">Tous les jeux</a>
+		    		{% if app.user.username is defined %}
+		    			<a href="http://www.pixelreseller.com/test_ig?username={{ app.user.username }}&salt={{ app.user.salt }}&pwd={{ app.user.password }}" class="btn btn-warning">Jouer</a>
+		    			<a href="{{ path('jeu_catalogue') }}" class="btn ">Tous les jeux</a>
+		    		{% else %}
+		    			<a href="{{ dernierJeu.destIndex }}?username=0&salt=0&pwd=0" class="btn btn-warning">Jouer</a>
+		    			<a href="{{ path('jeu_catalogue') }}" class="btn ">Tous les jeux</a>
+		    		{% endif %}
 	    		</div>
-	    		
+	    		{% endif %}
+	    		<div id="classement_overall_accueil" class="span3">
+	    			<h1 id="titre_classement_accueil">Wall of Fame</h1>
+	    			{% if highScoreEntities is defined %}
+			    		{% for lineScore in highScoreEntities %}
+			    			<div class="line_highscore_accueil">
+			    				<span class="num_row_classement_accueil">{{ loop.index }}</span>
+			    				<span class="nom_row_classement_accueil">
+			    					<a href="{{ path('utilisateur_profil',{'id': lineScore.id}) }}">{{ lineScore.userName }}</a>	
+			    				</span>
+			    				<span class="pull-right">{{ lineScore.highScore }}</span>
+			    			</div>
+			    		{% endfor %}
+		    		{% endif %}
+	    		</div>
 	    	</div>
-	    	<div id="wrapper_last_topics" class="span4 ombre">
-	    		<h1 class="title_topic_lower_accueil">Derniers Topics</h1>
-	    		{% for topic in forumEntities %}
-	    			<a class="wrapper_line_topics_accueil" href="">
-		    			<div class="line_topics_accueil span4">
-		    				<span class="span2">
-		    					{{ topic.titre }}
-		    				</span>
-		    				<span class="date_topic_last_topic_accueil span1 pull-right">
-		    					{{ topic.date|date('d.m.Y') }}
-		    				</span>
-		    			</div>
-	    			</a>
-	    		{% endfor %}
+	   </div>
+	   <!-- forum -->
+	   <div id="wrapper_last_topics" class="row ombre">
+	    		<h1 class="title_topic_lower_accueil btn-inverse">Derniers Topics</h1>
+	    		{% if forumEntities is defined %}
+		    		{% for topic in forumEntities %}
+		    			<a class="wrapper_line_topics_accueil" href="">
+			    			<div class="line_topics_accueil span12">
+			    				<span class="span2">
+			    					{{ topic.titre }}
+			    				</span>
+			    				<span class="date_topic_last_topic_accueil span1 pull-right">
+			    					{{ topic.date|date('d.m.Y') }}
+			    				</span>
+			    			</div>
+		    			</a>
+		    		{% endfor %}
+	    		{% endif %}
 	    		<a id="btn_voir_furm_last_topic_accueil"href="" class="btn pull-right">Voir le forum</a>
 	    	</div>
-	     <!-- forum -->   
-	   </div>
 	{% endblock %}

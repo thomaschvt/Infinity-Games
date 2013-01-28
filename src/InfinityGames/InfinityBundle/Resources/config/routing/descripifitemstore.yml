@@ -38,3 +38,6 @@ descripifitemstore_catalogue:
 descripifitemstore_catalogue_tri:
     pattern:  /{categorie}/{type}/tri_catalogue
     defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:triItem" }
+descripifitemstore_catalogue_achat:
+    pattern:  /{user}/{item}/achat_item
+    defaults: { _controller: "InfinityGamesInfinityBundle:DescripifItemStore:achatItem" }

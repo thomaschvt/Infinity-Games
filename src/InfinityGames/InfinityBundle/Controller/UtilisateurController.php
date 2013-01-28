@@ -11,6 +11,8 @@ use InfinityGames\InfinityBundle\Entity\Utilisateur;
 use InfinityGames\InfinityBundle\Entity\MessageInterne;
 use InfinityGames\InfinityBundle\Entity\MessageForum;
 use InfinityGames\InfinityBundle\Entity\NiveauExperience;
+use InfinityGames\InfinityBundle\Entity\LiaisonItemUser;
+use InfinityGames\InfinityBundle\Entity\top_score_jeu;
 use InfinityGames\InfinityBundle\Form\MessageInterneType;
 use InfinityGames\InfinityBundle\Form\UtilisateurType;
 
@@ -28,10 +30,7 @@ class UtilisateurController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 		//liste des utilisateurs
-        $entities = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->findAll();
-		
-        
-        
+        $entities = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->findAll();   
         return $this->render('InfinityGamesInfinityBundle:Utilisateur:index.html.twig', array(
             'entities' => $entities,
         	
@@ -71,47 +70,26 @@ class UtilisateurController extends Controller
     	//recupere les infos de compte
     	$utilisateurCourant = $this->get('security.context')->getToken()->getUser();
     	$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($id);
-    	//$utilisateurEntity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($id);
     	
     	//recupère les msg ou utilisateur est destinataire
-    	//$msgEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageInterne')->findBydestinataire($utilisateurEntity);
-    	
-    	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:MessageInterne');
-    	$query = $repository->createQueryBuilder('m')
-	    	->setParameter('dest', $utilisateurEntity)
-	    	->where('m.destinataire = :dest')
-	    	->orderBy('m.date', 'DESC')
-	    	->getQuery();
-    	$msgEntity = $query->getResult();
+    	$msgEntity =  $em->getRepository('InfinityGamesInfinityBundle:MessageInterne')->findAllMsgInterneByUser($utilisateurEntity);
     	
     	//recupère les msg de forum ou l'utilisateur est propriétaire
-    	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:MessageForum');
-    	$query = $repository->createQueryBuilder('m')
-    	->setParameter('auteur', $utilisateurEntity)
-    	->where('m.utilisateur = :auteur')
-    	->orderBy('m.luParAuteur', 'DESC')
-    	->orderBy('m.date', 'DESC')
-    	->getQuery();
-    	$msgForumEntity = $query->getResult();
+    	$msgForumEntity = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->findAllTopicByUser($utilisateurEntity);
     	
     	//recupère le niveau exprérience de l'utilisateur en rapport avec l'experience actuelle
     	$expActuelle  = $utilisateurEntity->getExperience();
-    	   	
-    	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:NiveauExperience');
-    	$query = $repository->createQueryBuilder('n')
-    	->setParameter('exp', $expActuelle)
-    		->where('n.limiteHaute > :exp')
-    		->andWhere('n.limiteBasse < :exp')
-    		->orderBy('n.intitule', 'DESC')
-    		->getQuery();
-		$niveauExpEntity = $query->getSingleResult();
-   
+    	$niveauExpEntity = $em->getRepository('InfinityGamesInfinityBundle:NiveauExperience')->findOneNiveau($expActuelle);
+    	
+    	//recupère les objets que l'utilisateurs a acheté
+    	$itemLie = $em->getRepository('InfinityGamesInfinityBundle:LiaisonItemUser')->findLiaisonByUser($utilisateurEntity->getId());
+    	
+    	//recupère les topScores par jeu que l'utilisateur a réalisé
+    	$topScoreByJeu = $em->getRepository('InfinityGamesInfinityBundle:TopScoreJeu')->findByUser($utilisateurEntity);
     	
     	//Creation du form d'envoi de message
     	$entityMsg = new MessageInterne();
     	$formMsg   = $this->createForm(new MessageInterneType(), $entityMsg);
-    	
-    	
     	
     	if (!$utilisateurEntity) {
     		throw $this->createNotFoundException('Aucun utilisateur ne correspond à cet identifiant.');
@@ -124,6 +102,8 @@ class UtilisateurController extends Controller
     		'entityMsgForum' => $msgForumEntity,
     		'niveauExp' => $niveauExpEntity,
     		'xpActuelle' => $expActuelle,
+    		'itemLie' => $itemLie,
+    		'topScores' =>$topScoreByJeu,
     		'form'   => $formMsg->createView(),
     		));
     }
@@ -154,11 +134,31 @@ class UtilisateurController extends Controller
         $form->bind($request);
 		
         if ($form->isValid()) {
+        	
+        	//upload d'img
+        	//on définit le dossier ou envoyer les images
+        	$dir = "../web/image/img_user";
+        	//on recupère le nom original du fichier
+        	$nomBase = $form['avatarUrl']->getData()->getClientOriginalName();
+        	//on découpe le nom du fichier pr recup l'extension
+        	$extension=strrchr($nomBase,'.');
+        	$extension=substr($extension,1) ;
+        	//on génère le nouveau nom du fichier
+        	$randNom = rand(0,1000000);
+        	$dateNom = time();
+        	$NewNom = 'img_'.$randNom.$dateNom.'.'.$extension;
+        	//chemin a stocker pour récupère l'image
+        	$pathImg = 'image/img_user/'.$NewNom;
+        	//upload de l'image avec son nouveau nom
+        	$form['avatarUrl']->getData()->move($dir, $NewNom);
+        	
             $em = $this->getDoctrine()->getManager();
             $entity->setExperience(1);
             $entity->setNbrCreation(0);
+            $entity->setAvatarUrl($pathImg);
             $entity->setCreatedAt(new \DateTime());
-            $entity->setCredits(0);
+            $entity->setCredits(50);
+            $entity->setRoles(array("ROLE_ADMIN"));
             $entity->setHighScore(0);
             $entity->setEnabled(1);
             $em->persist($entity);
@@ -270,6 +270,23 @@ class UtilisateurController extends Controller
     	return $this->redirect($this->generateUrl('utilisateur'));
     }
 	
+    /*public function changeRoleAction($id){
+    	$em = $this->getDoctrine()->getManager();
+    	$entity = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($id);
+    	
+    	if($entity->getRoles() == "ROLE_ADMIN"){
+    		$entity->setRoles("ROLE_SUPER_ADMIN");
+    	}else{
+    		$entity->setRoles('ROLE_ADMIN');
+    	}
+    	
+    	$em->persist($entity);
+    	$em->flush();
+    	
+    	return $this->redirect($this->generateUrl('utilisateur'));
+    }*/
+    
+   
        
     
     private function createDeleteForm($id)

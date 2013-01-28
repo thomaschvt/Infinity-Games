@@ -1,0 +1,43 @@
+<h1>top_score_jeu list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Utilisateur</th>
+            <th>Score</th>
+            <th>Jeu_ref</th>
+            <th>Update_at</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('top_score_jeu_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.utilisateur }}</td>
+            <td>{{ entity.score }}</td>
+            <td>{{ entity.jeuref }}</td>
+            <td>{% if entity.updateat %}{{ entity.updateat|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('top_score_jeu_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('top_score_jeu_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('top_score_jeu_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

@@ -1,32 +1,66 @@
-{% extends "::layout.html.twig" %}
+{% extends "::layout_bandeau.html.twig" %}
+	{% block contenu_bandeau_top %}
+	<div class="span12">
+		<h1 id="titre_last_game_catalogue">Dernier jeu, ajouté le {{ dernierJeu.createdAt|date('d.m.Y') }}</h1>
+		<div class="span4" id="wrapper_img_last_game_catalogue">
+			<img src="{{ asset(dernierJeu.visuelImg) }}">
+		</div>
+		<div class="span8">
+			<p id="wrapper_p_desc_last_game_catalogue">
+				{{ dernierJeu.descriptif }}
+			</p>
+			<a href="{{ dernierJeu.destIndex }}" class="btn btn-warning">Jouer</a>	
+		</div>
+	</div>
+	{% endblock %}
 	{% block contenu_page %}
-		
-		
-		<div class="row">
-			<h1>Liste des jeux : </h1>
-			{% for jeu in jeux %}
-			<div class="row line_game_catalogue">
-				<div data-toggle="collapse" data-target="{{'#jeux'~jeu.nom }}" class="row">
-		    		<div class="span3 line_jeu_catalogue">{{ jeu.nom }}</div>
-					<div class="span2 line_jeu_catalogue">{{ jeu.note }}</div>
-					<div class="span3 line_jeu_catalogue">{{ jeu.utilisateurutilisateur }}</div>
-					<div class="span2 line_jeu_catalogue">{{ jeu.genreJeuGenreJeu }}</div>
-					<div class="span2 line_jeu_catalogue ">
-						<div class="btn pull-right">Jouer</div>
+		<div id="wrapper_top3_catalogue" class="span12">
+			<h1 id="titre_last_game_catalogue">Top 3 des jeux</h1>
+			{% for jeuTop in jeuTop3 %}
+				<div class="span4 wrapper_topjeu_catalogue ombre">
+					<div class="span4 img_top3_game_catalogue">
+						<img src="{{ asset(jeuTop.visuelImg) }}">	
+					</div>
+					<div class="span4 nom_topgame_catalogue">
+						<span class="">{{ jeuTop.nom }} - {{ jeuTop.note }} / 5</span>
+					</div>
+					<a href="{{ jeuTop.destIndex }}" class="btn">Jouer</a>
+					<a href="#{{ jeuTop.id }}" role="button" class="btn" data-toggle="modal"><i class=" icon-zoom-in"></i></a>
+				</div>
+				<div id="{{ jeuTop.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="myModalLabel">{{ jeuTop.nom }}</h3>
+					</div>
+					<div class="modal-body">
+						
+						<div class="span5">
+							<img src="{{ asset(jeuTop.visuelImg) }}">
+						</div>
+						<div class="span5">
+							<p>
+								{{ jeuTop.descriptif }}
+							</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a href="{{ jeuTop.destIndex }}" class="btn">Jouer</a>
+						<button class="btn btn-error" data-dismiss="modal" aria-hidden="true">Fermé <i class="icon-remove"></i></button>
 					</div>
 				</div>
-    			<div id="{{'jeux'~jeu.nom }}" class="collapse row">
-    				<div class="span6 wrapper_mini_img_jeu">
-    					<img class='mini_img_jeu' alt="logo Infinity Games" title="logo Infinity Games" src="{{ asset('image/visu_tmp.png') }}">
-    				</div>
-    				<div class="span6">
-    					{{ jeu.descriptif }}
-    				</div>
-    			</div>
-				<div class="row">
-					
-				</div>
-			</div>
 			{% endfor %}	
 		</div>
+	{% for jeu in jeux %}
+		<div class="span12 line_jeu_game_catalogue">
+			<span class="span4 nom_jeu_line_jeu_catalogue">{{ jeu.nom }}</span>
+			<span class="span2">{{ jeu.genreJeuGenreJeu }}</span>
+			<span class="span2">{{ jeu.note }}</span>
+			<span class="span2 pull-right">
+				<a href="#{{ jeu.id }}" class="btn pull-right a_btn_ligne_jeu_catalogue" ><i class=" icon-zoom-in"></i></a>
+				<a href="{{ jeu.destIndex }}" class="btn pull-right a_btn_ligne_jeu_catalogue">Jouer</a>
+			</span>
+		</div>
+		
+	{% endfor %}
+		
 	{% endblock %}

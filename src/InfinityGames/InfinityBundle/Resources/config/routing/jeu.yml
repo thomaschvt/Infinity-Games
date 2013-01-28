@@ -31,3 +31,6 @@ jeu_delete:
 jeu_catalogue:
     pattern:  /catalogue
     defaults: { _controller: "InfinityGamesInfinityBundle:Jeu:catalogue" }
+jeu_redirect:
+    pattern:  /redirect
+    defaults: { _controller: "InfinityGamesInfinityBundle:Jeu:landingIndexJeu" }

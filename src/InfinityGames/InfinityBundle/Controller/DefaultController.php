@@ -14,22 +14,24 @@ class DefaultController extends Controller
     public function indexAction()
     {
     	$em = $this->getDoctrine()->getManager();
+    	    	
+    	//recupération des derniers message
+    	$msgForumEntities = $em->getRepository('InfinityGamesInfinityBundle:MessageForum')->findLastTopics();
+    	 
+    	//recupération TOP 5  	
+		$highScores = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->findByHighScore();
     	
-    	$entitiesJeu = $em->getRepository('InfinityGamesInfinityBundle:Jeu')->findBy(array('statut' => 'actif'),null ,3, null);
+    	//recupération du dernier jeu
+    	$repositoryJeu = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:Jeu');
     	
-    	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:MessageForum');
-    	$query = $repository->createQueryBuilder('m')
-    	->setParameter('statut', 'En cours')
-    	->where('m.statut = :statut')
-    	->orderBy('m.date', 'ASC')
-    	->setMaxResults( 5 )
-    	->getQuery();
-    	
-    	$msgForumEntities = $query->getResult();
+    	//recupération du dernier jeu ajouter
+    	$dernierJeu = $em->getRepository('InfinityGamesInfinityBundle:Jeu')->FindOneLastGame();
     	
     	return $this->render('InfinityGamesInfinityBundle:Accueil:accueil.html.twig', array(
-    			'entities' => $entitiesJeu,
+    			
     			'forumEntities' => $msgForumEntities,
+    			'highScoreEntities'=> $highScores,
+    			'dernierJeu' => $dernierJeu,
     	));	
     }
 }

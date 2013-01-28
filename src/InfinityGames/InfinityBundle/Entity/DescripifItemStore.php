@@ -27,6 +27,13 @@ class DescripifItemStore
      * @ORM\Column(name="intitule", type="string", length=45, nullable=true)
      */
     private $intitule;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="visuelImg", type="string", length=50, nullable=true)
+     */
+    private $visuelImg;
 
     /**
      * @var string
@@ -65,30 +72,7 @@ class DescripifItemStore
      * })
      */
     private $typeItem;
-    
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Utilisateur", inversedBy="idItemStore")
-     * @ORM\JoinTable(name="descripif_item_store_utilisateur",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="id_item_store", referencedColumnName="id_item_store")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id_utilisateur")
-     *   }
-     * )
-     */
-    private $idUtilisateur;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idUtilisateur = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+       
 
     /**
      * Get idItemStore

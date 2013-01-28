@@ -76,3 +76,9 @@ infinity_games_test_maintenance:
 InfinityGamesInfinityBundle_articlestodolist:
         resource: "@InfinityGamesInfinityBundle/Resources/config/routing/articlestodolist.yml"
         prefix:   /articlestodolist
+InfinityGamesInfinityBundle_liaisonitemuser:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/liaisonitemuser.yml"
+        prefix:   /liaisonitemuser
+InfinityGamesInfinityBundle_top_score_jeu:
+        resource: "@InfinityGamesInfinityBundle/Resources/config/routing/top_score_jeu.yml"
+        prefix:   /top_score_jeu
