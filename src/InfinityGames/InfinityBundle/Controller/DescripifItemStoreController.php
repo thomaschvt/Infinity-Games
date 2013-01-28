@@ -8,7 +8,10 @@ use InfinityGames\InfinityBundle\Entity\Commande;
 use InfinityGames\InfinityBundle\Entity\DescripifItemStore;
 use InfinityGames\InfinityBundle\Entity\TypeItemStore;
 use InfinityGames\InfinityBundle\Entity\Utilisateur;
+use InfinityGames\InfinityBundle\Entity\LiaisonItemUser;
 use InfinityGames\InfinityBundle\Form\DescripifItemStoreType;
+
+
 
 /**
  * DescripifItemStore controller.
@@ -99,25 +102,20 @@ class DescripifItemStoreController extends Controller
      */
     private function getTypeAction(){
     	
+    	$em = $this->getDoctrine()->getManager();
+    	
     	//sinon on recupère toutes les categorie définit comme tel sans restriction de parent
-    	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:TypeItemStore');
-    	$query = $repository->createQueryBuilder('t')
-    	->where('t.id_parent IS NULL')
-    	->getQuery();
-    	$entitiesType = $query->getResult();
+    	$entitiesType = $em->getRepository('InfinityGamesInfinityBundle:TypeItemStore')->findAllParentType();
     	return $entitiesType;
+    	
     }
     /**
 	 * function de recupération de toutes les sous-categories. Renvoi un tableau d'objets TypeItemStore
 	 */
     private function getSsTypeAction(){
-    	   	
-    	//on recupère toutes les categorie définit comme tel sans restriction de parent
-    	$repository = $this->getDoctrine()->getRepository('InfinityGamesInfinityBundle:TypeItemStore');
-    	$query = $repository->createQueryBuilder('t')
-    	->where('t.id_parent IS NOT NULL')
-    	->getQuery();
-    	$ssType = $query->getResult();
+
+    	$em = $this->getDoctrine()->getManager();
+    	$ssType = $em->getRepository('InfinityGamesInfinityBundle:TypeItemStore')->findAllSsType();
     	return $ssType;
     }
     
@@ -133,8 +131,8 @@ class DescripifItemStoreController extends Controller
         $form->bind($request);
 		
         //on recupère l'entity InfinityAdmin pour définir le user
-        $entityUser = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->findOneByUsername('InfinityAdmin');
-        
+      
+        $entityUser = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->findOneNameAdmin();
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->addIdUtilisateur($entityUser);
@@ -257,5 +255,55 @@ class DescripifItemStoreController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    
+    /**
+     * Achat d'objet. Reçoi l'utilisateur et l'item à acheter
+     */
+    public function achatItemAction($user, $item){
+    	$em = $this->getDoctrine()->getManager();
+    	
+    	$entityItem = $em->getRepository('InfinityGamesInfinityBundle:DescripifItemStore')->find($item);
+    	$entityUser = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->find($user);
+    	
+    	//verif si l'utilisateur ne possède pas déja cet objet
+    	
+    	$checkLiaison = $em->getRepository('InfinityGamesInfinityBundle:LiaisonItemUser')->findLiaison($user, $item);
+    	
+    	if($checkLiaison != null){
+    		return $error = $this->retourAchatItemAction(3);
+    	}else{
+	    	//si l'utilisateur a assez de crédits
+	    	if($entityUser->getCredits() >= $entityItem->getPrix()){
+	    		
+	    		//on créé l'objet liaison
+	    		$entityLiaison = new LiaisonItemUser();
+	    		
+	    		//on configure la liaison
+	    		$entityLiaison->setUtilisateur($entityUser);
+	    		$entityLiaison->setItem($entityItem);
+	    		$entityLiaison->setDateAchat(new \DateTime());
+	
+	    		//on met a jour le nouveau crédits de l'utilisateur
+	    		$entityUser->getCredits();
+	    		$creditsUserNouveau = $entityUser->getCredits() - $entityItem->getPrix();
+	    		$entityUser->setCredits($creditsUserNouveau);
+	    		
+	    		$em = $this->getDoctrine()->getManager();
+	    		$em->persist($entityLiaison);
+	    		$em->persist($entityUser);
+	    		$em->flush();
+	    		return $error = $this->retourAchatItemAction(2);
+	    	}else{
+	    		//si crédits insufisant, on renvoi vers la page d'erreur
+	    		return $error = $this->retourAchatItemAction(1);
+	    	} 
+    	}   		
+    }
+    
+    private function retourAchatItemAction($case){
+    	return $this->render('InfinityGamesInfinityBundle:Store:error_store.html.twig', array(
+    			'error_case' => $case,
+    	));
     }
 }

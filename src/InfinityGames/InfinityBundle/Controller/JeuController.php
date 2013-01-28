@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use InfinityGames\InfinityBundle\Entity\Jeu;
 use InfinityGames\InfinityBundle\Entity\GenreJeu;
 use InfinityGames\InfinityBundle\Form\JeuType;
-
+use InfinityGames\InfinityBundle\Entity\Utilisateur;
 /**
  * Jeu controller.
  *
@@ -38,10 +38,15 @@ class JeuController extends Controller
     public function catalogueAction(){
     	//tous
     	$em = $this->getDoctrine()->getManager();
-    	$jeux = $em->getRepository('InfinityGamesInfinityBundle:Jeu')->findAll();
+    	$entitiesJeux = $em->getRepository('InfinityGamesInfinityBundle:Jeu')->findAll();
+    	$entityLastGame = $em->getRepository('InfinityGamesInfinityBundle:Jeu')->findOneLastGame();
+    	
+    	$entityTopGame = $em->getRepository('InfinityGamesInfinityBundle:Jeu')->findByBestNote();
     	
     	return $this->render('InfinityGamesInfinityBundle:Jeu:catalogue_jeux.html.twig', array(
-    			'jeux' => $jeux,
+    			'jeux' => $entitiesJeux,
+    			'dernierJeu' => $entityLastGame,
+    			'jeuTop3' => $entityTopGame,
     	));
     }
 
@@ -93,13 +98,31 @@ class JeuController extends Controller
 
         if ($form->isValid()) {
         	//upload d'img
-        	$dir = "../Resources/public/image";
-        	$someNewFilename = "nouveauNom";
-        	$visuelImg = $form['visuelImg']->getData()->move($dir, $someNewFilename);
-        	var_dump($visuelImg);
-        	//
+        		//on définit le dossier ou envoyer les images
+        		$dir = "../web/image/img_jeux";
+        	    //on recupère le nom original du fichier  	
+        		$nomBase = $form['visuelImg']->getData()->getClientOriginalName();
+        		//on découpe le nom du fichier pr recup l'extension
+	        	$extension=strrchr($nomBase,'.');        	
+	        	$extension=substr($extension,1) ;
+        		//on génère le nouveau nom du fichier
+        		$randNom = rand(0,1000000);
+        		$dateNom = time();
+   				$NewNom = 'img_'.$randNom.$dateNom.'.'.$extension;
+   				//chemin a stocker pour récupère l'image
+   				$pathImg = 'image/img_jeux/'.$NewNom;
+        	//upload de l'image avec son nouveau nom
+        	$form['visuelImg']->getData()->move($dir, $NewNom);
+      	
             $em = $this->getDoctrine()->getManager();
+            
+            //on recupère admin pour lui attribué le jeu
+            $entityUser = $em->getRepository('InfinityGamesInfinityBundle:Utilisateur')->findOneByprenom('admin');
+            
             $entity->setCreatedat(new \DateTime());
+         	$entity->setVisuelImg($pathImg);
+         	$entity->setNote(4);
+         	$entity->setUtilisateurUtilisateur($entityUser);
             $em->persist($entity);
             $em->flush();
 
@@ -110,6 +133,24 @@ class JeuController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
+    }
+    
+    /**
+     * function arrivée sur une page index jeu 
+     */
+    
+    public function landingIndexJeuAction($url = null){
+    	
+    	$utilisateurCourant = $this->get('security.context')->getToken()->getUser();
+    	$utilisateurId = $utilisateurCourant->getId();
+    	$utilisateurSalt = $utilisateurCourant->getSalt();
+    	$utilisateurMd5 = $utilisateurCourant->getPassword();
+    	
+    	if(!isset($utilisateurCourant)){
+    		$utilisateurCourant = "visiteurs";	
+    	}
+    	
+    	return $this->redirect('http://www.google.fr?id='.$utilisateurId.'?salt='.$utilisateurSalt.'sec='.$utilisateurMd5);
     }
 
     /**

@@ -62,7 +62,11 @@
 							<li class=""><a href="{{ path('descripifitemstore_catalogue') }}">Store</a></li>
 							<li class=""><a href="{{ path('infinity_games_infinity_contact') }}">Contact</a></li>
 						{% if  app.session.get('panier') !="" %}
-							<li class=""><a href="{{ path('infinity_games_infinity_panier_affichage') }}">Mon panier</a></li>
+							<li class="">
+								<a href="{{ path('infinity_games_infinity_panier_affichage') }}">
+									<i class="icon-shopping-cart icon-white"></i>
+								</a>
+							</li>
 						{% endif %}
 						    <li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -70,7 +74,7 @@
 							<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								{% if app.user.username is defined %}
+								{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 									<li><a href="{{ path('utilisateur_profil',{'id':app.user.id}) }}">Mon profil</a></li>
 									<li><a href="#">Se deconnecter</a></li>
 									<!--affichage du nombre de msg non-lu-->

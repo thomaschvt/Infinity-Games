@@ -1,0 +1,30 @@
+top_score_jeu:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:top_score_jeu:index" }
+
+top_score_jeu_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:top_score_jeu:show" }
+
+top_score_jeu_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:top_score_jeu:new" }
+
+top_score_jeu_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:top_score_jeu:create" }
+    requirements: { _method: post }
+
+top_score_jeu_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:top_score_jeu:edit" }
+
+top_score_jeu_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:top_score_jeu:update" }
+    requirements: { _method: post }
+
+top_score_jeu_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:top_score_jeu:delete" }
+    requirements: { _method: post }

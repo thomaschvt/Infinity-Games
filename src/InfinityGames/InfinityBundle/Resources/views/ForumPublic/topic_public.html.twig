@@ -59,12 +59,14 @@
 	   						<i class="icon-list icon-white"></i> Retour à l'index
 	   				</button>
 	   			</a>
-	   			{% if topicEntity.utilisateur.id == app.user.id %}
-	        	<a href="{{ path("messageforum_change_statut_topic",{'id':topicEntity.id,'statut':2}) }}">
-	   				<button class="btn btn-success" type="submit">
-	   						<i class="icon-ok icon-white"></i> Résolu
-	   				</button>
-	   			</a>
+	   			{% if app.user.id is defined %}
+		   			{% if topicEntity.utilisateur.id == app.user.id %}
+		        	<a href="{{ path("messageforum_change_statut_topic",{'id':topicEntity.id,'statut':2}) }}">
+		   				<button class="btn btn-success" type="submit">
+		   						<i class="icon-ok icon-white"></i> Résolu
+		   				</button>
+		   			</a>
+		   			{% endif %}
 	   			{% endif %}
    			</div>
 		</div>

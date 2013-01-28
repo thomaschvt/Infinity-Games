@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * MessageForum
  *
  * @ORM\Table(name="message_forum")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="InfinityGames\InfinityBundle\Repository\MessageForumRepository")
  */
 class MessageForum
 {

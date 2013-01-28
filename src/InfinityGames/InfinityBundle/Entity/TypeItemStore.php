@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TypeItemStore
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="InfinityGames\InfinityBundle\Repository\TypeItemStoreRepository")
  */
 class TypeItemStore
 {

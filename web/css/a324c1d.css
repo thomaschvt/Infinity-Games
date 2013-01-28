@@ -4327,16 +4327,16 @@ input[type="button"].btn-block {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #faa732;
-  *background-color: #f89406;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
-  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
-  background-image: -o-linear-gradient(top, #fbb450, #f89406);
-  background-image: linear-gradient(to bottom, #fbb450, #f89406);
-  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
   background-repeat: repeat-x;
-  border-color: #f89406 #f89406 #ad6704;
+  border-color: #E74F25 #E74F25 #ad6704;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 
@@ -4346,7 +4346,7 @@ input[type="button"].btn-block {
 .btn-warning.disabled,
 .btn-warning[disabled] {
   color: #ffffff;
-  background-color: #f89406;
+  background-color: #E74F25;
   *background-color: #df8505;
 }
 
@@ -4704,7 +4704,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-group.open .btn-warning.dropdown-toggle {
-  background-color: #f89406;
+  background-color: #E74F25;
 }
 
 .btn-group.open .btn-danger.dropdown-toggle {
@@ -6425,7 +6425,7 @@ a.badge:hover {
 
 .label-warning,
 .badge-warning {
-  background-color: #f89406;
+  background-color: #E74F25;
 }
 
 .label-warning[href],
@@ -6663,13 +6663,13 @@ a.badge:hover {
 .progress-warning .bar,
 .progress .bar-warning {
   background-color: #faa732;
-  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
-  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
-  background-image: -o-linear-gradient(top, #fbb450, #f89406);
-  background-image: linear-gradient(to bottom, #fbb450, #f89406);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
   background-repeat: repeat-x;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
 }
 
 .progress-warning.progress-striped .bar,
@@ -7290,10 +7290,96 @@ div.fw_nav li>a {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-/*G�n�ral*/
+/*FosView*/
+#login_form_remember_checkbox{
+	margin-left:20px;
+}
+#login_form_ident_bloc{
+	margin-right:15px;
+}
+#_submit{
+	margin-left:20px;
+}
+/*Admin*/
+#error_admin_span{
+	padding:10px;
+	margin-bottom: 10px;
+}
+#visualization{
+	margin-bottom:25px;
+	width:920px;
+}
+#container_admin_dark{
+	background: #111;
+	margin-top: -9px;
+}
+#container_info_admin_light{
+	background: url("../../../bundles/infinitygamesinfinity/css/img/bg.png") repeat scroll 0 0 transparent;
+}
+.bg_vide_admin{
+	background: url("../../../bundles/infinitygamesinfinity/css/img/bg.png") repeat scroll 0 0 transparent;
+}
+.link_admin_tools_leftbar{
+	padding-left:30px;
+}
+.link_admin_tools_leftbar{
+	color:#fff;
+}
+.collapse_link_admin{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top:1px solid #e7532d;
+}
+.collapse_link_admin a{
+    color:#fff;
+    text-decoration: none;
+}
+.submenu{
+	display:none;
+	color:#fff;
+}
+.bloc_wrapper_jeu_admin{
+	margin-bottom: 25px;
+}
+#list_user{
+	margin-top:20px;
+}
+#bloc_add_type_item_show{
+	margin-left:0px;
+	margin-top: 10px;
+}
+/*Table*/
+#listing_admin_paginate{
+	
+   
+}
+.btn_table{
+	margin-right:5px;
+	margin-top:10px;
+}
+#listing_admin_info{
+	display:none;
+}
+.previous{
+	margin-right:10px;
+}
+.odd{
+	background: red;
+	line-height:45px;
+}
+.even{
+	background: white;
+	line-height:45px;
+}
+.sorting_1 {
+	padding-left:5px;
+}
+html.js body div#wrap div#container_admin_dark.container-fluid div.row-fluid div#container_info_admin_light.span10 div.span12 div#list_user div#listing_admin_wrapper.dataTables_wrapper div#listing_admin_paginate.dataTables_paginate span{
+	
+}
+/*Général*/
 body{
-	background:url('../../../bundles/infinitygamesinfinity/css/img/bg.png');
+	background: url("../../../bundles/infinitygamesinfinity/css/img/bg.png") repeat scroll 0 0 transparent;
 	
 	padding-top: 60px;
 }
@@ -7301,8 +7387,37 @@ body{
 h1{
 	font-size:16px;
 }
+.btn-warning{
+	background-color: #E74F25;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn-warning:hover{
+	background-color: #E74F25;
+ 
+}
 p{
 	line-height:25px;
+	text-align: justify;
+	margin-bottom:20px;
+}
+.modal{
+	background: scroll 0 0 #E0DFDF;
+}
+.modal-footer{
+	background: scroll 0 0 #E0DFDF;
+}
+.dropdown-menu{
+	
 }
 .bloc_txt{
 	text-align: justify;
@@ -7335,7 +7450,7 @@ p{
     box-shadow:  -2px 10px 10px 1px rgba(0, 0, 0, 0.2);
 }
 footer{
- 	background: none repeat scroll 0 0 #070807;
+ 	background: none repeat scroll 0 0 #111;
     border-top: 2px solid #ff5629;
     margin-top: 35px;
     padding-bottom: 25px;
@@ -7378,14 +7493,18 @@ footer a:hover{
 	background: #E0DFDF;
 }
 .dropdown-menu li a:hover{
-	background: #ea7f63; /* Old browsers */
-	background: -moz-linear-gradient(top,  #ea7f63 0%, #e7532d 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea7f63), color-stop(100%,#e7532d)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #ea7f63 0%,#e7532d 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea7f63', endColorstr='#e7532d',GradientType=0 ); /* IE6-9 */
+	background-color: #faa732;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .italic{
 	font-style: italic;
@@ -7400,6 +7519,19 @@ footer a:hover{
 	padding:15px;	
 }
 /*Header*/
+#wrapper_page{
+	margin-top:15px;
+}
+#logo_if{
+	width:60%;
+	margin-top:-12px;
+}
+.navbar-inverse .brand, .navbar-inverse .nav > li > a{
+	margin-top:10px;
+}
+.navbar-inverse .brand, .navbar-inverse .nav > li > a:hover{
+	color:#E74F25;
+}
 #form_recherche{
 	margin-top:5px;
 }
@@ -7408,7 +7540,7 @@ footer a:hover{
 	border-bottom:2px solid #FF5629;
 	height:52px;
 }
-#wrapper_header_link{
+#wrapper_header_link{E0DFDF
 	background:#070807;
 }
 .link_nav_header{
@@ -7426,82 +7558,421 @@ footer a:hover{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea7f63', endColorstr='#e7532d',GradientType=0 ); /* IE6-9 */
 	height: 29px;
 }
-/*Accueil*/
-#listing_jeu_accueil{
-	margin-top:35px;
+/*Store Item*/
+.wrapper_img_visuel_item_store{
+	width:150px;
 }
-.ligne_jeu_accueil{
-	background: none repeat scroll 0 0 #E0DFDF;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-   
+.msg_error_store{
+	padding:10px;
 }
-.bloc_infos_jeu_accueil{
-	margin-top:12px;
+.btn_retour_store{
+	margin-left: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
 }
-.btn_listing_accueil{
-	background: url("../../../bundles/infinitygamesinfinity/css/img/btn_gris_fat_hover.png") repeat scroll 0 0 transparent;
-    border: medium none;
-    height: 18px;
-    width: 97px;
+#bloc_list_type_itemstore{
+	background: none repeat scroll 0 0 #111111;	
+	margin-right:25px;
 }
-.btn_listing_accueil:hover{
-	padding-top:-15px;
-	background: url('../../../bundles/infinitygamesinfinity/css/img/btn_gris_fat.png')
+.bloc_top_3_store{
+	border-radius: 10px 10px 10px 10px;
 }
-#wrapper_infos_factory{
-	background: #E0DFDF;
+.bloc_top_3_store h1{
+	padding-left:10px;
 }
-.link_dev_tools{
-	border-bottom: 1px solid #C6C5C5;
-    border-left: 1px solid #C6C5C5;
-    color: #000000;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 0;
-    margin-right: 15px;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    text-align: center;
-    text-decoration: none;
-    width: 100%;
+.bloc_top_3_store p{
+	padding:10px;
+	margin-top:-5px;
 }
-.link_dev_tools:hover{
-	background: #ea7f63; /* Old browsers */
-	background: -moz-linear-gradient(top,  #ea7f63 0%, #e7532d 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea7f63), color-stop(100%,#e7532d)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #ea7f63 0%,#e7532d 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea7f63', endColorstr='#e7532d',GradientType=0 ); /* IE6-9 */
-	color:#fff;
+#bloc_top3_graph{
 	
 }
-.last_ligne{
-	margin-right:0px
+#bloc_top3_booster{
+		
+	
 }
-#listing_factory_link{
-	margin-top:15px;
+#bloc_top3_total{	
+	background: url("../../../bundles/infinitygamesinfinity/css/img/fd_item_1.png")
 }
-#visu_factory{
-	padding-top:25px;
+.btn_add_top3_store{
+		text-align:center;
+	padding-left:5px;
+	padding-bottom:5px;
 }
-#bloc_txt_factory{
-	padding-left:15px;
-}
-/*Contact*/
-#form_contact{
-	margin-top:35px;
+.bloc_item_store{
 	background: #E0DFDF;
-	padding-top:25px;
+	margin-bottom:15px;
+	border-radius:5px;
+	margin-left:0px;
+	margin-right:10px;
 }
-.inp_form_contact{
-	padding-left:15px;	
+.prix_item_bloc_store {
+	padding-left:5px;
+}
+.titre_type_store{
+	margin-bottom:10px;
+	padding-left:5px;
+}
+.ss_titre_store{
+	
+}
+.nom_item_bloc_store {
+	padding-left:5px;
+}
+.wrapper_sstype_item_store{
+	margin-left: 0px;
+}
+.bloc_btn_item{
+	padding-left:5px;
+	padding-bottom:5px;
+}
+.btn_nav_item_store{
+	margin-right:5px;
+}
+.nom_item_bloc_store{
+	
+}
+.ss_type_store{
+	
+}
+.bloc_type_itemstore_catalogue{
+    border-bottom: 1px solid;
+    color: #FFFFFF;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-top: 10px;
+}
+.bloc_type_itemstore_catalogue:hover{
+	background-color: #faa732;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.link_type_itemstore_catalogue{
+	color:#fff;
+}
+.bloc_ss_type_store{
+	padding-top:5px;
+	color:white;
+	padding-left:10px;
+	padding-bottom:5px;
+}
+.bloc_ss_type_store li{
+	
+	color:white;
+	
+}
+.item_top3_store_catalogue{
+	background: red;
+	padding:5px;
+}
+.icon_store_type_deploy{
+	margin-right:5px;
+	cursor:pointer;
+}
+/*Accueil*/
+#classement_overall_accueil{
+	border-left: 1px dotted #111111;
+    padding-left: 25px;
+}
+#wrapper_top_bandeau_accueil{
+	background:#E0DFDF ;
+    height: auto;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+#bloc_bandeau{
+	
+}
+#wrapper_lower_accueil{
+	margin-top:35px;
+	
+}
+#wrapper_last_game_accueil{
+	background: none repeat scroll 0 0 #E0DFDF;
+   
+}
+#wrapper_last_topics{
+	background: none repeat scroll 0 0 #E0DFDF;
+	margin-top:20px;
+    width:100%;
+}
+#visu_last_game_accueil{
+	padding-left:5px;
+	padding-bottom: 5px;
+}
+#desc_last_game_accueil{
+	margin-left: 0px;
+	padding-left: 7px;
+}
+.line_topics_accueil{
+	margin-left: 0;
+    padding-bottom: 10px;
+    padding-top: 10px
+}
+.line_topics_accueil{
+	color:#000;
+}
+#btn_voir_furm_last_topic_accueil{
+	margin-right:5px;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+
+.line_topics_accueil:hover{
+	background-color: #faa732;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.date_topic_last_topic_accueil{
+	margin-right:18px;
+}
+.title_lower_accueil{
+	color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  *background-color: #222222;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    font-style: italic;
+    padding-left: 10px;
+    margin-bottom:10px;
+}
+.line_highscore_accueil{
+	padding:10px;
+}
+#titre_classement_accueil{
+	margin-top:-8px;
+}
+.num_row_classement_accueil{
+	margin-right:5px;
+	margin-left:-15px;
+}
+.nom_row_classement_accueil{
+	margin-right:10px;
+}
+.txt_concept_accueil{
+	
+	padding:5px;
+}
+.title_topic_lower_accueil{
+	color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  *background-color: #222222;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  padding-left: 10px;
+}
+#wrapper_last_game_accueil{
+	margin-left:0px;
+}
+#visu_last_game_accueil{
+	margin-left: 0px;
+}
+.icon_concept_accueil{
+	width:10%;
+	margin-right:10px;
+}
+#txt_concept_accueil_left{
+	margin-left:0px;
+	margin-right: 10px;
+}
+#txt_concept_accueil_right{
+	
+	margin-left: 10px;
+}
+#txt_concept_accueil_middle{
+	margin-right:5px;
+	margin-left:5px;
+}
+#video_accueil{
+	width:100%;
+}
+#wrapper_concept_accueil{
+	margin-top:20px;
+}
+#bloc_droite_upper_page_accueil{
+	color: #FFFFFF;
+    left: -11px;
+    position: relative;
+    text-align: center;
+}
+#wrapper_rpesentation_accueil{
+	background: #111;
+}
+#container_btn_upper_page_accueil{
 	margin-left: auto;
-	margin-right: auto;
-	width:200px;
+    margin-right: auto;
+    margin-top: 0;
+    
+}
+#container_btn_upper_page_accueil a{
+	
+}
+#wrapper_inscription_accueil{
+	margin-bottom: 15px;
+    text-align: center;
+    width: 100%
+}
+#wrapper_connexion_accueil{
+	width: auto;
+	text-align:center;
+}
+#btn_isncription{
+	font-size: 25px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+#wrapper_news_forum{
+	background: none repeat scroll 0 0 #E0DFDF;
+    margin-top: 25px;
+    padding-bottom: 15px;
+}
+#wrapper_news_forum h1{
+	color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  *background-color: #222222;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    font-style: italic;
+    padding-left: 10px;
+    margin-bottom:10px;
+}
+#wrapper_txt_news_game_accueil{
+	width:420px;
+}
+.line_new_topic_accueil{
+	margin-bottom:5px;
+	margin-top:5px;
+	margin-left:-10px;
+}
+#wrapper_btn_jeu_accueil{
+	text-align: center;
+	margin-top:60px;
+}
+#wrapper_btn_jeu_accueil a{
+	margin-left:30px;
+}
+/*Factory*/
+.titre_article_factory{
+	border-top:1px solid;
+	border-bottom: 1px solid;
+	margin-top:15px;
+	padding-bottom:5px;
+}
+
+.wrapper_nav_factory{
+	background-color: #363636;
+  *background-color: #222222;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+	padding:5px;
+}
+.wrapper_nav_factory a{
+	color:#fff;
+}
+#wrapper_link_nav_factory{
+	margin-left: -20px;
+	margin-top: 15px;
+}
+#wrapper_doc_factory{
+	margin-top:20px;
+}
+#wrapper_intro_factory{
+	margin-left: 0px;
+}
+.wrapper_nav_factory a:hover{
+	text-decoration: none;
+}
+.wrapper_nav_factory_article{
+	background: #E0DFDF;
+	padding:5px;
+	padding-left:10px;
+}
+.wrapper_nav_factory_article{
+	background: #fff;
+	padding:5px;
+	padding-left:10px;
+}
+.wrapper_nav_factory_article:hover{
+	background-color: #faa732;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 1genera00%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  
+}
+.wrapper_nav_factory:hover{
+	background-color: #faa732;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(generastartColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+	color:#fff;	
 }
 /*Footer*/
 .col_footer{
@@ -7522,9 +7993,30 @@ footer a:hover{
 }
 
 /*Profil*/
+.bloc_top_score_profil_utilisateur{
+	background: none repeat scroll 0 0 #E0DFDF;
+    margin-right: -5px;
+    padding: 5px;
+    margin-bottom:15px;
+}
+html.js body div#wrapper_page.container div.container-fluid div.row-fluid div#bloc_right_profil.span9 div.row-fluid div.span4 div span.pull-right a{
+	color:#111;
+	text-decoration :none;
+}
+.img_top_score_profil_utilisateur{
+	height: 130px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    width: 100%;
+	
+}
 #bloc_left_profil{
 	background: none repeat scroll 0 0 #E0DFDF;
 	padding:5px;	
+}
+.bloc_item_profil_utilisateur{
+	background: #E0DFDF;
+	padding:5px;
 }
 #bloc_left_profil i{
 	margin-right:5px;	
@@ -7539,11 +8031,12 @@ footer a:hover{
 	text-align:center;
 }
 .line_mail_profil{
-	background:#E0DFDF;
-	padding-top:10px;
-	padding-left:10px;
-	padding-right:10px;
-	margin-bottom:10px;
+	background: none repeat scroll 0 0 #E0DFDF;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 	
 }
 #action_msg_profil{
@@ -7551,19 +8044,26 @@ footer a:hover{
 }
 #bloc_new_msg{
 	background:#E0DFDF;
-	padding-top:15px;
+	padding-top:thomasvt@gmail.com15px;
 	margin-bottom:25px;
 	display:none;
 }
 .msg_unread{
-	background: #ea7f63; /* Old browsers */
-	background: -moz-linear-gradient(top,  #ea7f63 0%, #e7532d 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea7f63), color-stop(100%,#e7532d)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #ea7f63 0%,#e7532d 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #ea7f63 0%,#e7532d 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea7f63', endColorstr='#e7532d',GradientType=0 ); /* IE6-9 */
+	background-color: #faa732;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+	padding-left:10px;
+	color:#fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 #form_msg_profil{
 	padding-top:15px;
@@ -7571,29 +8071,79 @@ footer a:hover{
 	background:#E0DFDF;
 }
 /*Games*/
-#bloc_upper_games{
-	/* TODO: refaire lien images*/
-	background: url('../../../bundles/infinitygamesinfinity/css/img/visu_tmp.png');
+.img_top3_game_catalogue{
+	height:180px;
+	overflow: hidden;
 }
-.bloc_minijeu{
-	background:#E0DFDF;
-	padding:10px;
-	margin-bottom:10px;
+.line_jeu_game_catalogue span{
+	margin-left:0px;
+}
+#wrapper_top3_catalogue{
+	margin-left:0px;
+}
+.wrapper_topjeu_catalogue{
+	background: none repeat scroll 0 0 #E0DFDF;
+    margin-left: 0;
+    margin-right: 3px;
+    padding: 5px;
+}
+.line_jeu_game_catalogue{
+	background: none repeat scroll 0 0 #E0DFDF;
+	margin-left:0px;
+	margin-bottom:5px;
+	margin-top:5px;
+}
+.a_btn_ligne_jeu_catalogue{
+	margin-right:10px;
+}
+.nom_jeu_line_jeu_catalogue{
+	padding-left: 5px;
+}
+.nom_topgame_catalogue{
+	margin-left:0px;
+}
+.img_top3_game_catalogue{
+	margin-left: 0px;
+}
+#wrapper_img_last_game_catalogue{
+	margin-left:0px;
+}
+#titre_last_game_catalogue{
+	margin-bottom: 10px;
+    margin-top: -15px;
+}
+.line_game_catalogue{
+	background: none repeat scroll 0 0 #E0DFDF;
+    margin-bottom: 15px;
+    padding: 5px;
 }
 /*Forum*/
 .bloc_categorie_forum{
-	
+	margin-top:5px;
     padding-bottom: 10px;
     padding-top: 10px;
 }
 .presentation_categorie_forum{
-	background: #1B1B1B;
-	color:#fff;
+	color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  *background-color: #222222;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+   
 	padding:5px;
 }
 .titre_categorie_forum{
 	font-size:16px;
-	color:#e7532d;
+	color:#E74F25;
 }
 .descriptif_categorie_forum{
 	font-size:12px;
@@ -7605,16 +8155,124 @@ footer a:hover{
     padding-bottom: 10px;
     padding-top: 10px
 }
+#form_crea_topic{
+	display: none;
+}
+html.js body div#wrapper_page.container div#form_crea_topic.row div.span8 form fieldset div#infinitygames_infinitybundle_messageforumtype_contenu_control_group.control-group div.controls textarea#infinitygames_infinitybundle_messageforumtype_contenu{
+	width:100%;
+	height:200px;
+}
+html.js body div#wrapper_page.container div#form_crea_topic.row div.span8 form fieldset div#infinitygames_infinitybundle_messageforumtype_titre_control_group.control-group div.controls input#infinitygames_infinitybundle_messageforumtype_titre.not-removable{
+	width:100%;
+}
+/*Forum Topic*/
+#titre_topic_forum{
+	font-size: 20px;
+    font-weight: bold;
+    margin-bottom:20px;
+}
+.header_msg_topic{
+	background-color: #faa732;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+	color:#000;
+    margin: 15px 20px 10px 0;
+}
+.visuel_avatar_auteur_topic{
+	margin-right:19px;
+}
+#wrapper_form_topic{
+	padding-left:20px;
+	margin-top:20px;
+}
+.contenu_message_topic{
+    border-left: 1px solid #A4A4A4;
+    line-height: 25px;
+    min-height: 140px;
+    padding-left: 25px;
+    padding-right: 15px;
+}
+.header_topic_heure_message{
+	padding-left:35px;
+	text-align:right;
+}
+html.js body div#wrapper_page.container div.row div#wrapper_form_topic.span8 form#rep_form_topic fieldset div#infinitygames_infinitybundle_reponsetopictype_contenu_control_group.control-group div.controls textarea#infinitygames_infinitybundle_reponsetopictype_contenu	{
+	height: 200px;
+    resize: none;
+    width: 743px;
+}
+#btn_nav_topic{
+	margin-right:16px;
+	margin-top:20px;
+}
 /*classement*/
 html.js body div.container div#classement_general_wrapper.dataTables_wrapper div#classement_general_length.dataTables_length label{
 	float: left;
+}
+#wrapper_table_classement_general{
+	
+}
+#bloc_upper_classement{
+	
+	
+}
+#bloc_upper_left_classement{
+	padding:5px;
+}
+#bloc_upper_right_classement{
+	background-color: #faa732;
+  *background-color: #E74F25;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#E74F25));
+  background-image: -webkit-linear-gradient(top, #fbb450, #E74F25);
+  background-image: -o-linear-gradient(top, #fbb450, #E74F25);
+  background-image: linear-gradient(to bottom, #fbb450, #E74F25);
+  background-image: -moz-linear-gradient(top, #fbb450, #E74F25);
+  background-repeat: repeat-x;
+  border-color: #E74F25 #E74F25 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#ffE74F25', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    color: white;
+    padding-left: 30px;
+    padding-right: 20px;
+    padding-bottom: 10px;
 }
 /*catalogue jeu*/
 .bloc_jeux_top3{
 	background:#E0DFDF;
 }
+
 .line_jeu_catalogue{
 	margin-bottom:20px;
+}
+/*Contact*/
+#wrapper_intro_contact{
+	margin-left: -20px;
+	
+}
+#wrapper_contact_form{
+	margin-left: 0px;
+	
+}
+html.js body div#wrapper_page.container div#wrapper_contact_form.span6 form{
+	border-right: 1px dotted;
+    width: 425px;
+}
+html.js body div#wrapper_page.container div#wrapper_contact_form.span6 form fieldset div#form_contenu_control_group.control-group div.controls textarea#form_contenu{
+	width:363px;
+	height:100px;
+}
+html.js body div#wrapper_page.container div#wrapper_contact_form.span6 input{
+	width:350px;
 }
 /*Icone Bootstrap deplacées*/
 [class^="icon-"],
@@ -8485,7 +9143,7 @@ html.js body div.container div#classement_general_wrapper.dataTables_wrapper div
   background-color: white !important;
 }
 .odd .syntaxhighlighter .gutter .line.alt1, .odd .syntaxhighlighter  .gutter .line.alt2 {
-  background-color: #F2F2F2 !important;
+  background-color: #c0c0c0 !important;
 }
 .syntaxhighlighter .gutter .line {
   border-right: 3px solid #4E6CA3 !important;

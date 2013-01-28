@@ -9,7 +9,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
  * Utilisateur
  *
  * @ORM\Table(name="utilisateur")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="InfinityGames\InfinityBundle\Repository\UtilisateurRepository")
  */
 class Utilisateur extends BaseUser
 {

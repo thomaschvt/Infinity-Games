@@ -1,25 +1,124 @@
-{% extends "::layout.html.twig" %}
+{% extends "::layout_bandeau.html.twig" %}
+{% block contenu_bandeau_top %}
+	<h1>Infinity Store</h1>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in metus lorem. Vestibulum ante ipsum primis in faucibus 
+		orci luctus et ultrices posuere cubilia Curae; Ut ac bibendum dolor. Vestibulum orci mi, eleifend nec lobortis non, 
+		dignissim ultrices dui. In hac habitasse platea dictumst. Integer condimentum blandit orci a vehicula. Duis commodo 
+		scelerisque arcu, vitae elementum enim pulvinar nec. Fusce lobortis risus id sapien porttitor bibendum. Ut et leo ligula. 
+	</p>
+	<div class="row">
+		<div id="bloc_top3_graph" class="span4 bloc_top_3_store btn-success">
+			<h1>Pack Graphique</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in metus lorem. Vestibulum ante ipsum primis in faucibus 
+				orci luctus et ultrices posuere cubilia Curae; Ut ac bibendum dolor. Vestibulum orci mi, eleifend nec lobortis non.
+			</p>
+			<div class="btn_add_top3_store">
+				<a href="" class="btn"> Ajouter</a>
+			</div>
+		</div>
+		<div id="bloc_top3_booster" class="span4 bloc_top_3_store btn-primary">
+			<h1>Pack Booster</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in metus lorem. Vestibulum ante ipsum primis in faucibus 
+				orci luctus et ultrices posuere cubilia Curae; Ut ac bibendum dolor. Vestibulum orci mi, eleifend nec lobortis non.
+			</p>
+			<div class="btn_add_top3_store">
+				<a href="" class="btn"> Ajouter</a>
+			</div>
+		</div>
+		<div id="bloc_top3_total" class="span4 bloc_top_3_store btn-warning">
+			<h1>Pack Total</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in metus lorem. Vestibulum ante ipsum primis in faucibus 
+				orci luctus et ultrices posuere cubilia Curae; Ut ac bibendum dolor. Vestibulum orci mi, eleifend nec lobortis non.
+			</p>
+			<div class="btn_add_top3_store">
+				<a href="" class="btn"> Ajouter</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
 {% block contenu_page %}
 	<!-- affichage des diff type d'item -->
-	<div class="row">
+	<div class="row" id="wrapper_list_item_store">
 		{% for type in typeItem %}
-			<div class="row span12">
-				<span class="titre_categorie_store">{{ type.intitule }}</span>
-				{% for ssType in sousType %}
-					{% if ssType.idParent == type %}
-					<div class="row span12">
-						<span class="titre_sous_categorie_store">{{ ssType.intitule }}</span>
-						{% for obj in listObj %}
-							{% if obj.typeItem == ssType %}
-								<div class="row">
-									{{ obj.intitule }}
+			<div class="span12">
+				<h1 class="titre_type_store btn-inverse">{{ type.intitule }}</h1>
+					{% for obj in listObj %}
+						{% if obj.typeItem == type %}
+							<div class="bloc_item_store span3">
+								
+								<div class="nom_item_bloc_store ">{{ obj.intitule }}</div>
+								<div class="prix_item_bloc_store ">{{ obj.prix }} Cr</div>
+								<div id="{{ obj.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										<h3 id="myModalLabel">{{ obj.intitule }}</h3>
+									</div>
+									<div class="modal-body">
+										<h1>Informations sur l'Item : </h1>
+										<div>Descriptif de l'objet : {{ obj.descriptif }}</div>
+										<div>Prix : {{ obj.descriptif }}</div>
+										{% if obj.dureeTemps == 0 %}
+											<div>Durée d'activation : Illimté</div>
+										{% else %}
+											<div>Durée d'activation : {{ obj.dureeTemps }} h</div>
+										{% endif %}
+									</div>
+									<div class="modal-footer">
+										<button class="btn btn-error" data-dismiss="modal" aria-hidden="true">Fermé <i class="icon-remove"></i></button>
+										<a href="{{ path('descripifitemstore_catalogue_achat',{'item': app.user.id, 'user':app.user.id}) }}" class="btn btn-warning btn_nav_item_store">Ajouter <i class="icon-shopping-cart icon-white"></i></a>
+									</div>
+								</div>
+								<div class="bloc_btn_item">
+									<a href="#{{ obj.id }}" role="button" class="btn" data-toggle="modal"><i class=" icon-zoom-in"></i></a>
+									<a href="{{ path('descripifitemstore_catalogue_achat',{'item': obj.id, 'user':app.user.id}) }}" class="btn btn-warning btn_nav_item_store"><i class="icon-shopping-cart"></i></a>
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+					{% for sstype in sousType %}
+						{% if sstype.idParent == type %}
+							<div class="span12 wrapper_sstype_item_store">
+								<h1 class="ss_titre_store">{{ sstype.intitule }}</h1>
+								{% for obj in listObj %}
+								{% if obj.typeItem == sstype %}
+								<div class="bloc_item_store span3">
+									<div class="nom_item_bloc_store ">{{ obj.intitule }}</div>
+									<div class="prix_item_bloc_store ">{{ obj.prix }} Cr</div>
+									<div id="{{ obj.id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h3 id="myModalLabel">{{ obj.intitule }}</h3>
+										</div>
+										<div class="modal-body">
+											<h1>Informations sur l'Item : </h1>
+											<div>Descriptif de l'objet : {{ obj.descriptif }}</div>
+											<div>Prix : {{ obj.descriptif }}</div>
+											{% if obj.dureeTemps == 0 %}
+												<div>Durée d'activation : Illimté</div>
+											{% else %}
+												<div>Durée d'activation : {{ obj.dureeTemps }} h</div>
+											{% endif %}
+										</div>
+										<div class="modal-footer">
+											<button class="btn btn-error" data-dismiss="modal" aria-hidden="true">Fermé <i class="icon-remove"></i></button>
+											<a href="{{ path('descripifitemstore_catalogue_achat',{'item': obj.id, 'user':app.user.id}) }}" class="btn btn-warning btn_nav_item_store">Ajouter <i class="icon-shopping-cart icon-white"></i></a>
+										</div>
+									</div>
+									<div class="bloc_btn_item">
+										<a href="#{{ obj.id }}" role="button" class="btn" data-toggle="modal"><i class=" icon-zoom-in"></i></a>
+										<a href="#" class="btn btn-warning btn_nav_item_store"><i class="icon-shopping-cart"></i></a>
+									</div>
 								</div>
 							{% endif %}
 						{% endfor %}
-					</div>
-					{% endif %}
-				{% endfor %}
+							</div>
+						{% endif %}
+					{% endfor %}
 			</div>
-		{% endfor %}
+		{% endfor %}		
 	</div>
 {% endblock %}

@@ -35,3 +35,6 @@ utilisateur_profil:
 utilisateur_direct_delete:
     pattern:  /{id}/directdelete
     defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:deleteDirectUtilisateur" }
+utilisateur_change_role:
+    pattern:  /{id}/changerole
+    defaults: { _controller: "InfinityGamesInfinityBundle:Utilisateur:changeRole" }

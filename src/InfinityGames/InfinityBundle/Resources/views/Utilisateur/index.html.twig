@@ -16,6 +16,7 @@
 							<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nom du joueur">Nom</th>
 							<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Email de l'utilisateur">Email</th>
 							<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Pts expérience</th>
+							<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Crédits</th>
 							<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Voir</th>
 							<th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Platform(s): activate to sort column ascending">Editer</th>
 						</tr>
@@ -29,6 +30,7 @@
 							</td>
 							<td class="sorting_1">{{ user.email }}</td>
 							<td class="sorting_1">{{ user.experience }}</td>
+							<td class="sorting_1">{{ user.credits }}</td>
 							<td class="sorting_1">
 								<a href="{{ path("utilisateur_show",{'id':user.id}) }}">
 									<button class="btn">

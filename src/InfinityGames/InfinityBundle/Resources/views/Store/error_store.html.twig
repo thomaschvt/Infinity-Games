@@ -1,0 +1,35 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenu_page %}
+	<!--Traitement des diférents cas d'erreur-->
+	
+	{% if error_case == 1 %}
+		<div class="alert-error">
+				<span class="msg_error_store">Vos crédits sont insufisant pour acheter cet objet.</span>
+			<div class="btn_retour_store">
+				<a href="" class="btn ">
+					Retour au store
+				</a>
+			</div>
+		</div>
+	{% elseif error_case == 2 %}
+		<div class="alert-success">
+				<span class="msg_error_store">Félicitation! Cet objet est dès à présent disponible. Infinity Factory vous remercie.</span>
+			<div class="btn_retour_store">
+				<a href="" class="btn ">
+					Retour au store
+				</a>
+			</div>
+		</div>
+	{% elseif error_case == 3 %}
+		<div class="alert">
+				<span class="msg_error_store">Vous possédez déja cet objet.</span>
+			<div class="btn_retour_store">
+				<a href="" class="btn ">
+					Retour au store
+				</a>
+			</div>
+		</div>
+	{% endif %}
+	
+{% endblock %}

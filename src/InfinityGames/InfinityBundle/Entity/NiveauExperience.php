@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * NiveauExperience
  *
  * @ORM\Table(name="niveau_experience")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="InfinityGames\InfinityBundle\Repository\NiveauExperienceRepository")
  */
 class NiveauExperience
 {

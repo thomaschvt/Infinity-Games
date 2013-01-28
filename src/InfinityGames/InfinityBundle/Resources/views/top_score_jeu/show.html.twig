@@ -1,0 +1,45 @@
+<h1>top_score_jeu</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Utilisateur</th>
+            <td>{{ entity.utilisateur }}</td>
+        </tr>
+        <tr>
+            <th>Score</th>
+            <td>{{ entity.score }}</td>
+        </tr>
+        <tr>
+            <th>Jeu_ref</th>
+            <td>{{ entity.jeuref }}</td>
+        </tr>
+        <tr>
+            <th>Update_at</th>
+            <td>{{ entity.updateat|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('top_score_jeu') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('top_score_jeu_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('top_score_jeu_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

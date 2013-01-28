@@ -1,0 +1,30 @@
+liaisonitemuser:
+    pattern:  /
+    defaults: { _controller: "InfinityGamesInfinityBundle:LiaisonItemUser:index" }
+
+liaisonitemuser_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "InfinityGamesInfinityBundle:LiaisonItemUser:show" }
+
+liaisonitemuser_new:
+    pattern:  /new
+    defaults: { _controller: "InfinityGamesInfinityBundle:LiaisonItemUser:new" }
+
+liaisonitemuser_create:
+    pattern:  /create
+    defaults: { _controller: "InfinityGamesInfinityBundle:LiaisonItemUser:create" }
+    requirements: { _method: post }
+
+liaisonitemuser_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "InfinityGamesInfinityBundle:LiaisonItemUser:edit" }
+
+liaisonitemuser_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "InfinityGamesInfinityBundle:LiaisonItemUser:update" }
+    requirements: { _method: post }
+
+liaisonitemuser_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "InfinityGamesInfinityBundle:LiaisonItemUser:delete" }
+    requirements: { _method: post }
