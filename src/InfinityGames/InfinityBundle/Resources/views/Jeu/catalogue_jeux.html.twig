@@ -50,17 +50,18 @@
 				</div>
 			{% endfor %}	
 		</div>
-	{% for jeu in jeux %}
-		<div class="span12 line_jeu_game_catalogue">
-			<span class="span4 nom_jeu_line_jeu_catalogue">{{ jeu.nom }}</span>
-			<span class="span2">{{ jeu.genreJeuGenreJeu }}</span>
-			<span class="span2">{{ jeu.note }}</span>
-			<span class="span2 pull-right">
-				<a href="#{{ jeu.id }}" class="btn pull-right a_btn_ligne_jeu_catalogue" ><i class=" icon-zoom-in"></i></a>
-				<a href="{{ jeu.destIndex }}" class="btn pull-right a_btn_ligne_jeu_catalogue">Jouer</a>
-			</span>
+		<div class="span12" id="bloc_tous_jeux_catalogue_jeu">
+			<h1>Tous les jeux</h1>
+			{% for jeu in jeux %}
+				<div class="span12 line_jeu_game_catalogue">
+					<span class="span4 nom_jeu_line_jeu_catalogue">{{ jeu.nom }}</span>
+					<span class="span2">{{ jeu.genreJeuGenreJeu }}</span>
+					<span class="span2">{{ jeu.note }}</span>
+					<span class="span2 pull-right">
+						<a href="#{{ jeu.id }}" class="btn pull-right a_btn_ligne_jeu_catalogue" ><i class=" icon-zoom-in"></i></a>
+						<a href="{{ jeu.destIndex }}" class="btn pull-right a_btn_ligne_jeu_catalogue">Jouer</a>
+					</span>
+				</div>
+			{% endfor %}
 		</div>
-		
-	{% endfor %}
-		
 	{% endblock %}
